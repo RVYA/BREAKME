@@ -1,0 +1,15 @@
+{
+  "$schema": "./tiles.schema.json",
+  "items": [
+    {
+      "name": "Hidden",
+      "hp": 9999999,
+      "rarity": "common"
+    },
+    {
+      "name": "Base",
+      "hp": 32,
+      "rarity": "common"
+    }
+  ]
+}
