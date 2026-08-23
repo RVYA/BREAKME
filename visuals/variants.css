@@ -1,0 +1,35 @@
+.variant-dirt {
+  background: #5e3023;
+  background: radial-gradient(
+    circle,
+    rgba(94, 48, 35, 1) 30%,
+    rgba(137, 87, 55, 1) 90%
+  );
+}
+
+.variant-gold {
+  background: #020024;
+  background: linear-gradient(
+    135deg,
+    rgba(2, 0, 36, 1) 5%,
+    rgba(255, 221, 0, 1) 50%,
+    rgba(2, 0, 36, 1) 95%
+  );
+}
+
+.variant-broken {
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    53% 100%,
+    38% 83%,
+    49% 33%,
+    38% 0%,
+    47% 0%,
+    60% 23%,
+    49% 74%,
+    59% 100%,
+    100% 100%,
+    100% 0%
+  );
+}

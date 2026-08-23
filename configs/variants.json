@@ -1,0 +1,17 @@
+{
+  "$schema": "./variants.schema.json",
+  "items": [
+    {
+      "name": "Dirt",
+      "rarity": "common"
+    },
+    {
+      "name": "Gold",
+      "rarity": "uncommon"
+    },
+    {
+      "name": "Broken",
+      "rarity": "uncommon"
+    }
+  ]
+}
