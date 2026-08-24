@@ -1,0 +1,25 @@
+{
+  "$schema": "./effects.schema.json",
+  "items": [
+    {
+      "name": "Negative",
+      "rarity": "legendary"
+    },
+    {
+      "name": "Shiny",
+      "rarity": "rare"
+    },
+    {
+      "name": "Hot",
+      "rarity": "uncommon"
+    },
+    {
+      "name": "Cold",
+      "rarity": "uncommon"
+    },
+    {
+      "name": "Wet",
+      "rarity": "uncommon"
+    }
+  ]
+}
