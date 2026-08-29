@@ -465,3 +465,67 @@ When `FinalDamage` ($D$) is evaluated against the current grid, the engine execu
 - `[TBD: Streak Multiplier Step]`
 - `[TBD: Max Streak Multiplier Cap]`
 - `[TBD: Monthly / Yearly / All-Time Record Damage Bonuses]`
+
+---
+
+## 5. Seeded PRNG & Grid Generation Logic
+
+This section specifies the random number generation architecture used by `engine.js` for deterministic grid building, layer rolls, loot drops, and achievement events.
+
+---
+
+### 5.1 Core Algorithms & Master Seed
+
+1. **PRNG Algorithm**: `SplitMix32` (Fast, high-quality 32-bit state generator).
+2. **Hash Algorithm**: 32-bit **MurmurHash3** (`mmh3_32`).
+3. **Master Seed Derivation**:
+   $$\text{MasterSeed} = \text{MurmurHash3}(\text{(username } \vert \text{ userId)} + \text{"\_"} + \text{firstRunTimestamp})$$
+
+---
+
+### 5.2 Dual Generator Modes: Counter-Based vs. Sequential
+
+The engine utilizes two distinct PRNG generator modes depending on the entity type:
+
+```mermaid
+flowchart TD
+    MasterSeed[Master Seed: MurmurHash3] --> Modes
+    Modes --> ModeA[1. Counter-Based Generators: Chunks & Grid Tiles]
+    Modes --> ModeB[2. Sequential Generators: Stateful Events]
+
+    ModeA --> KeyA["Seed = mmh3_32(MasterSeed + EntityKey + ChunkIndex + TileIndex)"]
+    ModeA --> SplitMixA[SplitMix32 Output]
+
+    ModeB --> KeyB["Seed = mmh3_32(MasterSeed + EntityKey)"]
+    ModeB --> StateB[Internal Sequence Index Counter++]
+    ModeB --> SplitMixB[SplitMix32 Output]
+```
+
+#### 1. Counter-Based Generator (Grid & Chunk Generation)
+- **Role**: Stateless, position-dependent chunk and tile generation.
+- **Mechanism**: Computes a unique seed for each tile position $i \in [0..63]$ within `currentChunkIndex` using entity key strings (`tile`, `variant`, `effect`).
+- **Formula**:
+  $$\text{TilePositionalSeed} = \text{MurmurHash3}(\text{MasterSeed} + \text{"\_"} + \text{EntityKey} + \text{"\_"} + \text{currentChunkIndex} + \text{"\_"} + i)$$
+- **Benefit**: Reconstructs any 64-tile grid dynamically without storing 64 tile objects in `state.json`.
+
+#### 2. Sequential Generator (Stateful Events & Loot Drops)
+- **Role**: State-dependent rolls (e.g., loot drop tables, achievement triggers, special event occurrences).
+- **Mechanism**: Maintains an independent internal sequence counter (`seqIndex`) per entity key.
+- **Formula**:
+  $$\text{Roll} = \text{SplitMix32}(\text{MurmurHash3}(\text{MasterSeed} + \text{"\_"} + \text{EntityKey}), \text{seqIndex}++)$$
+
+---
+
+### 5.3 3-Layer Tile Generation Algorithm
+
+For each tile position $i \in [0..63]$ in grid `currentChunkIndex` (where `chunkSize = 64`):
+
+1. **Layer 1: Base Tile Shape (`Tile`)**:
+   - Seed: `MurmurHash3(MasterSeed + "_tile_" + chunkIndex + "_" + i)`
+   - Output: Indexes into `assets/tiles/` base shapes distribution table.
+2. **Layer 2: Material Variant (`Variant`)**:
+   - Seed: `MurmurHash3(MasterSeed + "_variant_" + chunkIndex + "_" + i)`
+   - Output: Indexes into `configs/variants.json` distribution table.
+3. **Layer 3: Effect Modifier (`Effect`)**:
+   - Seed: `MurmurHash3(MasterSeed + "_effect_" + chunkIndex + "_" + i)`
+   - Output: Indexes into `configs/effects.json` distribution table.
