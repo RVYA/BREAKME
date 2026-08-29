@@ -1,4 +1,4 @@
-export default function generate32BitMurmur3HashFrom(key: string, seed: number) {
+export default function generate32BitMurmur3Hash(key: string, seed: number) {
 	let h = seed >>> 0
 	const remainder = key.length & 3 // bytes % 4
 	const bytes = key.length - remainder
