@@ -136,30 +136,257 @@ $$\text{Max HP} = \lceil \text{Tile.baseHp} \times \text{Variant.hpMultiplier} \
 
 ---
 
-### 3.2 Player Entity (`Player`)
-> *TODO: Detailed properties, stats, streak tracking, and profile state definition.*
+### 3.2 Player Entity (`Player`) & State Protection Architecture
+
+The **Player Entity (`Player`)** represents the user's persistent profile, progression metrics, seed state, and meta-inventory stored within `state.json`.
 
 ---
 
-### 3.3 Collectible Entity (`Collectible`)
-> *TODO: Unlockable types, trophy cabinet log, drop rates, and condition schema.*
+#### 3.2.1 Player Schema & Properties
+
+1. **Identity (`identity`)**:
+   - `username`: String — GitHub username (e.g., `caylakym`).
+   - `firstRunTimestamp`: ISO Timestamp — Immutable timestamp recorded when `engine.js` runs for the very first time on the repository.
+   - `baseSeed`: String — Unique deterministic base seed calculated as:
+     $$\text{baseSeed} = \text{SHA256}(\text{username} + \text{"\_"} + \text{firstRunTimestamp})$$
+
+2. **Core Grid Progress (`progress`)**:
+   - `currentChunkIndex`: Number — Current chunk/grid iteration counter (`0`, `1`, `2`, ...).
+   - `currentTileIndex`: Number — Current targeted tile index within the active 64-tile grid (`0..63`).
+   - `totalTilesBroken`: Number — Lifetime cumulative broken blocks metric.
+
+3. **Activity & Streak Stats (`activity`)**:
+   - `currentStreak`: Number — Active consecutive days with recorded Git actions.
+   - `highestStreak`: Number — Personal peak consecutive day streak.
+   - `lastActiveDate`: String — ISO Date string (`YYYY-MM-DD`) of last processed action.
+   - `topStats`: Object — Container for peak performance records (e.g., `{ "maxDailyCommits": N, "maxStreak": N }`), expandable for future high-stat tracking.
+
+4. **Meta Inventory (`inventory`)**:
+   - `collectibles`: Map<String, ISOTimestamp> — Map of unlocked collectible IDs and unlock timestamps.
+   - `achievements`: Map<String, AchievementState> — Map of achievement IDs, boolean status (`isUnlocked`), and `unlockedAt` timestamp.
 
 ---
 
-### 3.4 Achievement Entity (`Achievement`)
-> *TODO: Achievement criteria, milestone badges, Git action triggers, and rewards.*
+#### 3.2.2 Integrity Seal & Git-Based Self-Healing
+
+To guard against manual text edits, schema corruption, or raw JSON tampering on `state.json`:
+
+1. **HMAC SHA-256 Checksum (`_hash`)**:
+   - Root `state.json` contains a `_hash` property.
+   - During execution, `engine.js` computes `HMAC_SHA256(cleanState, SECRET_KEY)` and validates it against `_hash`.
+2. **Git Commit History Fallback (Self-Healing)**:
+   - If `_hash` verification fails (indicating manual tampering or corrupted JSON syntax), `engine.js` automatically fetches the last valid, signed `state.json` directly from `git log` / previous commit history, restoring valid state before running the current turn.
 
 ---
 
-### 3.5 Chunk Entity (`Chunk`)
-> *TODO: 64-tile grid chunk state, seed derivation, index progression, and layout metadata.*
+### 3.3 Collectible Entity (`Collectible`) & Spawn Conditions (`SpawnCondition`)
+
+Collectibles represent the primary long-term progression metric in **BREAKME**. Breaking tile blocks can drop unique collectibles that permanently populate the player's profile README **Trophy Cabinet**.
+
+#### 3.3.1 Collectible Properties (`Collectible`)
+- **`id`**: String — Unique identifier (e.g., `gem_ruby`, `fossil_amber`, `relic_core`).
+- **`name`**: String — Display title.
+- **`visualDesign`**: SVG Ref — Vector graphic asset / symbol reference rendered in the SVG defs.
+- **`rarity`**: Rarity Enum — `common`, `uncommon`, `rare`, `epic`, `legendary`.
+- **`spawnCondition`**: SpawnCondition Entity / Schema — Rules governing when and where this item can drop.
+- **`description`**: String — Lore / flavor text displayed on hover or detail view.
+
+#### 3.3.2 Spawn Condition Entity (`SpawnCondition`)
+To support flexible drop requirements, drop eligibility is evaluated via a structured `SpawnCondition` entity:
+- **`id`**: String — Unique condition set identifier.
+- **`dropWeight`**: Number — Base drop probability weight when condition criteria are met.
+- **`allowedTileIds`**: List<String> *(Optional)* — Restricts drop to specific base Tile shapes.
+- **`allowedVariants`**: List<String> *(Optional)* — Restricts drop to specific Material Variants.
+- **`allowedEffects`**: List<String> *(Optional)* — Restricts drop to specific Effect Modifiers.
+- **`minGridIndex`**: Number *(Optional)* — Minimum grid depth required before this item can appear.
+- **`gitActionTypes`**: List<String> *(Optional)* — Restricts drop to hits triggered by specific Git actions (e.g., `commit`, `pr_merge`, `issue`).
+
+#### 3.3.3 Collection & Loot Pool Exhaustion Logic
+1. **Loot Roll on Tile Break**: When a tile HP reaches `<= 0`, the engine evaluates all `Collectible` entries whose `SpawnCondition` criteria match the current tile, variant, effect, and Git action context.
+2. **Dynamic Pool Exhaustion**:
+   - Collectibles already present in `Player.collectibles` are **excluded from future loot rolls**.
+   - Removing collected items dynamically shifts remaining probability weights, progressively **increasing the drop chance for uncollected collectibles**.
+3. **Automatic Acquisition & Trophy Cabinet**:
+   - Upon dropping, the item is automatically added to `Player.collectibles`.
+   - The SVG renderer updates the user's permanent **Trophy Cabinet / Table** view in the profile `README.md`.
 
 ---
 
-### 3.6 Action Stack Entity (`ActionStack`)
-> *TODO: Incoming Git inputs queue (commits, PR merges, issues), payload structures, and parsing rules.*
+### 3.4 Achievement Entity (`Achievement`) & Condition Schema
+
+Achievements represent the meta progression layer of **BREAKME**, rewarding long-term player milestones, Git activity streaks, block-breaking feats, and collection progress.
+
+#### 3.4.1 Achievement Properties (`Achievement`)
+- **`id`**: String — Unique achievement identifier (e.g., `streak_7day`, `blocks_broken_100`, `master_collector`).
+- **`title`**: String — Display title.
+- **`description`**: String — Goal explanation / unlock instructions.
+- **`badgeSvgRef`**: SVG Ref — Vector badge icon reference rendered in the SVG defs.
+- **`rarity`**: Rarity Enum — `common`, `uncommon`, `rare`, `epic`, `legendary`.
+- **`conditions`**: List<AchievementCondition> — Array of 1 or more condition criteria required to unlock.
+- **`isUnlocked`**: Boolean — Per-player unlocked status indicator.
+- **`unlockedAt`**: ISO Timestamp / Null — Timestamp when the achievement was achieved.
+- **`reward`**: Reward Object *(Optional)* — Optional score multiplier bonus, special badge border, or cosmetic variant unlock.
+
+#### 3.4.2 Achievement Condition Entity (`AchievementCondition`)
+An achievement can define singular or multiple conditions (ALL conditions required for unlock):
+- **`id`**: String — Unique condition rule identifier.
+- **`metricType`**: Metric Enum — Category of stat being tracked by the engine:
+  - **Progress Metrics**: `blocks_broken_total`, `grid_index_depth`, `overflow_damage_total`, `collectibles_found_count`.
+  - **Git Activity Metrics**: `git_commits_total`, `git_pr_merges_total`, `git_streak_days`.
+  - **Interaction Feats**: `rare_variant_broken`, `legendary_effect_broken`, `full_grid_cleared_single_action`.
+- **`targetValue`**: Number / String — The numerical threshold or ID required for completion.
+- **`comparisonOperator`**: Operator Enum — `>=` (greater than or equal), `==` (exact match), `<=` (less than or equal).
+
+#### 3.4.3 Unlock Evaluation Lifecycle
+1. **Trigger Checks**: The engine evaluates locked achievements automatically after major game events (Git stats update, tile destruction, collectible drop, grid reset).
+2. **Multi-Condition Validation**:
+   - The engine validates every `AchievementCondition` in `achievement.conditions`.
+   - If ALL conditions pass their `comparisonOperator` checks against player metrics, the achievement transitions to unlocked.
+3. **Meta Progression State Update**:
+   - Updates `Player.achievements[id].isUnlocked = true` and records `unlockedAt`.
+   - Unlocked achievement badges populate the **Achievement Gallery / Badge Shelf** in the SVG profile `README.md`.
 
 ---
 
-### 3.7 Action Score Entity (`ActionScore`)
-> *TODO: Action score output, damage calculation formula, combo multipliers, and hit application specs.*
+### 3.5 Chunk Entity (`Chunk`) & Grid Generation Strategies
+
+A `Chunk` represents a discrete 64-tile grid section (rendered visually as an 8x8 matrix on the player's profile `README.md` SVG).
+
+#### 3.5.1 Chunk Properties (`Chunk`)
+- **`chunkIndex`**: Number — Sequential grid counter (`0`, `1`, `2`, ...).
+- **`chunkSize`**: Number — Total tiles per grid (Default: `64`).
+- **`seed`**: String / Hash — Deterministic seed derived from player identity and grid index.
+- **`tiles`**: Flat Array<TileInstance> (Size: `64`) — Array of 64 sequential tile instances (`tiles[0..63]`).
+- **`isCleared`**: Boolean — Evaluates to `true` when all 64 tiles reach `HP <= 0`.
+- **`generatedAt`**: ISO Timestamp — Grid generation timestamp.
+
+#### 3.5.2 Seed Derivation Logic
+The chunk seed guarantees reproducible and deterministic grid generation:
+$$\text{Seed} = \text{SHA256}(\text{GitHub Username/ID} + \text{"\_"} + \text{chunkIndex})$$
+*(Note: Initial grid derivation uses current timestamp + Username/ID, while subsequent grid resets chain `chunkIndex` into the seed generator).*
+
+#### 3.5.3 Tile Layer Generation Strategies
+When generating the 64 tile instances for a chunk, the generator selects layer combinations (`Base Tile` + optional `Variant` + optional `Effect`) using one of two candidate generation architectures:
+
+* **Option A: Compound ID Value Mapping (Single Roll)**
+  - Generator rolls a single pseudo-random value `V = PRNG(seed, tilePosition)`.
+  - Value `V` indexes directly into a pre-configured probability distribution lookup table containing valid layer combinations (e.g., `stone_base + iron_variant + glow_effect`).
+
+* **Option B: Multi-Layer Independent Probabilistic Roll (Layered Roll)**
+  - Generator executes 3 independent sequential rolls per tile position:
+    1. **Roll 1 (Base Shape)**: `PRNG(seed, pos, "tile")` determines base tile shape (`Tile`).
+    2. **Roll 2 (Material Fill)**: `PRNG(seed, pos, "variant")` determines optional material fill (`Variant`).
+    3. **Roll 3 (Outer Outline)**: `PRNG(seed, pos, "effect")` determines optional outer outline/glow (`Effect`).
+
+*(Both options are documented as candidates for final benchmarking in Section 5: Seeded PRNG).*
+
+---
+
+### 3.6 Action Stack Entity (`ActionStack`) & Action Item Entity (`ActionItem`)
+
+The **Action Stack** is the primary event ingestion queue of **BREAKME**. It buffers incoming activity events before they are evaluated into hit damage against tiles in the active chunk grid.
+
+#### 3.6.1 Action Item Entity (`ActionItem`)
+
+An `ActionItem` represents a single, discrete activity payload queued within the `ActionStack`.
+
+##### Privacy-First Data Guarantee
+To ensure complete privacy and compliance when running on public repositories or processing commits originating from private/enterprise workspaces:
+- **Zero Metadata Inspection**: No commit messages, code diffs, file names, directory structures, branch names, or author personal details are ever parsed or stored in state.
+- **Hashed Identifiers**: Raw SHA hashes are salted/hashed to prevent reverse lookup of private repository commits.
+
+##### Schema & Properties
+- **`id`**: String — Unique identifier generated by the engine (e.g., `act_9f8a7b6c`).
+- **`category`**: Category Enum — `git_client` (Native Git CLI) or `github_platform` (GitHub Web/API).
+- **`actionType`**: ActionType Enum — Specific event trigger type (e.g., `commit`, `pr_merge`, `release`).
+- **`count`**: Number — Quantity of atomic units represented (e.g., `5` for a 5-commit atomic push).
+- **`timestamp`**: ISO Timestamp — UTC timestamp of event creation.
+- **`calculatedScore`**: Number / Null — Damage score assigned upon evaluation *(Refer to Section 3.7 for scoring details)*.
+- **`isProcessed`**: Boolean — `false` while in pending queue; `true` once applied to tile HP.
+
+---
+
+#### 3.6.2 Category Classification
+
+Action items are split into three distinct categories based on their origin, transport layer, and calculation scope:
+
+##### Category A: Native Git Client Actions (`git_client`)
+Actions originating from the developer's local `git` CLI and uploaded via `git push`:
+- **`commit`**: Individual commit created locally and pushed to the repository. *(Note: Atomic pushes containing multiple commits yield `count = N`)*.
+- **`branch_push`**: Creation of a new branch ref on remote.
+- **`tag_push`**: Push of a native Git tag ref (`refs/tags/*`).
+- **`merge_commit`**: Push of a non-fast-forward merge commit.
+
+##### Category B: GitHub Platform Actions (`github_platform`)
+Actions originating on GitHub's web interface, API, or automated workflows:
+- **`pr_merge`**: Execution of a Pull Request merge.
+- **`issue_event`**: Creation or resolution of an issue.
+- **`release_published`**: Publication of a GitHub Release entity.
+- **`deployment_event`**: Triggering of a GitHub Deployment status.
+
+##### Category C: Progress-Based Actions (`progress_analytics`)
+Actions generated by the engine by calculating activity analytics across time windows (daily, weekly, monthly, yearly):
+- **`daily_activity_milestone`**: Triggered when a player reaches daily commit/activity thresholds on a given day.
+- **`streak_increment`**: Triggered when a player maintains active daily Git usage without breaking their consecutive day streak.
+- **`record_activity_day`**: Triggered when a player sets a personal activity record (e.g., highest daily commit count for the month, year, or all-time).
+
+---
+
+#### 3.6.3 Action Stack Queue Architecture (`ActionStack`)
+
+The `ActionStack` maintains state within `state.json` via two arrays:
+
+1. **`pendingActions` (`List<ActionItem>`)**: First-In, First-Out (FIFO) queue of unprocessed action items waiting to damage active grid tiles.
+2. **`processedHistory` (`List<ActionItem>`)**: Rolling historical record of processed actions used for audit logging, anti-duplication validation, and streak calculations.
+
+##### Placeholders
+- `[TBD: Maximum Pending Queue Capacity]`
+- `[TBD: Processed History Retention Limit]`
+
+---
+
+#### 3.6.4 Queue Ingestion & Anti-Duplication Lifecycle
+
+1. **Event Capture**:
+   - **Direct Push / Workflow Payload**: Captured via `github.event` context during GitHub Action runs (`mine.yml`).
+   - **Cron Polling Sync**: Captured via GitHub GraphQL API during scheduled cron runs.
+2. **Deduplication Check**:
+   - The engine computes a deterministic fingerprint for the incoming action.
+   - If the fingerprint matches an entry in `pendingActions` or `processedHistory`, the event is discarded.
+3. **Queue Push**:
+   - Valid, non-duplicate actions are appended to `ActionStack.pendingActions`.
+
+### 3.7 Damage Entity (`Damage`) & Action Relations
+
+The **Damage Entity (`Damage`)** represents the final numerical HP reduction applied directly to tiles in the active chunk grid when processing an `ActionItem` from the `ActionStack`.
+
+---
+
+#### 3.7.1 Damage Calculation & Action Relations
+
+1. **`commit` (Base Action)**:
+   - Evaluates to a base score `[TBD: Base Commit Damage]`.
+   - Directly contributes to the primary `Damage` output applied to target tiles.
+   - For atomic multi-commit pushes (`count = N`), total damage scales proportionally by `N`.
+
+2. **Branch Damage Pool (`branch_create`, `merge_commit`, `branch_delete`)**:
+   - **`branch_create`**: Initializes a secondary damage pool (`branchDamagePool[branchId]`). Subsequent activity on this branch accumulates score into this secondary pool.
+   - **`merge_commit` / Merge Action**: Upon merging, the score accumulated in `branchDamagePool[branchId]` is released and added directly to the main `Damage` calculation.
+   - **`branch_delete`**: If a branch is deleted, its associated `branchDamagePool[branchId]` is deleted and cleared.
+
+3. **Tag Actions & Achievement Triggers (`tag_push`, `tag_delete`)**:
+   - Tag operations primarily serve as triggers for meta-progression achievements:
+     - **Achievement: *"Seems important."***: Unlocks automatically when a Git tag is pushed for the first time.
+     - **Achievement: *"TODO: Don't forget this."***: Has a 1% chance (`[TBD: 1% Roll]`) to trigger on any `tag_push` or `tag_delete` operation.
+   - *(Note: Additional Action Items can also trigger specific achievements as defined across the GDD).*
+
+4. **Progress-Based Multipliers & Record Bonuses (`progress_analytics`)**:
+   - **Streak Multipliers**: Active consecutive day streaks (`streak_increment`) apply a scaling `Streak Multiplier` directly to outgoing `Damage` (`Damage = BaseDamage * StreakMultiplier`).
+   - **Record Activity Day Bonuses**: Setting a personal best (`record_activity_day` for month, year, or all-time) injects a high-value bonus damage payload into the `ActionStack` and triggers personal record achievements.
+
+##### Placeholders
+- `[TBD: Base Commit Damage]`
+- `[TBD: Branch Damage Pool Multiplier]`
+- `[TBD: Tag Trigger Roll Rate]`
+- `[TBD: Streak Multiplier Scaling Formula]`
+- `[TBD: Monthly / Yearly / All-Time Record Damage Bonuses]`
