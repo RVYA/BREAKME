@@ -529,3 +529,219 @@ For each tile position $i \in [0..63]$ in grid `currentChunkIndex` (where `chunk
 3. **Layer 3: Effect Modifier (`Effect`)**:
    - Seed: `MurmurHash3(MasterSeed + "_effect_" + chunkIndex + "_" + i)`
    - Output: Indexes into `configs/effects.json` distribution table.
+
+---
+
+## 6. Collectibles & Achievement Systems
+
+This section details the loot distribution engine, dynamic loot pool exhaustion algorithm, and meta-achievement evaluation pipeline.
+
+---
+
+### 6.1 Collectible Drop Tables & Spawn Mechanics
+
+Collectibles drop when a tile block reaches `HP <= 0`. Drop evaluation uses the **Sequential PRNG Generator** (`collectible_drop` key).
+
+#### 1. Eligibility Filtering
+When a block breaks, the engine evaluates all collectibles whose `SpawnCondition` matches the block context:
+- Matches base tile shape (`allowedTileIds`).
+- Matches material variant (`allowedVariants`).
+- Matches effect modifier (`allowedEffects`).
+- Meets depth threshold (`minGridIndex <= currentChunkIndex`).
+
+#### 2. Dynamic Loot Pool Exhaustion Algorithm
+To ensure satisfying long-term progression without infinite duplicate clutter:
+- **Exclusion**: Collectibles already present in `Player.inventory.collectibles` are **excluded from the active roll pool**.
+- **Dynamic Weight Redistribution**: When an item is collected, its probability weight is removed, and remaining uncollected item weights are normalized proportionally. This dynamically increases the drop chance of remaining uncollected items over time!
+
+$$\text{NormalizedWeight}(i) = \frac{\text{Weight}(i)}{\sum_{k \in \text{Uncollected}} \text{Weight}(k)}$$
+
+- **No Drop Roll**: If a roll hits the remaining non-item probability threshold, no item drops.
+
+##### Placeholders
+- `[TBD: Base Tile Drop Roll Chance]`
+- `[TBD: Collectible Rarity Distribution Weights]`
+
+---
+
+### 6.2 Achievement Unlock Engine
+
+Achievements reward player milestones across Git activity, tile breaking, collection progress, and special interaction feats.
+
+#### 1. Evaluation Trigger Lifecycle
+The engine checks locked achievements in `Player.inventory.achievements`:
+- After every action execution cycle.
+- Upon tile destruction or collectible drop.
+- Upon daily streak updates.
+
+#### 2. Condition Validation Pipeline
+An achievement transitions to `isUnlocked = true` when **ALL** `AchievementCondition` entries pass their operator checks:
+
+$$\text{ConditionResult} = \text{PlayerMetric} \ \langle\text{Operator}\rangle \ \text{TargetValue}$$
+
+- **`>=`**: Metric exceeds or equals target (e.g., `totalTilesBroken >= 100`).
+- **`==`**: Metric matches target exactly (e.g., `git_streak_days == 30`).
+- **`<=`**: Metric is less than or equal to target.
+
+#### 3. Unlock Effects & Rewards
+Upon unlock:
+- Sets `isUnlocked = true` and records `unlockedAt` ISO timestamp.
+- Unlocks associated SVG badge graphics in the profile README **Badge Shelf**.
+- Activates optional passive rewards (e.g., `[TBD: Achievement Damage Multipliers]`).
+
+##### Placeholders
+- `[TBD: Passive Achievement Multipliers]`
+- `[TBD: Badge Shelf Display Limit]`
+
+---
+
+## 7. State Architecture & HMAC Integrity
+
+This section specifies the formal data model interfaces and security architecture used to persist and protect game state across execution cycles.
+
+---
+
+### 7.1 Master Game State Data Model (`GameState`)
+
+The `GameState` interface represents the complete, serializable snapshot of the game engine:
+
+```mermaid
+classDiagram
+    class GameState {
+        +PlayerState player
+        +ChunkState chunk
+        +ActionStackState actionStack
+        +String _hash
+    }
+    class PlayerState {
+        +PlayerIdentity identity
+        +PlayerProgress progress
+        +PlayerActivity activity
+        +PlayerInventory inventory
+    }
+    class ChunkState {
+        +Number chunkIndex
+        +Number chunkSize
+        +String seed
+        +Boolean isCleared
+    }
+    class ActionStackState {
+        +List~ActionItem~ pendingActions
+        +List~ActionItem~ processedHistory
+    }
+
+    GameState --> PlayerState
+    GameState --> ChunkState
+    GameState --> ActionStackState
+```
+
+#### Data Model Components:
+- **`player` (`PlayerState`)**:
+  - `identity`: Username, `firstRunTimestamp`, and derived `baseSeed`.
+  - `progress`: `currentChunkIndex`, `currentTileIndex`, and `totalTilesBroken`.
+  - `activity`: `currentStreak`, `highestStreak`, `lastActiveDate`, and `topStats` record map.
+  - `inventory`: Unlocked `collectibles` map and `achievements` status map.
+- **`chunk` (`ChunkState`)**:
+  - `chunkIndex`: Active chunk level counter.
+  - `chunkSize`: Constant (Default: `64`).
+  - `seed`: Positional chunk seed.
+  - `isCleared`: Boolean indicating if all 64 tiles are broken.
+- **`actionStack` (`ActionStackState`)**:
+  - `pendingActions`: FIFO queue of unprocessed `ActionItem`s.
+  - `processedHistory`: Audit log of cleared actions.
+- **`_hash` (`String`)**:
+  - HMAC SHA-256 integrity signature protecting the state snapshot.
+
+---
+
+### 7.2 HMAC SHA-256 Security & Validation Protocol
+
+```mermaid
+flowchart TD
+    A[Read State Snapshot] --> B[Strip _hash Property]
+    B --> C[Canonicalize JSON String]
+    C --> D[Compute HMAC SHA-256 with SECRET_KEY]
+    D --> E{Match state._hash?}
+    E -- Yes --> F[Valid State: Proceed Execution]
+    E -- No --> G[State Tampered / Corrupted: Trigger Self-Healing Protocol]
+```
+
+1. **Canonicalization**: The engine strips `_hash` from `GameState` and stringifies the clean state object.
+2. **Signature Computation**: `computedHash = HMAC_SHA256(canonicalStateString, SECRET_KEY)`.
+3. **Validation**: The engine compares `computedHash` against `_hash`.
+
+---
+
+### 7.3 Git History Self-Healing Protocol
+
+```mermaid
+flowchart TD
+    A[HMAC Validation Failed] --> B[Execute: git log -- state.json]
+    B --> C[Fetch Previous Commit Snapshot]
+    C --> D[Compute & Verify HMAC for Previous Commit]
+    D --> E{Valid HMAC?}
+    E -- No --> B
+    E -- Yes --> F[Checkout Valid Commit: git checkout SHA -- state.json]
+    F --> G[Log Self-Healing Event & Resume Execution]
+```
+
+If `_hash` verification fails (indicating manual editing or corrupted state):
+
+1. **Log Inspection**: The engine queries Git commit history for recent versions of the state snapshot file.
+2. **Rollback Search**: Inspects previous commits in reverse chronological order until finding the most recent commit where `_hash` verifies cleanly.
+3. **Automatic Reversion**: Restores the valid `GameState` snapshot from Git history, logs a self-healing event, and resumes normal execution.
+
+---
+
+## 8. Visual SVG Renderer & Layout Specs
+
+This section defines the dynamic SVG generator (`renderer.ts`), asset pipeline, CSS class styling architecture, and layout specs for profile README embedding.
+
+---
+
+### 8.1 3-Layer Visual Rendering via CSS Classes
+
+A tile on the grid is rendered by combining a base vector SVG asset with CSS classes:
+
+```mermaid
+flowchart TD
+    BaseAsset["Base Tile Asset (assets/tiles/*.svg)"] --> SVGNode[SVG Element]
+    VariantClass["Variant CSS Class (.variant-gold)"] -->|Applies fill / gradient| SVGNode
+    EffectClass["Effect CSS Class (.effect-glowing)"] -->|Applies stroke / animation| SVGNode
+    SVGNode --> FinalTile[Rendered Grid Tile]
+```
+
+1. **Base Tile Shape**: Vector SVG asset imported from `assets/tiles/` (defines raw outline geometry).
+2. **Material Variant**: Applied via a **CSS Class** (defined in `visuals/`) that overrides or injects `fill`, gradient, or pattern styling.
+3. **Effect Modifier**: Applied via a secondary **CSS Class** (defined in `visuals/`) that applies outer `stroke`, border dash patterns, and CSS `@keyframes` animations.
+
+---
+
+### 8.2 Grid Matrix Layout Math
+
+The 64-tile flat array `tiles[0..63]` is mapped to an 8x8 visual matrix:
+
+$$\text{col} = i \pmod 8, \quad \text{row} = \lfloor i / 8 \rfloor$$
+
+$$\text{X} = \text{offsetX} + (\text{col} \times (\text{tileSize} + \text{gap}))$$
+$$\text{Y} = \text{offsetY} + (\text{row} \times (\text{tileSize} + \text{gap}))$$
+
+##### Placeholders
+- `[TBD: Tile Width/Height in px]`
+- `[TBD: Grid Inter-Tile Spacing in px]`
+
+---
+
+### 8.3 Collectible Trophy Table & Achievement Gallery
+
+1. **Collectible Trophy Table**:
+   - Rendered below the main 8x8 grid as a structured grid/table.
+   - Each unlocked item displays as a **24x24 SVG icon** in its unlocked slot.
+   - Locked items display a translucent silhouette or placeholder frame.
+2. **Achievement Display**:
+   - Rendered alongside/below the Trophy Table.
+   - Displays unlocked badge icons and titles (`[TBD: Table vs. List Layout Format]`).
+
+##### Placeholders
+- `[TBD: Trophy Table Row & Column Dimensions]`
+- `[TBD: Achievement Display Layout Format (Table vs. List)]`
