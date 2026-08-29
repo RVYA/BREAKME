@@ -1,1 +1,19 @@
-.agents
+# Agentic Local Cache (Rule 9)
+.agents/
+
+# Dependencies
+node_modules/
+
+# Build & Compiler Output
+dist/
+*.tsbuildinfo
+
+# Environment & Logs
+.env
+.env.*
+*.log
+npm-debug.log*
+
+# System & OS Files
+.DS_Store
+Thumbs.db
