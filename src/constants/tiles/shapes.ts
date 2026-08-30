@@ -1,4 +1,4 @@
-import type TileShape from "#models/tile/tile-shape"
+import type TileShape from "#models/tile/shape.js"
 
 export const TILE_SHAPES = [
 	{
