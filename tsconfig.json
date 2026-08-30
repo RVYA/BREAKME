@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "NodeNext",
+    "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
     "noImplicitAny": true,
@@ -11,7 +11,27 @@
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "#assets/*": [
+        "./src/assets/*"
+      ],
+      "#const/*": [
+        "./src/constants/*"
+      ],
+      "#models/*": [
+        "./src/models/*"
+      ],
+      "#repos/*": [
+        "./src/repos/*"
+      ],
+      "#styles/*": [
+        "./src/styles/*"
+      ],
+      "#utils/*": [
+        "./src/utils/*"
+      ]
+    }
   },
   "exclude": [
     "./node_modules/**"

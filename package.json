@@ -2,6 +2,14 @@
   "name": "breakme",
   "version": "0.0.1",
   "type": "module",
+  "imports": {
+    "#assets/*": "./src/assets/*",
+    "#const/*": "./src/constants/*",
+    "#models/*": "./src/models/*",
+    "#repos/*": "./src/repos/*",
+    "#styles/*": "./src/styles/*",
+    "#utils/*": "./src/utils/*"
+  },
   "scripts": {
     "start": "node --experimental-strip-types src/engine.ts",
     "typecheck": "tsc --noEmit",
