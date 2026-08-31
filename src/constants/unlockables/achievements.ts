@@ -1,5 +1,4 @@
 import type Achievement from "#models/unlockable/achievement"
-import type { AchievementName } from "#models/unlockable/achievement"
 
 export const ACHIEVEMENTS = [
 	{
@@ -13,7 +12,3 @@ export const ACHIEVEMENTS = [
 		conditions: [(state) => state.player.activity.currentStreak >= 7],
 	},
 ] as const satisfies Achievement[]
-
-export const ACHIEVEMENTS_BY_NAME = Object.fromEntries(
-	ACHIEVEMENTS.map((achievement) => [achievement.name, achievement]),
-) as unknown as Record<AchievementName, Achievement>

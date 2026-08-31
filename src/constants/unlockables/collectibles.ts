@@ -1,5 +1,4 @@
 import type Collectible from "#models/unlockable/collectible"
-import type { CollectibleName } from "#models/unlockable/collectible"
 
 export const COLLECTIBLES = [
 	{
@@ -16,12 +15,8 @@ export const COLLECTIBLES = [
 	},
 	{
 		name: "Test Collectible #3",
-		description: "Yada yada.",
+		description: "Ya da ya da.",
 		rarity: "uncommon",
 		spawnCondition: { minTileIndex: 2 },
 	},
 ] as const satisfies Collectible[]
-
-export const COLLECTIBLES_BY_NAME = Object.fromEntries(
-	COLLECTIBLES.map((collectible) => [collectible.name, collectible]),
-) as Record<CollectibleName, Collectible>
