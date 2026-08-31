@@ -1,11 +1,8 @@
-import type { COLLECTIBLES } from "#const/unlockables/collectibles"
 import type { ActionType } from "#models/action-item"
 import type RarityLabel from "../rarity"
 import type { TileEffectName } from "../tile/effect"
 import type { TileShapeName } from "../tile/shape"
 import type { TileVariantName } from "../tile/variant"
-
-export type CollectibleName = (typeof COLLECTIBLES)[number]["name"]
 
 type SpawnCondition = {
 	applicableShapes?: TileShapeName[]
