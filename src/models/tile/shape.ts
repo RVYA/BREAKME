@@ -1,4 +1,7 @@
+import type { TILE_SHAPES } from "#const/tiles/shapes.js"
 import type RarityLabel from "../rarity"
+
+export type TileShapeName = (typeof TILE_SHAPES)[number]["name"]
 
 type TileShape = {
 	name: string

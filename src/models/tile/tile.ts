@@ -1,10 +1,10 @@
-import type TileEffectName from "#const/tiles/effects"
-import type TileShapeName from "#const/tiles/shapes"
-import type TileVariantName from "#const/tiles/variants"
 import { getTileEffectFrom, getTileShapeFrom, getTileVariantFrom } from "#repos/tiles"
 import type TileEffect from "./effect"
+import type { TileEffectName } from "./effect"
 import type TileShape from "./shape"
+import type { TileShapeName } from "./shape"
 import type TileVariant from "./variant"
+import type { TileVariantName } from "./variant"
 
 export default class Tile {
 	index: number

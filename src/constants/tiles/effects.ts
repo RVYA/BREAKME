@@ -1,4 +1,5 @@
 import type TileEffect from "#models/tile/effect"
+import type { TileEffectName } from "#models/tile/effect"
 
 export const TILE_EFFECTS = [
 	{
@@ -33,9 +34,7 @@ export const TILE_EFFECTS = [
 	},
 ] as const satisfies TileEffect[]
 
-type TileEffectName = (typeof TILE_EFFECTS)[number]["name"]
-export type { TileEffectName as default }
-
-export const TILE_EFFECTS_BY_NAME = Object.fromEntries(
-	TILE_EFFECTS.map((effect) => [effect.name, effect]),
-) as Record<TileEffectName, TileEffect>
+export const TILE_EFFECTS_BY_NAME = Object.fromEntries(TILE_EFFECTS.map((effect) => [effect.name, effect])) as Record<
+	TileEffectName,
+	TileEffect
+>

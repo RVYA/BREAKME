@@ -1,4 +1,5 @@
-import type TileShape from "#models/tile/shape.js"
+import type TileShape from "#models/tile/shape"
+import { type TileShapeName } from "#models/tile/shape"
 
 export const TILE_SHAPES = [
 	{
@@ -12,9 +13,6 @@ export const TILE_SHAPES = [
 		rarity: "common",
 	},
 ] as const satisfies TileShape[]
-
-type TileShapeName = (typeof TILE_SHAPES)[number]["name"]
-export type { TileShapeName as default }
 
 export const TILE_SHAPES_BY_NAME = Object.fromEntries(TILE_SHAPES.map((shape) => [shape.name, shape])) as Record<
 	TileShapeName,

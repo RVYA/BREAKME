@@ -1,5 +1,8 @@
-import type TileShapeName from "#const/tiles/shapes.js"
+import type { TILE_EFFECTS } from "#const/tiles/effects"
+import type { TileShapeName } from "#models/tile/shape"
 import type RarityLabel from "../rarity"
+
+export type TileEffectName = (typeof TILE_EFFECTS)[number]["name"]
 
 type TileEffect = {
 	name: string

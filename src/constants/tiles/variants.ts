@@ -1,4 +1,5 @@
 import type TileVariant from "#models/tile/variant"
+import type { TileVariantName } from "#models/tile/variant"
 
 export const TILE_VARIANTS = [
 	{
@@ -20,9 +21,6 @@ export const TILE_VARIANTS = [
 		applicableTo: undefined,
 	},
 ] as const satisfies TileVariant[]
-
-type TileVariantName = (typeof TILE_VARIANTS)[number]["name"]
-export type { TileVariantName as default }
 
 export const TILE_VARIANTS_BY_NAME = Object.fromEntries(
 	TILE_VARIANTS.map((variant) => [variant.name, variant]),
