@@ -1,12 +1,12 @@
-import { TILE_EFFECTS_BY_NAME } from "#const/tiles/effects.js"
-import { TILE_SHAPES_BY_NAME } from "#const/tiles/shapes.js"
-import { TILE_VARIANTS_BY_NAME } from "#const/tiles/variants.js"
-import type TileEffect from "#models/tile/effect.js"
-import type { TileEffectName } from "#models/tile/effect.js"
-import type TileShape from "#models/tile/shape.js"
-import type { TileShapeName } from "#models/tile/shape.js"
-import type TileVariant from "#models/tile/variant.js"
-import type { TileVariantName } from "#models/tile/variant.js"
+import { TILE_EFFECTS_BY_NAME } from "#const/tiles/effects"
+import { TILE_SHAPES_BY_NAME } from "#const/tiles/shapes"
+import { TILE_VARIANTS_BY_NAME } from "#const/tiles/variants"
+import type TileEffect from "#models/tile/effect"
+import type { TileEffectName } from "#models/tile/effect"
+import type TileShape from "#models/tile/shape"
+import type { TileShapeName } from "#models/tile/shape"
+import type TileVariant from "#models/tile/variant"
+import type { TileVariantName } from "#models/tile/variant"
 
 export function getTileShapeFrom(name: TileShapeName): TileShape {
 	return TILE_SHAPES_BY_NAME[name]

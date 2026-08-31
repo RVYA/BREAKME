@@ -1,4 +1,4 @@
-import type { TILE_SHAPES } from "#const/tiles/shapes.js"
+import type { TILE_SHAPES } from "#const/tiles/shapes"
 import type RarityLabel from "../rarity"
 
 export type TileShapeName = (typeof TILE_SHAPES)[number]["name"]

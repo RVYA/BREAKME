@@ -14,6 +14,17 @@ export default defineConfig(
 			"@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
 			"@typescript-eslint/no-explicit-any": "off",
 			"@typescript-eslint/consistent-type-definitions": ["error", "type"],
+			"no-restricted-imports": [
+				"error",
+				{
+					patterns: [
+						{
+							regex: "\\.(js|ts|jsx|tsx)$",
+							message: "Import paths must omit file extensions.",
+						},
+					],
+				},
+			],
 		},
 	},
 	prettierConfig,
