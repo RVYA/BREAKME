@@ -3,7 +3,7 @@ import type Tile from "./tile"
 type Chunk = {
 	index: number
 	tiles: Tile[]
-	generatedAt: string
+	createdAt: string
 	isCleared?: boolean
 }
 
