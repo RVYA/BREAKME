@@ -202,13 +202,17 @@ To support flexible drop requirements, drop eligibility is evaluated via a struc
 - **`gitActionTypes`**: List<String> *(Optional)* — Restricts drop to hits triggered by specific Git actions (e.g., `commit`, `pr_merge`, `issue`).
 
 #### 3.3.3 Collection & Loot Pool Exhaustion Logic
-1. **Loot Roll on Tile Break**: When a tile HP reaches `<= 0`, the engine evaluates all `Collectible` entries whose `SpawnCondition` criteria match the current tile, variant, effect, and Git action context.
-2. **Dynamic Pool Exhaustion**:
-   - Collectibles already present in `Player.collectibles` are **excluded from future loot rolls**.
-   - Removing collected items dynamically shifts remaining probability weights, progressively **increasing the drop chance for uncollected collectibles**.
-3. **Automatic Acquisition & Trophy Cabinet**:
-   - Upon dropping, the item is automatically added to `Player.collectibles`.
+1. **Drop Evaluation Pipeline**:
+   - **Phase 1 (Drop Roll)**: When tile HP reaches `<= 0`, the engine rolls to check if a collectible drop occurs.
+   - **Phase 2 (Rarity Roll)**: The engine rolls for a target rarity tier (`common`, `uncommon`, `rare`, `epic`, `legendary`).
+   - **Phase 3 (Uniform Item Pick)**: The engine selects a candidate item uniformly from items matching the target rarity tier.
+   - **Phase 4 (Validation & Rarity Cascade)**:
+     - If the candidate item is already owned or fails its `SpawnCondition` criteria (tile shape, variant, effect, depth, or Git action type) in current context, adjacent/next items in that rarity pool are checked.
+     - If no valid uncollected items remain in that rarity pool, the algorithm cascades to an adjacent or lower rarity tier.
+2. **Automatic Acquisition & Trophy Cabinet**:
+   - Upon dropping, the item is automatically added to `Player.inventory.collectibles`.
    - The SVG renderer updates the user's permanent **Trophy Cabinet / Table** view in the profile `README.md`.
+
 
 ---
 
@@ -535,21 +539,18 @@ This section details the loot distribution engine, dynamic loot pool exhaustion 
 
 Collectibles drop when a tile block reaches `HP <= 0`. Drop evaluation uses the **Sequential PRNG Generator** (`collectible_drop` key).
 
-#### 1. Eligibility Filtering
-When a block breaks, the engine evaluates all collectibles whose `SpawnCondition` matches the block context:
-- Matches base tile shape (`allowedTileIds`).
-- Matches material variant (`allowedVariants`).
-- Matches effect modifier (`allowedEffects`).
-- Meets depth threshold (`minGridIndex <= currentChunkIndex`).
+#### 1. Four-Phase Drop Evaluation Engine
+1. **Drop Check**: The engine rolls against base tile drop chance to determine if a collectible drop occurs.
+2. **Rarity Selection**: The engine rolls for target rarity tier (`common`, `uncommon`, `rare`, `epic`, `legendary`) using configured rarity distribution weights.
+3. **Uniform Item Pick**: The engine selects an uncollected item uniformly from items in the target rarity pool.
+4. **Validation & Rarity Cascade**:
+   - The selected candidate item is evaluated against its `SpawnCondition` criteria (`applicableShapes`, `applicableVariants`, `applicableEffects`, `minChunkIndex`, `gitActionTypes`).
+   - If the candidate item fails any condition or is already owned in `Player.inventory.collectibles`, adjacent/next items in that rarity pool are checked.
+   - If no valid uncollected items remain in that rarity tier, the engine cascades to an adjacent or lower rarity tier.
 
-#### 2. Dynamic Loot Pool Exhaustion Algorithm
-To ensure satisfying long-term progression without infinite duplicate clutter:
-- **Exclusion**: Collectibles already present in `Player.inventory.collectibles` are **excluded from the active roll pool**.
-- **Dynamic Weight Redistribution**: When an item is collected, its probability weight is removed, and remaining uncollected item weights are normalized proportionally. This dynamically increases the drop chance of remaining uncollected items over time!
+#### 2. Dynamic Pool Exhaustion
+Because items within a rarity tier drop with equal probability once that rarity is selected, collecting an item naturally removes it from the pool. Remaining uncollected items in that rarity tier share uniform drop probability ($1/N_{uncollected}$) without requiring complex weight recalculations.
 
-$$\text{NormalizedWeight}(i) = \frac{\text{Weight}(i)}{\sum_{k \in \text{Uncollected}} \text{Weight}(k)}$$
-
-- **No Drop Roll**: If a roll hits the remaining non-item probability threshold, no item drops.
 
 ##### Placeholders
 - `[TBD: Base Tile Drop Roll Chance]`
