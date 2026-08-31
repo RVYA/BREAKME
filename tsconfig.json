@@ -20,6 +20,9 @@
       "#const/*": [
         "./src/constants/*"
       ],
+      "#engine/*": [
+        "./src/engine/*"
+      ],
       "#models/*": [
         "./src/models/*"
       ],

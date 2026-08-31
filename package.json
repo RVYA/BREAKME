@@ -5,6 +5,7 @@
   "imports": {
     "#assets/*": "./src/assets/*",
     "#const/*": "./src/constants/*.ts",
+    "#engine/*": "./src/engine/*.ts",
     "#models/*": "./src/models/*.ts",
     "#providers/*": "./src/providers/*.ts",
     "#repos/*": "./src/repos/*.ts",
@@ -13,7 +14,7 @@
   },
   "scripts": {
     "start": "node --env-file-if-exists=.env --experimental-strip-types src/engine.ts",
-    "test": "node --experimental-strip-types --test src/**/*.test.ts",
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
     "test:fetch": "node --env-file-if-exists=.env --experimental-strip-types scripts/test-fetch.ts",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
