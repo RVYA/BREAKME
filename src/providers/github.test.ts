@@ -15,7 +15,7 @@ describe("GitHubEventProvider", () => {
 		globalThis.fetch = originalFetch
 	})
 
-	it("fetches single page of 15 in cron mode and returns items in chronological order", async () => {
+	it("fetches default limit of 8 in cron mode and returns items in chronological order", async () => {
 		const capturedUrls: string[] = []
 		const mockResponse = [
 			{
@@ -47,42 +47,52 @@ describe("GitHubEventProvider", () => {
 		const actions = await provider.fetchEvents({ username: "testuser", mode: "cron" })
 
 		assert.equal(capturedUrls.length, 1)
-		assert.match(capturedUrls[0], /per_page=15&page=1/)
+		assert.match(capturedUrls[0], /per_page=8/)
 		assert.equal(actions.length, 2)
 		assert.equal(actions[0].id, "sha1")
 		assert.equal(actions[1].id, "sha2")
 	})
 
-	it("fetches multi-page in init mode when page 1 returns 100 items", async () => {
+	it("fetches default limit of 32 in init mode", async () => {
 		const capturedUrls: string[] = []
-		const page1Events = Array.from({ length: 100 }, (_, i) => ({
+		const page1Events = Array.from({ length: 32 }, (_, i) => ({
 			id: `event_${i}`,
 			type: "PushEvent",
 			created_at: `2026-08-31T12:00:${String(i).padStart(2, "0")}Z`,
 			payload: { commits: [{ sha: `sha_p1_${i}`, message: "commit" }] },
 		}))
-		const page2Events = Array.from({ length: 60 }, (_, i) => ({
-			id: `event_p2_${i}`,
-			type: "PushEvent",
-			created_at: `2026-08-30T12:00:${String(i).padStart(2, "0")}Z`,
-			payload: { commits: [{ sha: `sha_p2_${i}`, message: "commit" }] },
-		}))
 
 		globalThis.fetch = async (input) => {
-			const url = String(input)
-			capturedUrls.push(url)
-			if (url.includes("page=1")) {
-				return new Response(JSON.stringify(page1Events), { status: 200 })
-			}
-			return new Response(JSON.stringify(page2Events), { status: 200 })
+			capturedUrls.push(String(input))
+			return new Response(JSON.stringify(page1Events), { status: 200 })
 		}
 
 		const actions = await provider.fetchEvents({ username: "testuser", mode: "init" })
 
-		assert.equal(capturedUrls.length, 2)
-		assert.match(capturedUrls[0], /per_page=100&page=1/)
-		assert.match(capturedUrls[1], /per_page=60&page=2/)
-		assert.equal(actions.length, 160)
+		assert.equal(capturedUrls.length, 1)
+		assert.match(capturedUrls[0], /per_page=32/)
+		assert.equal(actions.length, 32)
+	})
+
+	it("supports custom limit override", async () => {
+		const capturedUrls: string[] = []
+		const events = Array.from({ length: 50 }, (_, i) => ({
+			id: `event_${i}`,
+			type: "PushEvent",
+			created_at: `2026-08-31T12:00:${String(i).padStart(2, "0")}Z`,
+			payload: { commits: [{ sha: `sha_${i}`, message: "commit" }] },
+		}))
+
+		globalThis.fetch = async (input) => {
+			capturedUrls.push(String(input))
+			return new Response(JSON.stringify(events), { status: 200 })
+		}
+
+		const actions = await provider.fetchEvents({ username: "testuser", limit: 50 })
+
+		assert.equal(capturedUrls.length, 1)
+		assert.match(capturedUrls[0], /per_page=50/)
+		assert.equal(actions.length, 50)
 	})
 
 	it("includes Authorization header when token is provided", async () => {
