@@ -5,6 +5,7 @@ type FetchEventsMode = "init" | "cron"
 type FetchEventsOptions = {
 	username: string
 	mode?: FetchEventsMode
+	limit?: number
 	since?: string
 	token?: string
 }
