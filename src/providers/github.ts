@@ -3,6 +3,9 @@ import type { ActionType } from "#models/action-item"
 import type EventProvider from "./provider"
 import type { FetchEventsOptions } from "./provider"
 
+const DEFAULT_INIT_LIMIT = 32
+const DEFAULT_CRON_LIMIT = 8
+
 type GitHubApiCommit = {
 	sha: string
 	message?: string
@@ -26,10 +29,11 @@ export default class GitHubEventProvider implements EventProvider {
 
 	async fetchEvents(options: FetchEventsOptions): Promise<ActionItem[]> {
 		const mode = options.mode ?? "cron"
+		const targetLimit = options.limit ?? (mode === "init" ? DEFAULT_INIT_LIMIT : DEFAULT_CRON_LIMIT)
 		const baseUrl = `https://api.github.com/users/${options.username}/events`
 
 		const headers: Record<string, string> = {
-			Accept: "application/vnd.github+json",
+			"Accept": "application/vnd.github+json",
 			"User-Agent": "BREAKME",
 		}
 
@@ -37,21 +41,7 @@ export default class GitHubEventProvider implements EventProvider {
 			headers["Authorization"] = `Bearer ${options.token}`
 		}
 
-		const rawEvents: GitHubApiEvent[] = []
-
-		if (mode === "init") {
-			const page1 = await this.#fetchPage(baseUrl, headers, 100, 1)
-			rawEvents.push(...page1)
-
-			if (page1.length >= 100) {
-				const page2 = await this.#fetchPage(baseUrl, headers, 60, 2)
-				rawEvents.push(...page2)
-			}
-		} else {
-			const page1 = await this.#fetchPage(baseUrl, headers, 15, 1)
-			rawEvents.push(...page1)
-		}
-
+		const rawEvents = await this.#fetchPage(baseUrl, headers, targetLimit)
 		const actions: ActionItem[] = []
 
 		for (const event of rawEvents) {
@@ -73,9 +63,8 @@ export default class GitHubEventProvider implements EventProvider {
 		baseUrl: string,
 		headers: Record<string, string>,
 		perPage: number,
-		page: number,
 	): Promise<GitHubApiEvent[]> {
-		const url = `${baseUrl}?per_page=${perPage}&page=${page}`
+		const url = `${baseUrl}?per_page=${perPage}`
 		const response = await fetch(url, { headers })
 
 		if (!response.ok) {
@@ -147,3 +136,5 @@ export default class GitHubEventProvider implements EventProvider {
 		return actions
 	}
 }
+
+export { DEFAULT_CRON_LIMIT, DEFAULT_INIT_LIMIT }
