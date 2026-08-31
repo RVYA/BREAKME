@@ -4,6 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
+    "types": ["node"],
     "noImplicitAny": true,
     "erasableSyntaxOnly": true,
     "forceConsistentCasingInFileNames": true,
@@ -21,6 +22,9 @@
       ],
       "#models/*": [
         "./src/models/*"
+      ],
+      "#providers/*": [
+        "./src/providers/*"
       ],
       "#repos/*": [
         "./src/repos/*"

@@ -4,20 +4,24 @@
   "type": "module",
   "imports": {
     "#assets/*": "./src/assets/*",
-    "#const/*": "./src/constants/*",
-    "#models/*": "./src/models/*",
-    "#repos/*": "./src/repos/*",
+    "#const/*": "./src/constants/*.ts",
+    "#models/*": "./src/models/*.ts",
+    "#providers/*": "./src/providers/*.ts",
+    "#repos/*": "./src/repos/*.ts",
     "#styles/*": "./src/styles/*",
-    "#utils/*": "./src/utils/*"
+    "#utils/*": "./src/utils/*.ts"
   },
   "scripts": {
-    "start": "node --experimental-strip-types src/engine.ts",
+    "start": "node --env-file-if-exists=.env --experimental-strip-types src/engine.ts",
+    "test": "node --experimental-strip-types --test src/**/*.test.ts",
+    "test:fetch": "node --env-file-if-exists=.env --experimental-strip-types scripts/test-fetch.ts",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "lint": "eslint ."
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@types/node": "^26.4.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^9.0.0",
