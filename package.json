@@ -8,6 +8,7 @@
     "#modules/*": "./src/modules/*.ts",
     "#rendering/*": "./src/rendering/*",
     "#state/*": "./src/state/*.ts",
+    "#systems/*": "./src/systems/*.ts",
     "#types/*": "./src/types/*.ts",
     "#utils/*": "./src/utils/*.ts"
   },

@@ -29,6 +29,9 @@
       "#state/*": [
         "./src/state/*"
       ],
+      "#systems/*": [
+        "./src/systems/*"
+      ],
       "#types/*": [
         "./src/types/*"
       ],
