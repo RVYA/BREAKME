@@ -1,4 +1,4 @@
-import type { Achievement } from "#types/unlockables"
+import type { Achievement } from "#types/unlockable"
 
 export const ACHIEVEMENTS = [
 	{
