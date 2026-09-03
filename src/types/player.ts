@@ -1,4 +1,5 @@
-import type { Achievement, Collectible } from "#types/unlockable"
+import type Achievement from "#types/unlockables/achievement"
+import type Collectible from "#types/unlockables/collectible"
 
 type PlayerIdentity = {
 	baseSeed: string
