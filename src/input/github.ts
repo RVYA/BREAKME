@@ -1,5 +1,5 @@
-import type { ActionItem, ActionType } from "#types/actions"
 import type { EventProvider, FetchEventsOptions } from "#input/provider"
+import type { ActionItem, ActionType } from "#types/action"
 
 const DEFAULT_INIT_LIMIT = 32
 const DEFAULT_CRON_LIMIT = 8
@@ -31,7 +31,7 @@ export default class GitHubEventProvider implements EventProvider {
 		const baseUrl = `https://api.github.com/users/${options.username}/events`
 
 		const headers: Record<string, string> = {
-			"Accept": "application/vnd.github+json",
+			Accept: "application/vnd.github+json",
 			"User-Agent": "BREAKME",
 		}
 

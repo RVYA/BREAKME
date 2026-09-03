@@ -1,4 +1,4 @@
-import type { ActionItem } from "#types/actions"
+import type { ActionItem } from "#types/action"
 
 type FetchEventsMode = "init" | "cron"
 
