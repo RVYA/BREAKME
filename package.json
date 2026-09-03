@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "type": "module",
   "imports": {
-    "#assets/*": "./src/assets/*",
-    "#const/*": "./src/constants/*.ts",
-    "#engine/*": "./src/engine/*.ts",
-    "#models/*": "./src/models/*.ts",
-    "#providers/*": "./src/providers/*.ts",
-    "#repos/*": "./src/repos/*.ts",
-    "#styles/*": "./src/styles/*",
+    "#data/*": "./src/data/*.ts",
+    "#input/*": "./src/input/*.ts",
+    "#modules/*": "./src/modules/*.ts",
+    "#rendering/*": "./src/rendering/*",
+    "#state/*": "./src/state/*.ts",
+    "#types/*": "./src/types/*.ts",
     "#utils/*": "./src/utils/*.ts"
   },
   "scripts": {

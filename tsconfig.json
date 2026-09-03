@@ -12,28 +12,25 @@
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
     "paths": {
-      "#assets/*": [
-        "./src/assets/*"
+      "#data/*": [
+        "./src/data/*"
       ],
-      "#const/*": [
-        "./src/constants/*"
+      "#input/*": [
+        "./src/input/*"
       ],
-      "#engine/*": [
-        "./src/engine/*"
+      "#modules/*": [
+        "./src/modules/*"
       ],
-      "#models/*": [
-        "./src/models/*"
+      "#rendering/*": [
+        "./src/rendering/*"
       ],
-      "#providers/*": [
-        "./src/providers/*"
+      "#state/*": [
+        "./src/state/*"
       ],
-      "#repos/*": [
-        "./src/repos/*"
-      ],
-      "#styles/*": [
-        "./src/styles/*"
+      "#types/*": [
+        "./src/types/*"
       ],
       "#utils/*": [
         "./src/utils/*"
