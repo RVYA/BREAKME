@@ -1,4 +1,4 @@
-import type { ActionSource } from "#types/actions"
+import type { ActionSource } from "#types/action"
 
 const ACTION_EVENTS = {
 	Git: ["commit", "mergeCommit", "branchCreate", "tagCreate"],
