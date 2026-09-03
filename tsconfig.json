@@ -17,6 +17,9 @@
       "#data/*": [
         "./src/data/*"
       ],
+      "#engine": [
+        "./src/engine.ts"
+      ],
       "#input/*": [
         "./src/input/*"
       ],

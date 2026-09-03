@@ -4,6 +4,7 @@
   "type": "module",
   "imports": {
     "#data/*": "./src/data/*.ts",
+    "#engine": "./src/engine.ts",
     "#input/*": "./src/input/*.ts",
     "#modules/*": "./src/modules/*.ts",
     "#rendering/*": "./src/rendering/*",
