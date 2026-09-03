@@ -1,4 +1,5 @@
 import { signGameState } from "#state/integrity"
+import ChunkGenerator from "#systems/generation/chunk-generator"
 
 import type GameState from "#types/game-state"
 import murmur3_32 from "#utils/murmur3-32"
@@ -15,6 +16,9 @@ export function createInitialGameState(options: CreateInitialStateOptions): Game
 
 	const id = options.uuid ?? options.username
 	const baseSeed = murmur3_32(`${id}_${createdAt}`).toString(16)
+	const numericSeed = murmur3_32(baseSeed)
+	const chunkGenerator = new ChunkGenerator(numericSeed)
+	const initialChunk = chunkGenerator.generate(0, createdAt)
 
 	const state: GameState = {
 		hash: "",
@@ -41,12 +45,7 @@ export function createInitialGameState(options: CreateInitialStateOptions): Game
 				achievements: [],
 			},
 		},
-		currentChunk: {
-			index: 0,
-			tiles: [],
-			createdAt,
-			isCleared: false,
-		},
+		currentChunk: initialChunk,
 		pendingActions: [],
 	}
 
