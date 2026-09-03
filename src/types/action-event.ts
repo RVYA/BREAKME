@@ -38,6 +38,9 @@ class ActionEvent {
 	get timestamp() {
 		return this.#timestamp
 	}
+	get type() {
+		return this.#type
+	}
 
 	isGitEvent = () => isGitEvent(this.#type)
 	isGitHubEvent = () => isGitHubEvent(this.#type)
@@ -46,4 +49,5 @@ class ActionEvent {
 	}
 }
 
-export type { ActionEvent, ActionSource, ActionType, GitEvent, GitHubEvent }
+export { ActionEvent, ActionEvent as default }
+export type { ActionSource, ActionType, GitEvent, GitHubEvent }
