@@ -58,4 +58,29 @@ export default class Tile {
 	get isBroken(): boolean {
 		return this.#currentHp <= 0
 	}
+
+	toJSON() {
+		return {
+			index: this.index,
+			shape: this.#shape.name,
+			variant: this.#variant?.name,
+			effect: this.#effect?.name,
+			currentHp: this.#currentHp,
+			maxHp: this.#maxHp,
+		}
+	}
+
+	static fromJSON(data: {
+		index: number
+		shape: TileShapeName
+		variant?: TileVariantName
+		effect?: TileEffectName
+		currentHp?: number
+	}): Tile {
+		const tile = new Tile(data.index, data.shape, data.variant, data.effect)
+		if (data.currentHp !== undefined) {
+			tile.#currentHp = data.currentHp
+		}
+		return tile
+	}
 }
