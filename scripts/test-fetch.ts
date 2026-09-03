@@ -1,7 +1,7 @@
 import process from "node:process"
 
-import GitHubEventProvider from "#providers/github"
-import type { FetchEventsMode } from "#providers/provider"
+import GitHubEventProvider from "#input/github"
+import type { FetchEventsMode } from "#input/provider"
 
 const args = process.argv.slice(2)
 const mode: FetchEventsMode = args.includes("--init") ? "init" : "cron"
