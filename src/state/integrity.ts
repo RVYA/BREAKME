@@ -1,6 +1,6 @@
 import { createHmac } from "node:crypto"
 
-import type { GameState } from "#types/state"
+import type GameState from "#types/game-state"
 
 export function computeStateHash(cleanState: Omit<GameState, "hash">, secretKey: string): string {
 	const canonicalJson = JSON.stringify(cleanState)

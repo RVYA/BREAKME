@@ -1,4 +1,4 @@
-import type { GameState } from "#types/state"
+import type GameState from "#types/game-state"
 import type { CreateInitialStateOptions } from "#state/initializer"
 import { createInitialGameState } from "#state/initializer"
 import { verifyGameState } from "#state/integrity"

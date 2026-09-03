@@ -1,4 +1,4 @@
-import type { GameState } from "#types/state"
+import type GameState from "#types/game-state"
 import { access, readFile, writeFile } from "node:fs/promises"
 
 const DEFAULT_STATE_FILE = "state.json"

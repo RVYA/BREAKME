@@ -1,6 +1,6 @@
 import { signGameState } from "#state/integrity"
 
-import type { GameState } from "#types/state"
+import type GameState from "#types/game-state"
 import murmur3_32 from "#utils/murmur3-32"
 
 type CreateInitialStateOptions = {
