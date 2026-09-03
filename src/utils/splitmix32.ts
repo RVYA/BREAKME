@@ -1,4 +1,4 @@
-import murmur3_32 from "./murmur3-32"
+import murmur3_32 from "#utils/murmur3-32"
 
 export default function splitmix32(seed: number, index = 0): number {
 	let z = (seed + Math.imul(index + 1, 0x9e3779b9)) | 0
