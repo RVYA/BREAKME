@@ -1,5 +1,5 @@
-import { ACTION_EVENTS } from "#const/action-items"
-import type { ActionSource, ActionType, GitEvent, GitHubEvent } from "#models/action-item"
+import { ACTION_EVENTS } from "#data/actions"
+import type { ActionSource, ActionType, GitEvent, GitHubEvent } from "#types/action"
 
 function isGitEvent(type: ActionType): type is GitEvent {
 	return (ACTION_EVENTS["Git"] as readonly string[]).includes(type)
