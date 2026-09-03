@@ -1,6 +1,6 @@
 import { TILE_VARIANTS_BY_NAME, TILE_VARIANTS_BY_RARITY } from "#data/tiles/variants"
 import type { TileVariantName } from "#types/tile/variant"
-import EntityGenerator from "./entity-generator"
+import EntityGenerator from "#systems/generation/entity-generator"
 
 const DEFAULT_VARIANT_GENERATION_CHANCE = 0.35
 
