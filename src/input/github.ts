@@ -1,5 +1,5 @@
 import type { EventProvider, FetchEventsOptions } from "#input/provider"
-import type { ActionItem, ActionType } from "#types/action"
+import ActionEvent, { type ActionType } from "#types/action-event"
 
 const DEFAULT_INIT_LIMIT = 32
 const DEFAULT_CRON_LIMIT = 8
@@ -25,7 +25,7 @@ type GitHubApiEvent = {
 export default class GitHubEventProvider implements EventProvider {
 	readonly name = "github"
 
-	async fetchEvents(options: FetchEventsOptions): Promise<ActionItem[]> {
+	async fetchEvents(options: FetchEventsOptions): Promise<ActionEvent[]> {
 		const mode = options.mode ?? "cron"
 		const targetLimit = options.limit ?? (mode === "init" ? DEFAULT_INIT_LIMIT : DEFAULT_CRON_LIMIT)
 		const baseUrl = `https://api.github.com/users/${options.username}/events`
@@ -40,7 +40,7 @@ export default class GitHubEventProvider implements EventProvider {
 		}
 
 		const rawEvents = await this.#fetchPage(baseUrl, headers, targetLimit)
-		const actions: ActionItem[] = []
+		const actions: ActionEvent[] = []
 
 		for (const event of rawEvents) {
 			const eventTimestamp = event.created_at
@@ -68,61 +68,53 @@ export default class GitHubEventProvider implements EventProvider {
 		return (await response.json()) as GitHubApiEvent[]
 	}
 
-	#parseEvent(event: GitHubApiEvent): ActionItem[] {
-		const actions: ActionItem[] = []
+	#parseEvent(event: GitHubApiEvent): ActionEvent[] {
+		const actions: ActionEvent[] = []
 		const timestamp = event.created_at
 
 		switch (event.type) {
 			case "PushEvent": {
 				const commits = event.payload?.commits ?? []
 				if (commits.length === 0) {
-					actions.push({
-						id: event.id,
-						type: "commit",
-						timestamp,
-					})
+					actions.push(new ActionEvent(event.id, "commit", timestamp))
 				} else {
 					for (const commit of commits) {
 						const isMerge = commit.message?.toLowerCase().startsWith("merge ") ?? false
 						const type: ActionType = isMerge ? "mergeCommit" : "commit"
-						actions.push({
-							id: commit.sha,
-							type,
-							timestamp,
-						})
+						actions.push(new ActionEvent(commit.sha, type, timestamp))
 					}
 				}
 				break
 			}
 			case "CreateEvent": {
 				if (event.payload?.ref_type === "branch") {
-					actions.push({ id: event.id, type: "branchCreate", timestamp })
+					actions.push(new ActionEvent(event.id, "branchCreate", timestamp))
 				} else if (event.payload?.ref_type === "tag") {
-					actions.push({ id: event.id, type: "tagCreate", timestamp })
+					actions.push(new ActionEvent(event.id, "tagCreate", timestamp))
 				}
 				break
 			}
 			case "PullRequestEvent": {
 				if (event.payload?.action === "opened" || event.payload?.action === "closed") {
-					actions.push({ id: event.id, type: "pullRequest", timestamp })
+					actions.push(new ActionEvent(event.id, "pullRequest", timestamp))
 				}
 				break
 			}
 			case "IssuesEvent": {
 				if (event.payload?.action === "opened") {
-					actions.push({ id: event.id, type: "issue", timestamp })
+					actions.push(new ActionEvent(event.id, "issue", timestamp))
 				}
 				break
 			}
 			case "ReleaseEvent": {
 				if (event.payload?.action === "published") {
-					actions.push({ id: event.id, type: "release", timestamp })
+					actions.push(new ActionEvent(event.id, "release", timestamp))
 				}
 				break
 			}
 			case "DeploymentEvent":
 			case "DeploymentStatusEvent": {
-				actions.push({ id: event.id, type: "deployment", timestamp })
+				actions.push(new ActionEvent(event.id, "deployment", timestamp))
 				break
 			}
 		}
