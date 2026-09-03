@@ -1,6 +1,6 @@
 import { TILE_EFFECTS_BY_NAME, TILE_EFFECTS_BY_RARITY } from "#data/tiles/effects"
 import type { TileEffectName } from "#types/tile/effect"
-import EntityGenerator from "./entity-generator"
+import EntityGenerator from "#systems/generation/entity-generator"
 
 const DEFAULT_EFFECT_GENERATION_CHANCE = 0.15
 

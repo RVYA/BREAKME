@@ -1,6 +1,6 @@
 import { RARITY_DISTRIBUTION } from "#data/rarities"
-import RarityLabel from "#types/rarity"
-import { TileShapeName } from "#types/tile/shape"
+import type RarityLabel from "#types/rarity"
+import type { TileShapeName } from "#types/tile/shape"
 import { createSplitmix32Stream } from "#utils/splitmix32"
 
 type PrngStream = {

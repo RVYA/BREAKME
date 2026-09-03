@@ -1,6 +1,6 @@
 import { TILE_SHAPES_BY_RARITY } from "#data/tiles/shapes"
 import type { TileShapeName } from "#types/tile/shape"
-import EntityGenerator from "./entity-generator"
+import EntityGenerator from "#systems/generation/entity-generator"
 
 export default class ShapeGenerator extends EntityGenerator<TileShapeName> {
 	constructor(seed: number, key: string) {
