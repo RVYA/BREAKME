@@ -1,4 +1,4 @@
-import type Collectible from "#types/unlockables/collectible"
+import type Collectible from "#types/collectible"
 
 export const COLLECTIBLES = [
 	{
