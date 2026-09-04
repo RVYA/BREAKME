@@ -1,0 +1,9 @@
+<radialGradient id="gradient-dirt" cx="50%" cy="50%" r="50%">
+	<stop offset="30%" stop-color="#5e3023" />
+	<stop offset="90%" stop-color="#895737" />
+</radialGradient>
+<linearGradient id="gradient-gold" x1="5%" y1="5%" x2="95%" y2="95%">
+	<stop offset="5%" stop-color="#020024" />
+	<stop offset="50%" stop-color="#ffdd00" />
+	<stop offset="95%" stop-color="#020024" />
+</linearGradient>
