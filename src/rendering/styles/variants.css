@@ -1,11 +1,11 @@
 .variant-dirt {
-	background: #5e3023;
-	background: radial-gradient(circle, rgba(94, 48, 35, 1) 30%, rgba(137, 87, 55, 1) 90%);
+	/*fill: #5e3023;*/
+	fill: url("#gradient-dirt");
 }
 
 .variant-gold {
-	background: #020024;
-	background: linear-gradient(135deg, rgba(2, 0, 36, 1) 5%, rgba(255, 221, 0, 1) 50%, rgba(2, 0, 36, 1) 95%);
+	/*fill: #020024;*/
+	fill: url("#gradient-gold");
 }
 
 .variant-broken {
@@ -23,4 +23,5 @@
 		100% 100%,
 		100% 0%
 	);
+	fill: #656565;
 }
