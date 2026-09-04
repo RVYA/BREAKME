@@ -73,6 +73,21 @@
 	stroke-width: 1;
 }
 
+@keyframes player-sway {
+	0%, 100% {
+		transform: rotate(-15deg);
+	}
+	50% {
+		transform: rotate(15deg);
+	}
+}
+
+.player {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: player-sway 8s ease-in-out infinite;
+}
+
 
 .bg {
 	fill: #ffffff;
@@ -88,31 +103,31 @@
 </style>
 <rect width="205" height="205" rx="8" ry="8" class="bg" />
 	<g class="grid-cell" transform="translate(5, 5)">
-		<use href="#char-base" class="fg" />
+		<use href="#char-base" class="player fg" />
 	</g>
 	<g class="grid-cell" transform="translate(30, 5)">
-		<use href="#tile-base" class="variant-broken" />
+		<use href="#tile-base" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(55, 5)">
-		<use href="#tile-base" class="variant-dirt" />
+		<use href="#tile-base" class="variant-gold" />
 	</g>
 	<g class="grid-cell" transform="translate(80, 5)">
 		<use href="#tile-base" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(105, 5)">
-		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="variant-gold" />
 	</g>
 	<g class="grid-cell" transform="translate(130, 5)">
-		<use href="#tile-base" class="variant-dirt" />
+		<use href="#tile-base" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(155, 5)">
 		<use href="#tile-base" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(180, 5)">
-		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="variant-dirt" />
 	</g>
 	<g class="grid-cell" transform="translate(5, 30)">
-		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="variant-dirt" />
 	</g>
 	<g class="grid-cell" transform="translate(30, 30)">
 		<use href="#tile-hidden" class="accent" />
