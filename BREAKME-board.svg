@@ -1,0 +1,282 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205 205" width="100%" height="100%">
+<defs>
+	<g id="char-base">
+		<path d="M10 0a2.83 2.83 0 0 0-2.83 2.83A2.83 2.83 0 0 0 10 5.67a2.83 2.83 0 0 0 2.83-2.84A2.83 2.83 0 0 0 10 0m0 5.67H0V9h6.67v2.98L1 17.64 3.36 20 10 13.36 16.64 20 19 17.64l-5.67-5.66V9H20V5.67h-6.67z"/>
+	</g>
+	<g id="tile-base">
+		<path d="M2 0a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Z"/>
+	</g>
+	<g id="tile-hidden">
+		<circle cx="10" cy="10" r="4"/>
+	</g>
+	<radialGradient id="gradient-dirt" cx="50%" cy="50%" r="50%">
+	<stop offset="30%" stop-color="#5e3023" />
+	<stop offset="90%" stop-color="#895737" />
+</radialGradient>
+<linearGradient id="gradient-gold" x1="5%" y1="5%" x2="95%" y2="95%">
+	<stop offset="5%" stop-color="#020024" />
+	<stop offset="50%" stop-color="#ffdd00" />
+	<stop offset="95%" stop-color="#020024" />
+</linearGradient>
+</defs>
+<style>
+.variant-dirt {
+	/*fill: #5e3023;*/
+	fill: url("#gradient-dirt");
+}
+
+.variant-gold {
+	/*fill: #020024;*/
+	fill: url("#gradient-gold");
+}
+
+.variant-broken {
+	clip-path: polygon(
+		0% 0%,
+		0% 100%,
+		53% 100%,
+		38% 83%,
+		49% 33%,
+		38% 0%,
+		47% 0%,
+		60% 23%,
+		49% 74%,
+		59% 100%,
+		100% 100%,
+		100% 0%
+	);
+	fill: #656565;
+}
+
+.effect-negative {
+	stroke: #000000;
+	stroke-width: 1;
+}
+
+.effect-shiny {
+	stroke: #ffd700;
+	stroke-width: 1;
+}
+
+.effect-hot {
+	stroke: #dc143c;
+	stroke-width: 1;
+}
+
+.effect-cold {
+	stroke: #f0ffff;
+	stroke-width: 1;
+}
+
+.effect-wet {
+	stroke: #00008b;
+	stroke-width: 1;
+}
+
+
+.bg {
+	fill: #ffffff;
+}
+
+.fg {
+	fill: #000000;
+}
+
+.accent {
+	fill: #e2e2e2;
+}
+</style>
+<rect width="205" height="205" rx="8" ry="8" class="bg" />
+	<g class="grid-cell" transform="translate(5, 5)">
+		<use href="#char-base" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 5)">
+		<use href="#tile-base" class="variant-broken" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 5)">
+		<use href="#tile-base" class="variant-dirt" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 5)">
+		<use href="#tile-base" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 5)">
+		<use href="#tile-base" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 5)">
+		<use href="#tile-base" class="variant-dirt" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 5)">
+		<use href="#tile-base" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 5)">
+		<use href="#tile-base" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 30)">
+		<use href="#tile-base" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 30)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 55)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 80)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 105)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 130)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 155)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(5, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(30, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(55, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(80, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(105, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(130, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(155, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(180, 180)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+</svg>
