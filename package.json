@@ -7,7 +7,7 @@
     "#engine": "./src/engine.ts",
     "#input/*": "./src/input/*.ts",
     "#modules/*": "./src/modules/*.ts",
-    "#rendering/*": "./src/rendering/*",
+    "#rendering/*": "./src/rendering/*.ts",
     "#state/*": "./src/state/*.ts",
     "#systems/*": "./src/systems/*.ts",
     "#types/*": "./src/types/*.ts",
@@ -17,6 +17,7 @@
     "start": "node --env-file-if-exists=.env --experimental-strip-types src/engine.ts",
     "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
     "test:fetch": "node --env-file-if-exists=.env --experimental-strip-types scripts/test-fetch.ts",
+    "render": "node --experimental-strip-types scripts/render-preview.ts",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "lint": "eslint ."
