@@ -1,0 +1,14 @@
+@import "./variants.css";
+@import "./effects.css";
+
+.bg {
+	fill: #ffffff;
+}
+
+.fg {
+	fill: #000000;
+}
+
+.accent {
+	fill: #e2e2e2;
+}
