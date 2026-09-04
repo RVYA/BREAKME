@@ -1,0 +1,14 @@
+@keyframes player-sway {
+	0%, 100% {
+		transform: rotate(-15deg);
+	}
+	50% {
+		transform: rotate(15deg);
+	}
+}
+
+.player {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: player-sway 8s ease-in-out infinite;
+}
