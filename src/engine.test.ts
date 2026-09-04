@@ -1,10 +1,11 @@
 import assert from "node:assert/strict"
 import { promises as fs } from "node:fs"
 import { afterEach, beforeEach, describe, it } from "node:test"
+
+import Engine from "#engine"
 import type { FetchEventsOptions } from "#input/provider"
 import { saveState } from "#state/store"
 import ActionEvent from "#types/action-event"
-import Engine from "#engine"
 
 const TEST_DIR = "test-scratch-engine"
 const TEST_STATE_FILE = `${TEST_DIR}/state.json`
