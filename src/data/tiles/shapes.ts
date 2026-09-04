@@ -3,11 +3,11 @@ import type TileShape from "#types/tile/shape"
 import type { TileShapeName } from "#types/tile/shape"
 
 export const TILE_SHAPES = [
-	{
+	/*{
 		name: "Hidden",
 		baseHp: 999_999_999,
 		rarity: "common",
-	},
+	},*/
 	{
 		name: "Base",
 		baseHp: 4,
