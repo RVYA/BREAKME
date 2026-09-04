@@ -40,9 +40,11 @@ describe("Board Renderer (System)", () => {
 		assert.equal(pos0.y, 5)
 		assert.ok(
 			svg.includes(
-				`<g class="grid-cell" transform="translate(${pos0.x}, ${pos0.y})">\n\t\t<use href="#char-base" class="fg" />\n\t</g>`,
+				`<g class="grid-cell" transform="translate(${pos0.x}, ${pos0.y})">\n\t\t<use href="#char-base" class="player fg" />\n\t</g>`,
 			),
 		)
+		assert.ok(svg.includes("@keyframes player-sway"))
+		assert.ok(svg.includes(".player"))
 	})
 
 	it("renders at most 8 visible tiles and hides the remaining tiles behind fog of war", async () => {
