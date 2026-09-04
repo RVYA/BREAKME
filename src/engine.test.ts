@@ -124,4 +124,48 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 			await engine.fetchEvents()
 		}, /Engine must be initialized before fetching events/)
 	})
+
+	it("throws an error if processTurn is called before init", () => {
+		const engine = new Engine({
+			username: "octocat",
+			statePath: TEST_STATE_FILE,
+		})
+
+		assert.throws(() => {
+			engine.processTurn()
+		}, /Engine must be initialized before processing a turn/)
+	})
+
+	it("processes turns and saves state accurately", async () => {
+		const mockProvider = {
+			name: "mock-provider",
+			async fetchEvents() {
+				return [
+					new ActionEvent("evt-1", "commit", "2026-09-01T12:00:00.000Z"),
+					new ActionEvent("evt-2", "commit", "2026-09-01T13:00:00.000Z"),
+				]
+			},
+		}
+
+		const engine = new Engine({
+			username: "octocat",
+			statePath: TEST_STATE_FILE,
+			provider: mockProvider,
+		})
+
+		await engine.init()
+		await engine.fetchEvents()
+
+		const result = engine.processTurn()
+
+		assert.equal(result.actionsProcessed, 2)
+		assert.equal(result.damageDealt, 2.0)
+		assert.equal(engine.state?.pendingActions.length, 0)
+		assert.equal(engine.state?.player.activity.currentStreak, 1)
+
+		await engine.save()
+		const savedContent = await fs.readFile(TEST_STATE_FILE, "utf-8")
+		assert.ok(savedContent.includes('"username": "octocat"'))
+	})
 })
+

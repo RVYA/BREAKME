@@ -1,6 +1,9 @@
 import GitHubEventProvider from "#input/github"
 import type EventProvider from "#input/provider"
 import { loadOrInitializeState } from "#state/manager"
+import { saveState } from "#state/store"
+import DamageSystem from "#systems/damage/damage-system"
+import type { DamageTurnResult } from "#systems/damage/damage-system"
 import type ActionEvent from "#types/action-event"
 import type GameState from "#types/game-state"
 
@@ -10,6 +13,7 @@ type EngineOptions = {
 	statePath?: string
 	token?: string
 	provider?: EventProvider
+	damageSystem?: DamageSystem
 }
 
 export default class Engine {
@@ -17,10 +21,12 @@ export default class Engine {
 	#state?: GameState
 	#isInitialRun = false
 	#provider: EventProvider
+	#damageSystem: DamageSystem
 
 	constructor(options: EngineOptions) {
 		this.#options = options
 		this.#provider = options.provider ?? new GitHubEventProvider()
+		this.#damageSystem = options.damageSystem ?? new DamageSystem()
 	}
 
 	get state(): GameState | undefined {
@@ -62,6 +68,23 @@ export default class Engine {
 		this.#state.pendingActions.push(...events)
 		return events
 	}
+
+	processTurn(secretKey?: string): DamageTurnResult {
+		if (!this.#state) {
+			throw new Error("Engine must be initialized before processing a turn. Call init() first.")
+		}
+
+		return this.#damageSystem.processTurn(this.#state, secretKey)
+	}
+
+	async save(): Promise<void> {
+		if (!this.#state) {
+			throw new Error("Engine must be initialized before saving state. Call init() first.")
+		}
+
+		await saveState(this.#state, this.#options.statePath)
+	}
 }
 
 export type { EngineOptions }
+
