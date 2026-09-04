@@ -1,5 +1,6 @@
 @import "./variants.css";
 @import "./effects.css";
+@import "./player.css";
 
 .bg {
 	fill: #ffffff;
