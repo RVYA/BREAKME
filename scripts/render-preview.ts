@@ -1,3 +1,5 @@
+import { promises as fs } from "node:fs"
+import { renderSvg } from "#systems/rendering/board-renderer"
 import ChunkGenerator from "#systems/generation/chunk-generator"
 
 const generator = new ChunkGenerator(Date.now())
@@ -13,7 +15,7 @@ chunk.tiles.forEach((tile, index) => {
 	const visibility = index < 8 ? "[VISIBLE]" : "[HIDDEN]"
 	console.log(`[Cell ${String(index + 1).padStart(2, "0")}] ${shape}|${variant}|${effect} ${visibility}`)
 })
-/*
-const svg = renderSvg(chunk)
+
+const svg = await renderSvg(chunk)
 await fs.writeFile("BREAKME-board.svg", svg, "utf8")
-console.log("\nSuccessfully generated BREAKME-board.svg")*/
+console.log("\nSuccessfully generated BREAKME-board.svg")
