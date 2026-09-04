@@ -25,7 +25,7 @@ export async function renderSvg(target: Chunk | GameState): Promise<string> {
 
 	const charPos = getCellPosition(0)
 	cellElements.push(
-		`\t<g class="grid-cell" transform="translate(${charPos.x}, ${charPos.y})">\n\t\t<use href="#char-base" class="fg" />\n\t</g>`,
+		`\t<g class="grid-cell" transform="translate(${charPos.x}, ${charPos.y})">\n\t\t<use href="#char-base" class="player fg" />\n\t</g>`,
 	)
 
 	for (let i = 0; i < maxRenderableTiles; i++) {
