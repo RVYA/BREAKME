@@ -30,7 +30,7 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 		assert.equal(engine.isInitialRun, true)
 		assert.equal(state.player.identity.username, "octocat")
 		assert.equal(state.currentChunk.index, 0)
-		assert.equal(state.currentChunk.tiles.length, 16)
+		assert.equal(state.currentChunk.tiles.length, 64)
 		assert.ok(state.hash.length > 0)
 	})
 
