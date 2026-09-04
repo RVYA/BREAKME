@@ -37,7 +37,6 @@ export function createInitialGameState(options: CreateInitialStateOptions): Game
 				currentStreak: 0,
 				highestStreak: 0,
 				lastActiveDate: "",
-				mostCommits: 0,
 				mostDamage: 0,
 			},
 			inventory: {

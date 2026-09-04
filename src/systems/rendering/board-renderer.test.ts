@@ -127,7 +127,6 @@ describe("Board Renderer (System)", () => {
 					currentStreak: 1,
 					highestStreak: 1,
 					lastActiveDate: "2026-09-04",
-					mostCommits: 0,
 					mostDamage: 0,
 				},
 				inventory: { collectibles: [], achievements: [] },
