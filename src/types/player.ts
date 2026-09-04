@@ -1,5 +1,4 @@
-import type Achievement from "#types/unlockables/achievement"
-import type Collectible from "#types/unlockables/collectible"
+import type Collectible from "#types/collectible"
 
 type PlayerIdentity = {
 	baseSeed: string
@@ -22,7 +21,6 @@ type PlayerActivity = {
 
 type PlayerInventory = {
 	collectibles: Collectible[]
-	achievements: Achievement[]
 }
 
 type Player = {
