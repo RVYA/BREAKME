@@ -17,7 +17,6 @@ type PlayerActivity = {
 	currentStreak: number
 	highestStreak: number
 	lastActiveDate: string
-	mostCommits: number
 	mostDamage: number
 }
 
