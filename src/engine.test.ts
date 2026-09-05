@@ -159,7 +159,8 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 		const result = engine.processTurn()
 
 		assert.equal(result.actionsProcessed, 2)
-		assert.equal(result.damageDealt, 2.0)
+		assert.ok(Array.isArray(result.breakEvents))
+		assert.ok(Array.isArray(result.dropEvents))
 		assert.equal(engine.state?.pendingActions.length, 0)
 		assert.equal(engine.state?.player.activity.currentStreak, 1)
 

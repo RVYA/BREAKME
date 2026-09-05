@@ -2,8 +2,8 @@ import GitHubEventProvider from "#input/github"
 import type EventProvider from "#input/provider"
 import { loadOrInitializeState } from "#state/manager"
 import { saveState } from "#state/store"
-import DamageSystem from "#systems/damage/damage-system"
-import type { DamageTurnResult } from "#systems/damage/damage-system"
+import DropSystem, { type CollectibleDropEvent } from "#systems/collectibles/drop-system"
+import DamageSystem, { type TileBreakEvent } from "#systems/damage/damage-system"
 import type ActionEvent from "#types/action-event"
 import type GameState from "#types/game-state"
 
@@ -14,6 +14,13 @@ type EngineOptions = {
 	token?: string
 	provider?: EventProvider
 	damageSystem?: DamageSystem
+	dropSystem?: DropSystem
+}
+
+type EngineTurnResult = {
+	breakEvents: TileBreakEvent[]
+	dropEvents: CollectibleDropEvent[]
+	actionsProcessed: number
 }
 
 export default class Engine {
@@ -22,11 +29,13 @@ export default class Engine {
 	#isInitialRun = false
 	#provider: EventProvider
 	#damageSystem: DamageSystem
+	#dropSystem: DropSystem
 
 	constructor(options: EngineOptions) {
 		this.#options = options
 		this.#provider = options.provider ?? new GitHubEventProvider()
 		this.#damageSystem = options.damageSystem ?? new DamageSystem()
+		this.#dropSystem = options.dropSystem ?? new DropSystem()
 	}
 
 	get state(): GameState | undefined {
@@ -69,12 +78,23 @@ export default class Engine {
 		return events
 	}
 
-	processTurn(secretKey?: string): DamageTurnResult {
+	processTurn(secretKey?: string): EngineTurnResult {
 		if (!this.#state) {
 			throw new Error("Engine must be initialized before processing a turn. Call init() first.")
 		}
 
-		return this.#damageSystem.processTurn(this.#state, secretKey)
+		const actionsProcessed = this.#state.pendingActions.length
+		const rawBreakEvents = this.#damageSystem.process(this.#state, { secretKey })
+		const breakEvents = Array.isArray(rawBreakEvents) ? rawBreakEvents : [rawBreakEvents]
+
+		const rawDropEvents = this.#dropSystem.process(this.#state, breakEvents)
+		const dropEvents = Array.isArray(rawDropEvents) ? rawDropEvents : [rawDropEvents]
+
+		return {
+			breakEvents,
+			dropEvents,
+			actionsProcessed,
+		}
 	}
 
 	async save(): Promise<void> {
@@ -86,5 +106,5 @@ export default class Engine {
 	}
 }
 
-export type { EngineOptions }
+export type { EngineOptions, EngineTurnResult }
 
