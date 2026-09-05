@@ -3,7 +3,6 @@ import { describe, it } from "node:test"
 import { createInitialGameState } from "#state/initializer"
 import DropSystem, { type CollectibleDropEvent } from "#systems/collectibles/drop-system"
 import type { TileBreakEvent } from "#systems/damage/damage-system"
-import ActionEvent from "#types/action-event"
 import Tile from "#types/tile/tile"
 
 function createMockBreakEvent(overrides?: Partial<TileBreakEvent>): TileBreakEvent {
@@ -11,7 +10,7 @@ function createMockBreakEvent(overrides?: Partial<TileBreakEvent>): TileBreakEve
 		tile: new Tile(0, "Base"),
 		chunkIndex: 0,
 		tileIndex: 0,
-		action: new ActionEvent("e1", "commit", "2026-09-01T00:00:00.000Z"),
+		actionType: "commit",
 		...overrides,
 	}
 }
