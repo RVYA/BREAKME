@@ -76,8 +76,9 @@ describe("Main CLI Runner", () => {
 		await run()
 
 		const updatedReadme = await fs.readFile(readmePath, "utf-8")
-		assert.ok(updatedReadme.includes("<h3>⛏️ BREAKME.md</h3>"))
-		assert.ok(updatedReadme.includes("<i>KEEP BREAKING.</i>"))
+		assert.ok(updatedReadme.includes("## BREAKME.md"))
+		assert.ok(updatedReadme.includes("<code>KEEP BREAKING.</code>"))
+		assert.ok(updatedReadme.includes("<code>chunk#0 tile#0 streak🔥0 broken: 000</code>"))
 		assert.ok(updatedReadme.includes('src="./board.svg"'))
 	})
 })
