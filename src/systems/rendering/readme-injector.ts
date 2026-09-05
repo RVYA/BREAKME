@@ -45,7 +45,7 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
   </tr>
 </table>
 
-<p>chunk#${chunkIndex} • tile#${tileIndex} • streak 🔥 ${currentStreak} • broken: ${totalBroken}</p>
+<p>CHUNK#${chunkIndex} • TILE#${tileIndex} • 🔥STREAK#${currentStreak} • BROKEN#${totalBroken}</p>
 
 </div>
 ${END_MARKER}`
