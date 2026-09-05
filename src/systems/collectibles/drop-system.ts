@@ -13,7 +13,6 @@ import murmur3_32 from "#utils/murmur3-32"
 export type CollectibleDropEvent = {
 	collectible: CollectibleName
 	rarity: RarityLabel
-	breakEvent: TileBreakEvent
 }
 
 export default class DropSystem extends GameSystem<CollectibleDropEvent, TileBreakEvent | TileBreakEvent[]> {
@@ -71,7 +70,6 @@ export default class DropSystem extends GameSystem<CollectibleDropEvent, TileBre
 			dropEvents.push({
 				collectible: candidate,
 				rarity,
-				breakEvent,
 			})
 		}
 
