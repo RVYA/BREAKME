@@ -51,6 +51,10 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 
 		assert.equal(engine2.isInitialRun, false)
 		assert.equal(state2.player.identity.baseSeed, state1.player.identity.baseSeed)
+
+		state2.pendingActions.push(new ActionEvent("evt-test", "commit", new Date().toISOString()))
+		const turnResult = engine2.processTurn()
+		assert.equal(turnResult.actionsProcessed, 1)
 	})
 
 	it("fetches and appends events into pendingActions in init mode", async () => {
