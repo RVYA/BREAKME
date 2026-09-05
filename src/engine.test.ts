@@ -30,9 +30,10 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 		assert.equal(engine.isInitialRun, true)
 		assert.equal(state.player.identity.username, "octocat")
 		assert.equal(state.currentChunk.index, 0)
-		assert.equal(state.currentChunk.tiles.length, 64)
+		assert.equal(state.currentChunk.tiles.length, 128)
 		assert.ok(state.hash.length > 0)
 	})
+
 
 	it("loads existing state on subsequent run", async () => {
 		const engine1 = new Engine({
@@ -178,7 +179,7 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 			name: "mock-provider",
 			async fetchEvents() {
 				return Array.from(
-					{ length: 100 },
+					{ length: 200 },
 					(_, i) => new ActionEvent(`evt-${i}`, "release", "2026-09-01T12:00:00.000Z"),
 				)
 			},
@@ -195,11 +196,12 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 
 		const result = engine.processTurn()
 
-		assert.equal(result.actionsProcessed, 100)
+		assert.equal(result.actionsProcessed, 200)
 		assert.equal(engine.state?.player.progress.chunkIndex, 1)
 		assert.equal(engine.state?.currentChunk.index, 1)
 		assert.equal(engine.state?.pendingActions.length, 0)
 		assert.ok(result.breakEvents.length > 0)
 	})
 })
+
 

@@ -54,8 +54,9 @@ describe("Main CLI Runner", () => {
 
 		const svgContent = await fs.readFile(svgPath, "utf-8")
 		assert.ok(svgContent.includes("<svg"))
-		assert.ok(svgContent.includes('viewBox="0 0 205 205"'))
+		assert.ok(svgContent.includes('viewBox="0 0 328 164"'))
 	})
+
 
 	it("injects board and unlockables section into README when markers exist", async () => {
 		const statePath = path.join(tempDir, "state.json")

@@ -8,7 +8,8 @@ import type GameState from "#types/game-state"
 import Tile from "#types/tile/tile"
 
 function createMockGameState(overrides?: Partial<GameState>): GameState {
-	const tiles: Tile[] = Array.from({ length: 64 }, (_, i) => new Tile(i, "Base"))
+	const tiles: Tile[] = Array.from({ length: 128 }, (_, i) => new Tile(i, "Base"))
+
 
 	return {
 		hash: "",
@@ -121,18 +122,18 @@ describe("DamageSystem", () => {
 
 	it("stops and emits ChunkClearedEvent when chunk is cleared, preserving pending actions", () => {
 		const state = createMockGameState()
-		for (let i = 0; i < 64; i++) {
+		for (let i = 0; i < 128; i++) {
 			state.currentChunk.tiles[i] = Tile.fromJSON({ index: i, shape: "Base", currentHp: 1.0 })
 		}
 
-		state.pendingActions = Array.from({ length: 70 }, (_, i) => new ActionEvent(`e${i}`, "commit", "2026-09-01T12:00:00.000Z"))
+		state.pendingActions = Array.from({ length: 134 }, (_, i) => new ActionEvent(`e${i}`, "commit", "2026-09-01T12:00:00.000Z"))
 
 		const system = new DamageSystem()
 		const rawEvents = system.process(state)
 		const list = Array.isArray(rawEvents) ? rawEvents : [rawEvents]
 
-		assert.equal(list.length, 65) // 64 TileBreakEvents + 1 ChunkClearedEvent
-		const clearedEvent = list[64] as ChunkClearedEvent
+		assert.equal(list.length, 129) // 128 TileBreakEvents + 1 ChunkClearedEvent
+		const clearedEvent = list[128] as ChunkClearedEvent
 		assert.equal(clearedEvent.chunkIndex, 0)
 		assert.equal(clearedEvent.overflowDamage, 0)
 		assert.equal(state.currentChunk.isCleared, true)
@@ -140,3 +141,4 @@ describe("DamageSystem", () => {
 		assert.ok(verifyGameState(state))
 	})
 })
+
