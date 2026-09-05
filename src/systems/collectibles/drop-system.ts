@@ -8,7 +8,6 @@ import type RarityLabel from "#types/rarity"
 import type { TileEffectName } from "#types/tile/effect"
 import type { TileShapeName } from "#types/tile/shape"
 import type { TileVariantName } from "#types/tile/variant"
-import murmur3_32 from "#utils/murmur3-32"
 
 export type CollectibleDropEvent = {
 	collectible: CollectibleName
@@ -35,7 +34,7 @@ export default class DropSystem extends GameSystem<CollectibleDropEvent, TileBre
 		const pool = state.collectiblePool
 		if (!pool || Object.keys(pool).length === 0) return []
 
-		const numericSeed = murmur3_32(state.player.identity.baseSeed)
+		const numericSeed = Number.parseInt(state.player.identity.baseSeed, 16) >>> 0
 		const generator = new CollectibleGenerator(numericSeed, "collectible_drop", pool, this.#baseDropChance)
 		const dropEvents: CollectibleDropEvent[] = []
 
@@ -46,7 +45,7 @@ export default class DropSystem extends GameSystem<CollectibleDropEvent, TileBre
 				effect: breakEvent.tile.effect?.name as TileEffectName,
 				tileIndex: breakEvent.tileIndex,
 				chunkIndex: breakEvent.chunkIndex,
-				actionType: breakEvent.action.type,
+				actionType: breakEvent.actionType,
 			})
 
 			if (!candidate) continue
