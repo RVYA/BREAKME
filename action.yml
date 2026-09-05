@@ -1,5 +1,5 @@
-name: "BREAKME"
-description: "Commit-based incremental block-mining game for your GitHub profile"
+name: "BREAKME.md"
+description: "An incremental game with progress based on your `git` usage."
 author: "RVYA"
 branding:
   icon: "grid"
