@@ -2,7 +2,7 @@ import assert from "node:assert/strict"
 import { describe, it } from "node:test"
 
 import { verifyGameState } from "#state/integrity"
-import DamageSystem from "#systems/damage/damage-system"
+import DamageSystem, { type ChunkClearedEvent, type DamageEvent, type TileBreakEvent } from "#systems/damage/damage-system"
 import ActionEvent from "#types/action-event"
 import type GameState from "#types/game-state"
 import Tile from "#types/tile/tile"
@@ -31,7 +31,6 @@ function createMockGameState(overrides?: Partial<GameState>): GameState {
 			},
 			inventory: {
 				collectibles: [],
-				achievements: [],
 			},
 		},
 		currentChunk: {
@@ -40,33 +39,35 @@ function createMockGameState(overrides?: Partial<GameState>): GameState {
 			createdAt: "2026-09-01T00:00:00.000Z",
 			isCleared: false,
 		},
+		collectiblePool: {
+			common: ["Test Collectible #1"],
+		},
 		pendingActions: [],
 		...overrides,
 	}
 }
 
 describe("DamageSystem", () => {
-	it("returns zero stats when pending actions are empty", () => {
+	it("returns empty array when pending actions are empty", () => {
 		const state = createMockGameState()
 		const system = new DamageSystem()
 
-		const result = system.processTurn(state)
+		const breakEvents = system.process(state)
+		const list = Array.isArray(breakEvents) ? breakEvents : [breakEvents]
 
-		assert.equal(result.damageDealt, 0)
-		assert.equal(result.tilesBroken, 0)
-		assert.equal(result.actionsProcessed, 0)
+		assert.equal(list.length, 0)
 	})
 
-	it("applies partial damage to the active target tile", () => {
+	it("applies partial damage to the active target tile without breaking", () => {
 		const state = createMockGameState()
 		const initialHp = state.currentChunk.tiles[0].currentHp
 		state.pendingActions = [new ActionEvent("e1", "commit", "2026-09-01T12:00:00.000Z")]
 
 		const system = new DamageSystem()
-		const result = system.processTurn(state)
+		const breakEvents = system.process(state)
+		const list = Array.isArray(breakEvents) ? breakEvents : [breakEvents]
 
-		assert.equal(result.damageDealt, 1.0)
-		assert.equal(result.tilesBroken, 0)
+		assert.equal(list.length, 0)
 		assert.equal(state.player.progress.tileIndex, 0)
 		assert.equal(state.currentChunk.tiles[0].currentHp, initialHp - 1.0)
 		assert.equal(state.currentChunk.tiles[0].isBroken, false)
@@ -74,16 +75,21 @@ describe("DamageSystem", () => {
 		assert.ok(verifyGameState(state))
 	})
 
-	it("breaks tile when damage equals or exceeds tile HP", () => {
+	it("breaks tile when damage equals or exceeds tile HP and emits TileBreakEvent", () => {
 		const state = createMockGameState()
 		state.currentChunk.tiles[0] = Tile.fromJSON({ index: 0, shape: "Base", currentHp: 1.0 })
 		state.pendingActions = [new ActionEvent("e1", "commit", "2026-09-01T12:00:00.000Z")]
 
-		const system = new DamageSystem()
-		const result = system.processTurn(state)
+		const emitted: DamageEvent[] = []
+		const system = new DamageSystem((event) => emitted.push(event))
+		const breakEvents = system.process(state)
+		const list = Array.isArray(breakEvents) ? breakEvents : [breakEvents]
 
-		assert.equal(result.damageDealt, 1.0)
-		assert.equal(result.tilesBroken, 1)
+		assert.equal(list.length, 1)
+		assert.equal(emitted.length, 1)
+		const first = list[0] as TileBreakEvent
+		assert.equal(first.tile.index, 0)
+		assert.equal(first.actionType, "commit")
 		assert.equal(state.player.progress.tileIndex, 1)
 		assert.equal(state.player.progress.totalTilesBroken, 1)
 		assert.equal(state.currentChunk.tiles[0].currentHp, 0)
@@ -101,10 +107,10 @@ describe("DamageSystem", () => {
 		state.pendingActions = [new ActionEvent("e1", "release", "2026-09-01T12:00:00.000Z")]
 
 		const system = new DamageSystem()
-		const result = system.processTurn(state)
+		const breakEvents = system.process(state)
+		const list = Array.isArray(breakEvents) ? breakEvents : [breakEvents]
 
-		assert.equal(result.damageDealt, 5.0)
-		assert.equal(result.tilesBroken, 2)
+		assert.equal(list.length, 2)
 		assert.equal(state.player.progress.tileIndex, 2)
 		assert.equal(state.currentChunk.tiles[0].isBroken, true)
 		assert.equal(state.currentChunk.tiles[1].isBroken, true)
@@ -113,28 +119,24 @@ describe("DamageSystem", () => {
 		assert.ok(verifyGameState(state))
 	})
 
-	it("transitions to next chunk when all 64 tiles are cleared and cascades remaining damage", () => {
+	it("stops and emits ChunkClearedEvent when chunk is cleared, preserving pending actions", () => {
 		const state = createMockGameState()
 		for (let i = 0; i < 64; i++) {
 			state.currentChunk.tiles[i] = Tile.fromJSON({ index: i, shape: "Base", currentHp: 1.0 })
 		}
 
-		// 70 damage -> breaks 64 tiles in chunk 0, advances to chunk 1, deals 6 damage to tile 0 of chunk 1
 		state.pendingActions = Array.from({ length: 70 }, (_, i) => new ActionEvent(`e${i}`, "commit", "2026-09-01T12:00:00.000Z"))
 
 		const system = new DamageSystem()
-		const result = system.processTurn(state)
+		const rawEvents = system.process(state)
+		const list = Array.isArray(rawEvents) ? rawEvents : [rawEvents]
 
-		assert.equal(result.damageDealt, 70.0)
-		assert.equal(result.tilesBroken, 65)
-		assert.equal(result.chunksCompleted, 1)
-		assert.equal(state.player.progress.chunkIndex, 1)
-		assert.equal(state.player.progress.tileIndex, 1)
-		assert.equal(state.player.progress.totalTilesBroken, 65)
-		assert.equal(state.currentChunk.index, 1)
-		assert.equal(state.currentChunk.tiles.length, 64)
-		assert.equal(state.currentChunk.tiles[0].isBroken, true)
-		assert.equal(state.currentChunk.tiles[1].isBroken, false)
+		assert.equal(list.length, 65) // 64 TileBreakEvents + 1 ChunkClearedEvent
+		const clearedEvent = list[64] as ChunkClearedEvent
+		assert.equal(clearedEvent.chunkIndex, 0)
+		assert.equal(clearedEvent.overflowDamage, 0)
+		assert.equal(state.currentChunk.isCleared, true)
+		assert.equal(state.pendingActions.length, 6)
 		assert.ok(verifyGameState(state))
 	})
 })
