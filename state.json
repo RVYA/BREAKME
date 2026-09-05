@@ -1,5 +1,5 @@
 {
-  "hash": "26e158a68c30f8eb9e91172c9999f6ee26eaff17132a9164c0e2a900659f52b9",
+  "hash": "2472f5c1b3283d168c4ce8e4b4ea17f1eec61b1c68662a1b47693066cb6683b3",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 0,
-      "tileIndex": 6,
-      "totalTilesBroken": 6
+      "tileIndex": 9,
+      "totalTilesBroken": 9
     },
     "activity": {
       "currentStreak": 3,
@@ -20,7 +20,8 @@
     "inventory": {
       "collectibles": [
         "Test Collectible #2",
-        "Test Collectible #1"
+        "Test Collectible #1",
+        "Test Collectible #3"
       ]
     }
   },
@@ -68,26 +69,26 @@
       {
         "index": 6,
         "shape": "Base",
-        "currentHp": 1.2000000000000004,
+        "currentHp": 0,
         "maxHp": 4
       },
       {
         "index": 7,
         "shape": "Base",
         "effect": "Negative",
-        "currentHp": 4,
+        "currentHp": 0,
         "maxHp": 4
       },
       {
         "index": 8,
         "shape": "Base",
-        "currentHp": 4,
+        "currentHp": 0,
         "maxHp": 4
       },
       {
         "index": 9,
         "shape": "Base",
-        "currentHp": 4,
+        "currentHp": 2.4000000000000004,
         "maxHp": 4
       },
       {
@@ -440,10 +441,6 @@
     "createdAt": "2026-09-05T17:21:58.038Z",
     "isCleared": false
   },
-  "collectiblePool": {
-    "uncommon": [
-      "Test Collectible #3"
-    ]
-  },
+  "collectiblePool": {},
   "pendingActions": []
 }
