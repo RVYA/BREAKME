@@ -12,7 +12,7 @@ import {
 describe("README Injector", () => {
 	it("renders placeholder KEEP BREAKING when no unlockables exist", () => {
 		const html = renderUnlockablesHtml([])
-		assert.equal(html, "<code>KEEP BREAKING.</code>")
+		assert.equal(html, "KEEP BREAKING.")
 	})
 
 	it("renders unlockables with symbols and hover tooltips", () => {
@@ -34,9 +34,10 @@ describe("README Injector", () => {
 		assert.ok(section.startsWith(START_MARKER))
 		assert.ok(section.endsWith(END_MARKER))
 		assert.ok(section.includes("## BREAKME.md"))
-		assert.ok(section.includes('<table width="100%">'))
-		assert.ok(section.includes('<code>UNLOCKED:</code> <code>KEEP BREAKING.</code>'))
-		assert.ok(section.includes('<code>chunk#2 tile#14 streak🔥5 broken: 042</code>'))
+		assert.ok(section.includes('<div align="center">'))
+		assert.ok(section.includes('<table align="center" width="100%">'))
+		assert.ok(section.includes("UNLOCKED: KEEP BREAKING."))
+		assert.ok(section.includes("<p>chunk#2 • tile#14 • streak 🔥 5 • broken: 042</p>"))
 		assert.ok(section.includes('src="./custom-board.svg"'))
 	})
 
@@ -54,8 +55,8 @@ ${END_MARKER}
 		assert.ok(result.includes("# My Profile"))
 		assert.ok(result.includes("## About Me"))
 		assert.ok(!result.includes("old content"))
-		assert.ok(result.includes("<code>KEEP BREAKING.</code>"))
-		assert.ok(result.includes("<code>chunk#0 tile#0 streak🔥0 broken: 000</code>"))
+		assert.ok(result.includes("KEEP BREAKING."))
+		assert.ok(result.includes("<p>chunk#0 • tile#0 • streak 🔥 0 • broken: 000</p>"))
 	})
 
 	it("returns original content unchanged if markers are missing", () => {

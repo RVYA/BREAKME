@@ -6,7 +6,7 @@ export const END_MARKER = "<!-- BREAKME:END -->"
 
 export function renderUnlockablesHtml(collectibles: string[]): string {
 	if (collectibles.length === 0) {
-		return "<code>KEEP BREAKING.</code>"
+		return "KEEP BREAKING."
 	}
 
 	const items = collectibles.map((name) => {
@@ -30,12 +30,14 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
 	const unlockablesHtml = renderUnlockablesHtml(state.player.inventory.collectibles)
 
 	return `${START_MARKER}
+<div align="center">
+
 ## BREAKME.md
 
-<table width="100%">
+<table align="center" width="100%">
   <tr>
     <td width="50%" align="left" valign="middle">
-      <code>UNLOCKED:</code> ${unlockablesHtml}
+      UNLOCKED: ${unlockablesHtml}
     </td>
     <td width="50%" align="center" valign="middle">
       <img src="${svgPath}" width="205" alt="BREAKME.md Board" />
@@ -43,7 +45,9 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
   </tr>
 </table>
 
-<code>chunk#${chunkIndex} tile#${tileIndex} streak🔥${currentStreak} broken: ${totalBroken}</code>
+<p>chunk#${chunkIndex} • tile#${tileIndex} • streak 🔥 ${currentStreak} • broken: ${totalBroken}</p>
+
+</div>
 ${END_MARKER}`
 }
 
