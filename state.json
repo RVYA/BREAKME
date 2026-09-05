@@ -1,0 +1,449 @@
+{
+  "hash": "26e158a68c30f8eb9e91172c9999f6ee26eaff17132a9164c0e2a900659f52b9",
+  "player": {
+    "identity": {
+      "username": "RVYA",
+      "baseSeed": "a25eb12f",
+      "createdAt": "2026-09-05T17:21:58.038Z"
+    },
+    "progress": {
+      "chunkIndex": 0,
+      "tileIndex": 6,
+      "totalTilesBroken": 6
+    },
+    "activity": {
+      "currentStreak": 3,
+      "highestStreak": 3,
+      "lastActiveDate": "2026-09-05",
+      "mostDamage": 28.8
+    },
+    "inventory": {
+      "collectibles": [
+        "Test Collectible #2",
+        "Test Collectible #1"
+      ]
+    }
+  },
+  "currentChunk": {
+    "index": 0,
+    "tiles": [
+      {
+        "index": 0,
+        "shape": "Base",
+        "currentHp": 0,
+        "maxHp": 4
+      },
+      {
+        "index": 1,
+        "shape": "Base",
+        "variant": "Gold",
+        "currentHp": 0,
+        "maxHp": 6
+      },
+      {
+        "index": 2,
+        "shape": "Base",
+        "currentHp": 0,
+        "maxHp": 4
+      },
+      {
+        "index": 3,
+        "shape": "Base",
+        "currentHp": 0,
+        "maxHp": 4
+      },
+      {
+        "index": 4,
+        "shape": "Base",
+        "effect": "Hot",
+        "currentHp": 0,
+        "maxHp": 4
+      },
+      {
+        "index": 5,
+        "shape": "Base",
+        "currentHp": 0,
+        "maxHp": 4
+      },
+      {
+        "index": 6,
+        "shape": "Base",
+        "currentHp": 1.2000000000000004,
+        "maxHp": 4
+      },
+      {
+        "index": 7,
+        "shape": "Base",
+        "effect": "Negative",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 8,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 9,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 10,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 11,
+        "shape": "Base",
+        "variant": "Broken",
+        "currentHp": 3,
+        "maxHp": 3
+      },
+      {
+        "index": 12,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 13,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 14,
+        "shape": "Base",
+        "variant": "Gold",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 15,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 16,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 17,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 18,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 19,
+        "shape": "Base",
+        "variant": "Broken",
+        "effect": "Negative",
+        "currentHp": 3,
+        "maxHp": 3
+      },
+      {
+        "index": 20,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 21,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 22,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 23,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 24,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 25,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 26,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 27,
+        "shape": "Base",
+        "effect": "Cold",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 28,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 29,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 30,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 31,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 32,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 33,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 34,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 35,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 36,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 37,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 38,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 39,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 40,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 41,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 42,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 43,
+        "shape": "Base",
+        "variant": "Broken",
+        "effect": "Negative",
+        "currentHp": 3,
+        "maxHp": 3
+      },
+      {
+        "index": 44,
+        "shape": "Base",
+        "effect": "Shiny",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 45,
+        "shape": "Base",
+        "variant": "Gold",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 46,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 47,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 48,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 49,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 50,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 51,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 52,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 53,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 54,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 55,
+        "shape": "Base",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 56,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 57,
+        "shape": "Base",
+        "effect": "Negative",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 58,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 59,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 60,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 61,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 62,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 63,
+        "shape": "Base",
+        "effect": "Wet",
+        "currentHp": 4,
+        "maxHp": 4
+      }
+    ],
+    "createdAt": "2026-09-05T17:21:58.038Z",
+    "isCleared": false
+  },
+  "collectiblePool": {
+    "uncommon": [
+      "Test Collectible #3"
+    ]
+  },
+  "pendingActions": []
+}
