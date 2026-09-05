@@ -1,5 +1,16 @@
 import { loadSvgDefs } from "#systems/rendering/asset-loader"
-import { BOARD_HEIGHT, BOARD_WIDTH, TOTAL_CELLS, getCellPosition } from "#systems/rendering/layout"
+import {
+	BOARD_HEIGHT,
+	BOARD_WIDTH,
+	MARGIN_X,
+	MARGIN_Y,
+	PLAYER_SCALE,
+	TILE_SCALE,
+	TOTAL_CELLS,
+	VISIBLE_TILE_SLOTS,
+	getCellPosition,
+	getTileSlotPosition,
+} from "#systems/rendering/layout"
 import { loadGameBoardStyles } from "#systems/rendering/style-loader"
 import { generateThemeCss, type ThemeOptions } from "#systems/rendering/theme-generator"
 import type GameState from "#types/game-state"
@@ -22,14 +33,12 @@ export async function renderSvg(target: Chunk | GameState, themeOptions?: ThemeO
 	const unbrokenTiles = chunk.tiles.filter((tile) => !tile.isBroken)
 	const cellElements: string[] = []
 
-	const charPos = getCellPosition(0)
 	cellElements.push(
-		`\t<g class="grid-cell" transform="translate(${charPos.x}, ${charPos.y})">\n\t\t<use href="#char-base" class="player fg" />\n\t</g>`,
+		`\t<g class="grid-cell player-cell" transform="translate(${MARGIN_X}, ${MARGIN_Y}) scale(${PLAYER_SCALE})">\n\t\t<use href="#char-base" class="player fg" />\n\t</g>`,
 	)
 
-	for (let i = 0; i < TOTAL_CELLS - 1; i++) {
-		const cellIndex = i + 1
-		const pos = getCellPosition(cellIndex)
+	for (let i = 0; i < VISIBLE_TILE_SLOTS; i++) {
+		const pos = getTileSlotPosition(i)
 
 		if (i < unbrokenTiles.length) {
 			const tile = unbrokenTiles[i]
@@ -40,11 +49,11 @@ export async function renderSvg(target: Chunk | GameState, themeOptions?: ThemeO
 				: ""
 
 			cellElements.push(
-				`\t<g class="grid-cell" transform="translate(${pos.x}, ${pos.y})">\n\t\t<use href="#${shapeId}" class="${bodyClass}" />${effectElement}\n\t</g>`,
+				`\t<g class="grid-cell" transform="translate(${pos.x}, ${pos.y}) scale(${TILE_SCALE})">\n\t\t<use href="#${shapeId}" class="${bodyClass}" />${effectElement}\n\t</g>`,
 			)
 		} else {
 			cellElements.push(
-				`\t<g class="grid-cell" transform="translate(${pos.x}, ${pos.y})">\n\t\t<use href="#tile-hidden" class="accent" />\n\t</g>`,
+				`\t<g class="grid-cell" transform="translate(${pos.x}, ${pos.y}) scale(${TILE_SCALE})">\n\t\t<use href="#tile-hidden" class="accent" />\n\t</g>`,
 			)
 		}
 	}
@@ -60,5 +69,15 @@ ${cellElements.join("\n")}
 </svg>`
 }
 
-export { BOARD_HEIGHT, BOARD_WIDTH, TOTAL_CELLS, getCellPosition }
-
+export {
+	BOARD_HEIGHT,
+	BOARD_WIDTH,
+	MARGIN_X,
+	MARGIN_Y,
+	PLAYER_SCALE,
+	TILE_SCALE,
+	TOTAL_CELLS,
+	VISIBLE_TILE_SLOTS,
+	getCellPosition,
+	getTileSlotPosition,
+}
