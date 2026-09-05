@@ -4,7 +4,6 @@ import ChunkGenerator from "#systems/generation/chunk-generator"
 import {
 	BOARD_HEIGHT,
 	BOARD_WIDTH,
-	VISIBLE_TILES_COUNT,
 	getCellPosition,
 	renderSvg,
 } from "#systems/rendering/board-renderer"
@@ -47,7 +46,7 @@ describe("Board Renderer (System)", () => {
 		assert.ok(svg.includes(".player"))
 	})
 
-	it("renders at most 8 visible tiles and hides the remaining tiles behind fog of war", async () => {
+	it("renders all remaining unbroken tiles as revealed tiles when chunk is intact", async () => {
 		const generator = new ChunkGenerator(12345)
 		const chunk = generator.generate(0)
 		const svg = await renderSvg(chunk)
@@ -56,10 +55,10 @@ describe("Board Renderer (System)", () => {
 		assert.equal(totalCells?.length, 64)
 
 		const hiddenTiles = svg.match(/<use href="#tile-hidden" class="accent" \/>/g)
-		assert.equal(hiddenTiles?.length, 64 - 1 - VISIBLE_TILES_COUNT)
+		assert.equal(hiddenTiles?.length ?? 0, 0)
 	})
 
-	it("renders character plus remaining unbroken tiles when chunk is partially broken", async () => {
+	it("renders character plus remaining unbroken tiles, and fills remaining missing cells with hidden placeholders", async () => {
 		const generator = new ChunkGenerator(12345)
 		const chunk = generator.generate(0)
 
@@ -72,13 +71,13 @@ describe("Board Renderer (System)", () => {
 
 		const svg = await renderSvg(chunk)
 		const totalCells = svg.match(/<g class="grid-cell"/g)
-		assert.equal(totalCells?.length, 1 + unbrokenCount)
+		assert.equal(totalCells?.length, 64)
 
 		const hiddenTiles = svg.match(/<use href="#tile-hidden" class="accent" \/>/g)
-		assert.equal(hiddenTiles?.length, unbrokenCount - VISIBLE_TILES_COUNT)
+		assert.equal(hiddenTiles?.length, 64 - 1 - unbrokenCount)
 	})
 
-	it("attaches variant and effect styling to visible tile cells within the first 8 tiles", async () => {
+	it("attaches variant and effect styling to visible tile cells", async () => {
 		const tiles: Tile[] = [new Tile(0, "Base", "Gold", "Shiny")]
 
 		const chunk = {
@@ -91,9 +90,15 @@ describe("Board Renderer (System)", () => {
 		const svg = await renderSvg(chunk)
 		assert.ok(svg.includes('class="variant-gold"'))
 		assert.ok(svg.includes('class="effect-shiny"'))
+
+		const totalCells = svg.match(/<g class="grid-cell"/g)
+		assert.equal(totalCells?.length, 64)
+
+		const hiddenMatches = svg.match(/<use href="#tile-hidden" class="accent" \/>/g)
+		assert.equal(hiddenMatches?.length, 62)
 	})
 
-	it("does not attach variant or effect styling to hidden tiles beyond index 8", async () => {
+	it("renders all unbroken tiles with variant and effect styling without fog of war cutoff", async () => {
 		const tiles = Array.from({ length: 12 }, (_, i) => new Tile(i, "Base", "Gold", "Shiny"))
 
 		const chunk = {
@@ -105,13 +110,16 @@ describe("Board Renderer (System)", () => {
 
 		const svg = await renderSvg(chunk)
 		const variantMatches = svg.match(/class="variant-gold"/g)
-		assert.equal(variantMatches?.length, 8)
+		assert.equal(variantMatches?.length, 12)
 
 		const effectMatches = svg.match(/class="effect-shiny"/g)
-		assert.equal(effectMatches?.length, 8)
+		assert.equal(effectMatches?.length, 12)
 
 		const hiddenMatches = svg.match(/<use href="#tile-hidden" class="accent" \/>/g)
-		assert.equal(hiddenMatches?.length, 4)
+		assert.equal(hiddenMatches?.length, 63 - 12)
+
+		const totalCells = svg.match(/<g class="grid-cell"/g)
+		assert.equal(totalCells?.length, 64)
 	})
 
 	it("renders correctly from a GameState object", async () => {

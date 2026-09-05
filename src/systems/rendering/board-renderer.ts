@@ -1,11 +1,5 @@
 import { loadSvgDefs } from "#systems/rendering/asset-loader"
-import {
-	BOARD_HEIGHT,
-	BOARD_WIDTH,
-	TOTAL_CELLS,
-	VISIBLE_TILES_COUNT,
-	getCellPosition,
-} from "#systems/rendering/layout"
+import { BOARD_HEIGHT, BOARD_WIDTH, TOTAL_CELLS, getCellPosition } from "#systems/rendering/layout"
 import { loadGameBoardStyles } from "#systems/rendering/style-loader"
 import type GameState from "#types/game-state"
 import type Chunk from "#types/tile/chunk"
@@ -19,8 +13,6 @@ export async function renderSvg(target: Chunk | GameState): Promise<string> {
 	const [styles, defs] = await Promise.all([loadGameBoardStyles(), loadSvgDefs()])
 
 	const unbrokenTiles = chunk.tiles.filter((tile) => !tile.isBroken)
-	const maxRenderableTiles = Math.min(TOTAL_CELLS - 1, unbrokenTiles.length)
-
 	const cellElements: string[] = []
 
 	const charPos = getCellPosition(0)
@@ -28,11 +20,11 @@ export async function renderSvg(target: Chunk | GameState): Promise<string> {
 		`\t<g class="grid-cell" transform="translate(${charPos.x}, ${charPos.y})">\n\t\t<use href="#char-base" class="player fg" />\n\t</g>`,
 	)
 
-	for (let i = 0; i < maxRenderableTiles; i++) {
+	for (let i = 0; i < TOTAL_CELLS - 1; i++) {
 		const cellIndex = i + 1
 		const pos = getCellPosition(cellIndex)
 
-		if (i < VISIBLE_TILES_COUNT) {
+		if (i < unbrokenTiles.length) {
 			const tile = unbrokenTiles[i]
 			const shapeId = `tile-${tile.shape.name.toLowerCase()}`
 			const bodyClass = tile.variant ? `variant-${tile.variant.name.toLowerCase()}` : "fg"
@@ -60,10 +52,4 @@ ${cellElements.join("\n")}
 </svg>`
 }
 
-export {
-	BOARD_HEIGHT,
-	BOARD_WIDTH,
-	TOTAL_CELLS,
-	VISIBLE_TILES_COUNT,
-	getCellPosition,
-}
+export { BOARD_HEIGHT, BOARD_WIDTH, TOTAL_CELLS, getCellPosition }
