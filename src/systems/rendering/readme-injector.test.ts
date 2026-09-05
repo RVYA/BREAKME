@@ -39,7 +39,7 @@ describe("README Injector", () => {
 			section.includes('<table align="center" width="100%" style="width: 100%; table-layout: fixed;">'),
 		)
 		assert.ok(section.includes("UNLOCKED: KEEP BREAKING."))
-		assert.ok(section.includes("<p>chunk#2 • tile#14 • streak 🔥 5 • broken: 042</p>"))
+		assert.ok(section.includes("<p>CHUNK#2 • TILE#14 • 🔥STREAK#5 • BROKEN#042</p>"))
 		assert.ok(section.includes('src="./custom-board.svg"'))
 	})
 
@@ -58,7 +58,7 @@ ${END_MARKER}
 		assert.ok(result.includes("## About Me"))
 		assert.ok(!result.includes("old content"))
 		assert.ok(result.includes("KEEP BREAKING."))
-		assert.ok(result.includes("<p>chunk#0 • tile#0 • streak 🔥 0 • broken: 000</p>"))
+		assert.ok(result.includes("<p>CHUNK#0 • TILE#0 • 🔥STREAK#0 • BROKEN#000</p>"))
 	})
 
 	it("returns original content unchanged if markers are missing", () => {
