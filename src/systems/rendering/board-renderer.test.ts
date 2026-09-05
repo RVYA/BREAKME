@@ -129,9 +129,10 @@ describe("Board Renderer (System)", () => {
 					lastActiveDate: "2026-09-04",
 					mostDamage: 0,
 				},
-				inventory: { collectibles: [], achievements: [] },
+				inventory: { collectibles: [] },
 			},
 			currentChunk: chunk,
+			collectiblePool: {},
 			pendingActions: [],
 		}
 
