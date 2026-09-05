@@ -1,6 +1,7 @@
+import { COLLECTIBLES_BY_RARITY } from "#data/collectibles"
 import { signGameState } from "#state/integrity"
 import ChunkGenerator from "#systems/generation/chunk-generator"
-
+import type { CollectiblePool } from "#types/collectible"
 import type GameState from "#types/game-state"
 import murmur3_32 from "#utils/murmur3-32"
 
@@ -9,6 +10,16 @@ type CreateInitialStateOptions = {
 	uuid?: string
 	timestamp?: string
 	secretKey?: string
+}
+
+export function createInitialCollectiblePool(): CollectiblePool {
+	const pool: CollectiblePool = {}
+	for (const [rarity, items] of Object.entries(COLLECTIBLES_BY_RARITY)) {
+		if (items && items.length > 0) {
+			pool[rarity as keyof CollectiblePool] = [...items]
+		}
+	}
+	return pool
 }
 
 export function createInitialGameState(options: CreateInitialStateOptions): GameState {
@@ -41,10 +52,10 @@ export function createInitialGameState(options: CreateInitialStateOptions): Game
 			},
 			inventory: {
 				collectibles: [],
-				achievements: [],
 			},
 		},
 		currentChunk: initialChunk,
+		collectiblePool: createInitialCollectiblePool(),
 		pendingActions: [],
 	}
 
