@@ -1,6 +1,8 @@
 import { promises as fs } from "node:fs"
+import path from "node:path"
 import Engine from "#engine"
 import { renderSvg } from "#systems/rendering/board-renderer"
+import { injectReadme } from "#systems/rendering/readme-injector"
 
 export async function run(): Promise<void> {
 	const username = process.env.BREAKME_USERNAME || process.env.GITHUB_ACTOR || process.env.GITHUB_REPOSITORY_OWNER
@@ -13,6 +15,7 @@ export async function run(): Promise<void> {
 	const token = process.env.BREAKME_PAT || process.env.GITHUB_TOKEN
 	const statePath = process.env.STATE_PATH || "state.json"
 	const svgPath = process.env.SVG_PATH || "BREAKME-board.svg"
+	const readmePath = process.env.README_PATH || "README.md"
 	const secretKey = process.env.BREAKME_SECRET_KEY
 
 	const engine = new Engine({ username, token, statePath })
@@ -26,6 +29,18 @@ export async function run(): Promise<void> {
 	if (engine.state) {
 		const svg = await renderSvg(engine.state)
 		await fs.writeFile(svgPath, svg, "utf-8")
+
+		try {
+			const readme = await fs.readFile(readmePath, "utf-8")
+			const relSvg = path.relative(path.dirname(path.resolve(readmePath)), path.resolve(svgPath))
+			const formattedSvgPath = relSvg.startsWith(".") ? relSvg : `./${relSvg}`
+			const updatedReadme = injectReadme(readme, engine.state, formattedSvgPath)
+			if (updatedReadme !== readme) {
+				await fs.writeFile(readmePath, updatedReadme, "utf-8")
+			}
+		} catch {
+			// Ignore if README.md does not exist
+		}
 	}
 
 	console.log(`[BREAKME] Run Complete (${mode} mode)`)

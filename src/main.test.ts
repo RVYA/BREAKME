@@ -56,4 +56,28 @@ describe("Main CLI Runner", () => {
 		assert.ok(svgContent.includes("<svg"))
 		assert.ok(svgContent.includes('viewBox="0 0 205 205"'))
 	})
+
+	it("injects board and unlockables section into README when markers exist", async () => {
+		const statePath = path.join(tempDir, "state.json")
+		const svgPath = path.join(tempDir, "board.svg")
+		const readmePath = path.join(tempDir, "README.md")
+
+		await fs.writeFile(
+			readmePath,
+			"# Profile\n\n<!-- BREAKME:START -->\nold\n<!-- BREAKME:END -->\n",
+			"utf-8",
+		)
+
+		process.env.BREAKME_USERNAME = "octocat"
+		process.env.STATE_PATH = statePath
+		process.env.SVG_PATH = svgPath
+		process.env.README_PATH = readmePath
+
+		await run()
+
+		const updatedReadme = await fs.readFile(readmePath, "utf-8")
+		assert.ok(updatedReadme.includes("<h3>⛏️ BREAKME.md</h3>"))
+		assert.ok(updatedReadme.includes("<i>KEEP BREAKING.</i>"))
+		assert.ok(updatedReadme.includes('src="./board.svg"'))
+	})
 })
