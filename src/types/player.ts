@@ -1,4 +1,4 @@
-import type Collectible from "#types/collectible"
+import type { CollectibleName } from "#types/collectible"
 
 type PlayerIdentity = {
 	baseSeed: string
@@ -20,7 +20,7 @@ type PlayerActivity = {
 }
 
 type PlayerInventory = {
-	collectibles: Collectible[]
+	collectibles: CollectibleName[]
 }
 
 type Player = {
@@ -31,3 +31,4 @@ type Player = {
 }
 
 export type { Player as default, Player, PlayerActivity, PlayerIdentity, PlayerInventory, PlayerProgress }
+
