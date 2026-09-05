@@ -18,37 +18,37 @@ type SampleConfig = {
 
 const SAMPLE_CONFIGS: SampleConfig[] = [
 	{ id: 1, username: "nebula-zen", chunkIndex: 0, brokenCount: 0, streak: 0, label: "Fresh Chunk #0 (Pristine)" },
-	{ id: 2, username: "cyber-miner", chunkIndex: 0, brokenCount: 8, streak: 1, label: "Early Game #0 (8 Broken)" },
-	{ id: 3, username: "solar-flare", chunkIndex: 0, brokenCount: 16, streak: 2, label: "Early Game #0 (16 Broken)" },
-	{ id: 4, username: "glitch-hunter", chunkIndex: 1, brokenCount: 4, streak: 3, label: "Chunk #1 (4 Broken)" },
-	{ id: 5, username: "octo-break", chunkIndex: 1, brokenCount: 22, streak: 4, label: "Chunk #1 (22 Broken)" },
-	{ id: 6, username: "matrix-core", chunkIndex: 1, brokenCount: 48, streak: 5, label: "Chunk #1 (48 Broken)" },
-	{ id: 7, username: "void-walker", chunkIndex: 2, brokenCount: 12, streak: 7, label: "Chunk #2 (12 Broken)" },
-	{ id: 8, username: "pixel-craft", chunkIndex: 2, brokenCount: 35, streak: 8, label: "Chunk #2 (35 Broken)" },
-	{ id: 9, username: "aurora-drift", chunkIndex: 2, brokenCount: 60, streak: 10, label: "Chunk #2 (60 Broken)" },
-	{ id: 10, username: "phantom-byte", chunkIndex: 3, brokenCount: 7, streak: 12, label: "Chunk #3 (7 Broken)" },
-	{ id: 11, username: "crimson-forge", chunkIndex: 3, brokenCount: 28, streak: 14, label: "Chunk #3 (28 Broken)" },
-	{ id: 12, username: "emerald-pulse", chunkIndex: 3, brokenCount: 52, streak: 15, label: "Chunk #3 (52 Broken)" },
-	{ id: 13, username: "sapphire-sky", chunkIndex: 4, brokenCount: 15, streak: 18, label: "Chunk #4 (15 Broken)" },
-	{ id: 14, username: "amethyst-gale", chunkIndex: 4, brokenCount: 39, streak: 20, label: "Chunk #4 (39 Broken)" },
-	{ id: 15, username: "topaz-shard", chunkIndex: 5, brokenCount: 2, streak: 22, label: "Chunk #5 (2 Broken)" },
-	{ id: 16, username: "obsidian-veil", chunkIndex: 5, brokenCount: 31, streak: 25, label: "Chunk #5 (31 Broken)" },
-	{ id: 17, username: "quantum-spark", chunkIndex: 6, brokenCount: 18, streak: 28, label: "Chunk #6 (18 Broken)" },
-	{ id: 18, username: "hyper-nova", chunkIndex: 6, brokenCount: 44, streak: 30, label: "Chunk #6 (44 Broken)" },
-	{ id: 19, username: "chrono-dash", chunkIndex: 7, brokenCount: 62, streak: 35, label: "Chunk #7 (62 Broken)" },
-	{ id: 20, username: "vapor-wave", chunkIndex: 8, brokenCount: 10, streak: 40, label: "Chunk #8 (10 Broken)" },
-	{ id: 21, username: "zenith-prime", chunkIndex: 9, brokenCount: 27, streak: 45, label: "Chunk #9 (27 Broken)" },
-	{ id: 22, username: "echo-cascade", chunkIndex: 10, brokenCount: 55, streak: 50, label: "Chunk #10 (55 Broken)" },
-	{ id: 23, username: "lunar-tide", chunkIndex: 12, brokenCount: 6, streak: 55, label: "Chunk #12 (6 Broken)" },
-	{ id: 24, username: "stellar-dust", chunkIndex: 15, brokenCount: 33, streak: 60, label: "Chunk #15 (33 Broken)" },
-	{ id: 25, username: "neon-horizon", chunkIndex: 20, brokenCount: 49, streak: 65, label: "Chunk #20 (49 Broken)" },
-	{ id: 26, username: "vortex-seeker", chunkIndex: 25, brokenCount: 14, streak: 70, label: "Chunk #25 (14 Broken)" },
-	{ id: 27, username: "abyss-watcher", chunkIndex: 30, brokenCount: 58, streak: 80, label: "Chunk #30 (58 Broken)" },
-	{ id: 28, username: "radiant-dawn", chunkIndex: 42, brokenCount: 21, streak: 90, label: "Chunk #42 (21 Broken)" },
-	{ id: 29, username: "titan-core", chunkIndex: 50, brokenCount: 41, streak: 100, label: "Chunk #50 (41 Broken)" },
-	{ id: 30, username: "shadow-stride", chunkIndex: 64, brokenCount: 61, streak: 120, label: "Chunk #64 (61 Broken)" },
-	{ id: 31, username: "prism-weaver", chunkIndex: 77, brokenCount: 26, streak: 150, label: "Chunk #77 (26 Broken)" },
-	{ id: 32, username: "infinity-loop", chunkIndex: 100, brokenCount: 36, streak: 200, label: "Chunk #100 (36 Broken)" },
+	{ id: 2, username: "cyber-miner", chunkIndex: 0, brokenCount: 16, streak: 1, label: "Early Game #0 (16 Broken)" },
+	{ id: 3, username: "solar-flare", chunkIndex: 0, brokenCount: 32, streak: 2, label: "Early Game #0 (32 Broken)" },
+	{ id: 4, username: "glitch-hunter", chunkIndex: 1, brokenCount: 8, streak: 3, label: "Chunk #1 (8 Broken)" },
+	{ id: 5, username: "octo-break", chunkIndex: 1, brokenCount: 45, streak: 4, label: "Chunk #1 (45 Broken)" },
+	{ id: 6, username: "matrix-core", chunkIndex: 1, brokenCount: 96, streak: 5, label: "Chunk #1 (96 Broken)" },
+	{ id: 7, username: "void-walker", chunkIndex: 2, brokenCount: 24, streak: 7, label: "Chunk #2 (24 Broken)" },
+	{ id: 8, username: "pixel-craft", chunkIndex: 2, brokenCount: 70, streak: 8, label: "Chunk #2 (70 Broken)" },
+	{ id: 9, username: "aurora-drift", chunkIndex: 2, brokenCount: 120, streak: 10, label: "Chunk #2 (120 Broken)" },
+	{ id: 10, username: "phantom-byte", chunkIndex: 3, brokenCount: 14, streak: 12, label: "Chunk #3 (14 Broken)" },
+	{ id: 11, username: "crimson-forge", chunkIndex: 3, brokenCount: 56, streak: 14, label: "Chunk #3 (56 Broken)" },
+	{ id: 12, username: "emerald-pulse", chunkIndex: 3, brokenCount: 104, streak: 15, label: "Chunk #3 (104 Broken)" },
+	{ id: 13, username: "sapphire-sky", chunkIndex: 4, brokenCount: 30, streak: 18, label: "Chunk #4 (30 Broken)" },
+	{ id: 14, username: "amethyst-gale", chunkIndex: 4, brokenCount: 78, streak: 20, label: "Chunk #4 (78 Broken)" },
+	{ id: 15, username: "topaz-shard", chunkIndex: 5, brokenCount: 5, streak: 22, label: "Chunk #5 (5 Broken)" },
+	{ id: 16, username: "obsidian-veil", chunkIndex: 5, brokenCount: 62, streak: 25, label: "Chunk #5 (62 Broken)" },
+	{ id: 17, username: "quantum-spark", chunkIndex: 6, brokenCount: 36, streak: 28, label: "Chunk #6 (36 Broken)" },
+	{ id: 18, username: "hyper-nova", chunkIndex: 6, brokenCount: 88, streak: 30, label: "Chunk #6 (88 Broken)" },
+	{ id: 19, username: "chrono-dash", chunkIndex: 7, brokenCount: 125, streak: 35, label: "Chunk #7 (125 Broken)" },
+	{ id: 20, username: "vapor-wave", chunkIndex: 8, brokenCount: 20, streak: 40, label: "Chunk #8 (20 Broken)" },
+	{ id: 21, username: "zenith-prime", chunkIndex: 9, brokenCount: 54, streak: 45, label: "Chunk #9 (54 Broken)" },
+	{ id: 22, username: "echo-cascade", chunkIndex: 10, brokenCount: 110, streak: 50, label: "Chunk #10 (110 Broken)" },
+	{ id: 23, username: "lunar-tide", chunkIndex: 12, brokenCount: 12, streak: 55, label: "Chunk #12 (12 Broken)" },
+	{ id: 24, username: "stellar-dust", chunkIndex: 15, brokenCount: 66, streak: 60, label: "Chunk #15 (66 Broken)" },
+	{ id: 25, username: "neon-horizon", chunkIndex: 20, brokenCount: 98, streak: 65, label: "Chunk #20 (98 Broken)" },
+	{ id: 26, username: "vortex-seeker", chunkIndex: 25, brokenCount: 28, streak: 70, label: "Chunk #25 (28 Broken)" },
+	{ id: 27, username: "abyss-watcher", chunkIndex: 30, brokenCount: 116, streak: 80, label: "Chunk #30 (116 Broken)" },
+	{ id: 28, username: "radiant-dawn", chunkIndex: 42, brokenCount: 42, streak: 90, label: "Chunk #42 (42 Broken)" },
+	{ id: 29, username: "titan-core", chunkIndex: 50, brokenCount: 82, streak: 100, label: "Chunk #50 (82 Broken)" },
+	{ id: 30, username: "shadow-stride", chunkIndex: 64, brokenCount: 127, streak: 120, label: "Chunk #64 (127 Broken)" },
+	{ id: 31, username: "prism-weaver", chunkIndex: 77, brokenCount: 52, streak: 150, label: "Chunk #77 (52 Broken)" },
+	{ id: 32, username: "infinity-loop", chunkIndex: 100, brokenCount: 72, streak: 200, label: "Chunk #100 (72 Broken)" },
 ]
 
 async function main(): Promise<void> {
@@ -59,7 +59,7 @@ async function main(): Promise<void> {
 	const cardsHtml: string[] = []
 
 	for (const config of SAMPLE_CONFIGS) {
-		const totalBroken = config.chunkIndex * 63 + config.brokenCount
+		const totalBroken = config.chunkIndex * 128 + config.brokenCount
 		const state = createInitialGameState({ username: config.username })
 		state.player.progress.chunkIndex = config.chunkIndex
 		state.player.progress.tileIndex = config.brokenCount
@@ -119,7 +119,7 @@ async function main(): Promise<void> {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BREAKME Board Samples Gallery (32 Palettes & Stages)</title>
+	<title>BREAKME Board Samples Gallery (128-Cell Matrix with 4x Player Sprite)</title>
 	<style>
 		:root {
 			--bg-page: #090d13;
@@ -151,7 +151,7 @@ async function main(): Promise<void> {
 		}
 		.gallery {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 			gap: 1.5rem;
 			max-width: 1800px;
 			margin: 0 auto;
@@ -187,7 +187,7 @@ async function main(): Promise<void> {
 		}
 		.board-wrapper {
 			width: 100%;
-			max-width: 240px;
+			max-width: 360px;
 			display: flex;
 			justify-content: center;
 			margin-bottom: 1rem;
@@ -241,8 +241,8 @@ async function main(): Promise<void> {
 </head>
 <body>
 	<header>
-		<h1>BREAKME.md Board Samples Gallery (32 Boards)</h1>
-		<p class="subtitle">Mock stats above each board, distinct deterministic seeds and color palettes below</p>
+		<h1>BREAKME.md Board Samples Gallery (128-Cell Matrix)</h1>
+		<p class="subtitle">16x8 matrix with 4x player sprite, 128 tiles per chunk, and 7 harmonic dual-color palettes</p>
 	</header>
 	<main class="gallery">
 		${cardsHtml.join("\n")}
