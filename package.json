@@ -5,6 +5,7 @@
   "imports": {
     "#data/*": "./src/data/*.ts",
     "#engine": "./src/engine.ts",
+    "#main": "./src/main.ts",
     "#input/*": "./src/input/*.ts",
     "#modules/*": "./src/modules/*.ts",
     "#rendering/*": "./src/rendering/*.ts",
@@ -14,7 +15,7 @@
     "#utils/*": "./src/utils/*.ts"
   },
   "scripts": {
-    "start": "node --env-file-if-exists=.env --experimental-strip-types src/engine.ts",
+    "start": "node --env-file-if-exists=.env --experimental-strip-types src/main.ts",
     "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
     "test:fetch": "node --env-file-if-exists=.env --experimental-strip-types scripts/test-fetch.ts",
     "render": "node --experimental-strip-types scripts/render-preview.ts",

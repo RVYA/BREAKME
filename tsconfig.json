@@ -20,6 +20,9 @@
       "#engine": [
         "./src/engine.ts"
       ],
+      "#main": [
+        "./src/main.ts"
+      ],
       "#input/*": [
         "./src/input/*"
       ],
