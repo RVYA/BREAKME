@@ -20,6 +20,7 @@
     "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
     "test:fetch": "node --env-file-if-exists=.env --experimental-strip-types scripts/test-fetch.ts",
     "render": "node --experimental-strip-types scripts/render-preview.ts",
+    "gen:samples": "node --experimental-strip-types scripts/generate-samples.ts",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "lint": "eslint ."
