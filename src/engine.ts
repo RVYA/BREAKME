@@ -4,6 +4,7 @@ import { loadOrInitializeState } from "#state/manager"
 import { saveState } from "#state/store"
 import DropSystem, { type CollectibleDropEvent } from "#systems/collectibles/drop-system"
 import DamageSystem, { type TileBreakEvent } from "#systems/damage/damage-system"
+import ChunkGenerator from "#systems/generation/chunk-generator"
 import type ActionEvent from "#types/action-event"
 import type GameState from "#types/game-state"
 
@@ -84,8 +85,40 @@ export default class Engine {
 		}
 
 		const actionsProcessed = this.#state.pendingActions.length
-		const rawBreakEvents = this.#damageSystem.process(this.#state, { secretKey })
-		const breakEvents = Array.isArray(rawBreakEvents) ? rawBreakEvents : [rawBreakEvents]
+		if (actionsProcessed === 0) {
+			this.#damageSystem.process(this.#state, { secretKey })
+			return {
+				breakEvents: [],
+				dropEvents: [],
+				actionsProcessed: 0,
+			}
+		}
+
+		const breakEvents: TileBreakEvent[] = []
+		let overflowDamage = 0
+
+		const numericSeed = Number.parseInt(this.#state.player.identity.baseSeed, 16) >>> 0
+		const chunkGenerator = new ChunkGenerator(numericSeed)
+
+		while (this.#state.pendingActions.length > 0 || overflowDamage > 0) {
+			const rawEvents = this.#damageSystem.process(this.#state, { secretKey, overflowDamage })
+			const events = Array.isArray(rawEvents) ? rawEvents : [rawEvents]
+			overflowDamage = 0
+
+			for (const event of events) {
+				if ("tile" in event) {
+					breakEvents.push(event)
+				} else if ("overflowDamage" in event) {
+					overflowDamage = event.overflowDamage
+				}
+			}
+
+			if (this.#state.currentChunk.isCleared) {
+				this.#state.player.progress.chunkIndex += 1
+				this.#state.player.progress.tileIndex = 0
+				this.#state.currentChunk = chunkGenerator.generate(this.#state.player.progress.chunkIndex)
+			}
+		}
 
 		const rawDropEvents = this.#dropSystem.process(this.#state, breakEvents)
 		const dropEvents = Array.isArray(rawDropEvents) ? rawDropEvents : [rawDropEvents]

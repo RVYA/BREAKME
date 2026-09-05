@@ -168,5 +168,34 @@ describe("Engine (Phases 1 & 2: State, Initialization & Event Ingestion)", () =>
 		const savedContent = await fs.readFile(TEST_STATE_FILE, "utf-8")
 		assert.ok(savedContent.includes('"username": "octocat"'))
 	})
+
+	it("processes turns that span across chunk boundaries and generates new chunks", async () => {
+		const mockProvider = {
+			name: "mock-provider",
+			async fetchEvents() {
+				return Array.from(
+					{ length: 100 },
+					(_, i) => new ActionEvent(`evt-${i}`, "release", "2026-09-01T12:00:00.000Z"),
+				)
+			},
+		}
+
+		const engine = new Engine({
+			username: "octocat",
+			statePath: TEST_STATE_FILE,
+			provider: mockProvider,
+		})
+
+		await engine.init()
+		await engine.fetchEvents()
+
+		const result = engine.processTurn()
+
+		assert.equal(result.actionsProcessed, 100)
+		assert.equal(engine.state?.player.progress.chunkIndex, 1)
+		assert.equal(engine.state?.currentChunk.index, 1)
+		assert.equal(engine.state?.pendingActions.length, 0)
+		assert.ok(result.breakEvents.length > 0)
+	})
 })
 
