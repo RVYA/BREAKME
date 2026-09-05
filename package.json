@@ -1,6 +1,7 @@
 {
-  "name": "breakme",
-  "version": "0.0.1",
+  "name": "breakme.md",
+  "version": "0.1.0",
+  "description": "An incremental game with progress based on your `git` usage.",
   "type": "module",
   "imports": {
     "#data/*": "./src/data/*.ts",
