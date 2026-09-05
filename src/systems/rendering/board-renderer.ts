@@ -1,6 +1,7 @@
 import { loadSvgDefs } from "#systems/rendering/asset-loader"
 import { BOARD_HEIGHT, BOARD_WIDTH, TOTAL_CELLS, getCellPosition } from "#systems/rendering/layout"
 import { loadGameBoardStyles } from "#systems/rendering/style-loader"
+import { generateThemeCss, type ThemeOptions } from "#systems/rendering/theme-generator"
 import type GameState from "#types/game-state"
 import type Chunk from "#types/tile/chunk"
 
@@ -8,9 +9,15 @@ function isGameState(target: Chunk | GameState): target is GameState {
 	return "currentChunk" in target
 }
 
-export async function renderSvg(target: Chunk | GameState): Promise<string> {
+export async function renderSvg(target: Chunk | GameState, themeOptions?: ThemeOptions): Promise<string> {
 	const chunk = isGameState(target) ? target.currentChunk : target
 	const [styles, defs] = await Promise.all([loadGameBoardStyles(), loadSvgDefs()])
+
+	const resolvedThemeOptions: ThemeOptions = {
+		...(isGameState(target) ? { seedOrUsername: target.player.identity.username || target.player.identity.baseSeed } : {}),
+		...themeOptions,
+	}
+	const themeCss = generateThemeCss(resolvedThemeOptions)
 
 	const unbrokenTiles = chunk.tiles.filter((tile) => !tile.isBroken)
 	const cellElements: string[] = []
@@ -45,6 +52,7 @@ export async function renderSvg(target: Chunk | GameState): Promise<string> {
 	return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${BOARD_WIDTH} ${BOARD_HEIGHT}" width="100%" height="100%">
 ${defs}
 <style>
+${themeCss}
 ${styles}
 </style>
 <rect width="${BOARD_WIDTH}" height="${BOARD_HEIGHT}" rx="8" ry="8" class="bg" />
@@ -53,3 +61,4 @@ ${cellElements.join("\n")}
 }
 
 export { BOARD_HEIGHT, BOARD_WIDTH, TOTAL_CELLS, getCellPosition }
+
