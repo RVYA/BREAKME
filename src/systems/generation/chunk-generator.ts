@@ -1,7 +1,7 @@
 import TileGenerator from "#systems/generation/tile-generator"
 import type Chunk from "#types/tile/chunk"
 
-const DEFAULT_CHUNK_SIZE = 64
+const DEFAULT_CHUNK_SIZE = 128
 
 export default class ChunkGenerator {
 	#seed: number
