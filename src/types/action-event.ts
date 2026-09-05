@@ -47,6 +47,18 @@ class ActionEvent {
 	get eventSource() {
 		return getEventSourceOf(this.#type)
 	}
+
+	toJSON() {
+		return {
+			id: this.#id,
+			type: this.#type,
+			timestamp: this.#timestamp,
+		}
+	}
+
+	static fromJSON(data: { id: string; type: ActionType; timestamp: string }): ActionEvent {
+		return new ActionEvent(data.id, data.type, data.timestamp)
+	}
 }
 
 export { ActionEvent, ActionEvent as default }
