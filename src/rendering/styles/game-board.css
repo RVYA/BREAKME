@@ -11,6 +11,7 @@
 }
 
 .accent {
-	fill: var(--accent, #21262d);
+	fill: var(--fg, #f0f6fc);
+	opacity: 0.2;
 }
 
