@@ -40,7 +40,7 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
       UNLOCKED: ${unlockablesHtml}
     </td>
     <td width="50%" align="center" valign="middle">
-      <img src="${svgPath}" width="205" alt="BREAKME.md Board" />
+      <img src="${svgPath}" width="480" alt="BREAKME.md Board" />
     </td>
   </tr>
 </table>
