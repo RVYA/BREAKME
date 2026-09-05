@@ -8,7 +8,7 @@ type PrngStream = {
 	getIndex: () => number
 }
 
-export default abstract class EntityGenerator<T> {
+export default abstract class EntityGenerator<T, TContext = TileShapeName> {
 	/*#seed: number
 	#key: string*/
 
@@ -20,14 +20,14 @@ export default abstract class EntityGenerator<T> {
 	#rarityRoll: PrngStream
 	#poolRoll: PrngStream
 
-	#filter?: (entity: T, shape?: TileShapeName) => boolean
+	#filter?: (entity: T, context?: TContext) => boolean
 
 	protected constructor(
 		seed: number,
 		key: string,
 		pool: Record<RarityLabel, T[]>,
 		generationChance?: number,
-		filter?: (entity: T, shape?: TileShapeName) => boolean,
+		filter?: (entity: T, context?: TContext) => boolean,
 	) {
 		/*this.#seed = seed
 		this.#key = key*/
@@ -58,16 +58,18 @@ export default abstract class EntityGenerator<T> {
 		return RARITY_DISTRIBUTION.length - 1
 	}
 
-	#isApplicableTo(instance: T, shape?: TileShapeName): boolean {
+	#isApplicableTo(instance: T, context?: TContext): boolean {
 		if (!this.#filter || !instance) return true
-		else return this.#filter(instance, shape)
+		else return this.#filter(instance, context)
 	}
 
-	#getCandidates(rolledIndex: number, shape?: TileShapeName): T[] {
-		for (let i = rolledIndex; i < RARITY_DISTRIBUTION.length; i++) {
+	#getCandidates(rolledIndex: number, context?: TContext): T[] {
+		const totalTiers = RARITY_DISTRIBUTION.length
+		for (let offset = 0; offset < totalTiers; offset++) {
+			const i = (rolledIndex + offset) % totalTiers
 			const tier = RARITY_DISTRIBUTION[i].label
 			const tierPool = this.#pool[tier] ?? []
-			const candidates = this.#filter ? tierPool.filter((e) => this.#isApplicableTo(e, shape)) : tierPool
+			const candidates = this.#filter ? tierPool.filter((e) => this.#isApplicableTo(e, context)) : tierPool
 
 			if (candidates.length > 0) {
 				return candidates
@@ -77,10 +79,10 @@ export default abstract class EntityGenerator<T> {
 		return []
 	}
 
-	generate(shape?: TileShapeName): T | undefined {
+	generate(context?: TContext): T | undefined {
 		if (!this.#shouldGenerate()) return
 
-		const candidates = this.#getCandidates(this.#rollRarityIndex(), shape)
+		const candidates = this.#getCandidates(this.#rollRarityIndex(), context)
 		if (candidates.length === 0) return
 
 		const roll = Math.floor(this.#poolRoll.next() * candidates.length)
