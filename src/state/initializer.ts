@@ -26,8 +26,8 @@ export function createInitialGameState(options: CreateInitialStateOptions): Game
 	const createdAt = options.timestamp ?? new Date().toISOString()
 
 	const id = options.uuid ?? options.username
-	const baseSeed = murmur3_32(`${id}_${createdAt}`).toString(16)
-	const numericSeed = murmur3_32(baseSeed)
+	const numericSeed = murmur3_32(`${id}_${createdAt}`)
+	const baseSeed = numericSeed.toString(16)
 	const chunkGenerator = new ChunkGenerator(numericSeed)
 	const initialChunk = chunkGenerator.generate(0, createdAt)
 
