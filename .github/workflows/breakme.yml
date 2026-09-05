@@ -2,7 +2,7 @@ name: BREAKME.md Game Loop
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 * * * *"
   workflow_dispatch:
   push:
     branches:
@@ -33,6 +33,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add state.json BREAKME-board.svg
+          git add state.json BREAKME-board.svg README.md
           git diff --staged --quiet || git commit -m "chore(game): update BREAKME game board [skip ci]"
           git push
