@@ -3,13 +3,14 @@
 @import "./player.css";
 
 .bg {
-	fill: #ffffff;
+	fill: var(--bg, #0d1117);
 }
 
 .fg {
-	fill: #000000;
+	fill: var(--fg, #f0f6fc);
 }
 
 .accent {
-	fill: #e2e2e2;
+	fill: var(--accent, #21262d);
 }
+
