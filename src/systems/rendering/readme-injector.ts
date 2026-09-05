@@ -30,11 +30,11 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
 	const unlockablesHtml = renderUnlockablesHtml(state.player.inventory.collectibles)
 
 	return `${START_MARKER}
-<div align="center">
+<div align="center" style="width: 100%;">
 
 ## BREAKME.md
 
-<table align="center" width="100%">
+<table align="center" width="100%" style="width: 100%; table-layout: fixed;">
   <tr>
     <td width="50%" align="left" valign="middle">
       UNLOCKED: ${unlockablesHtml}

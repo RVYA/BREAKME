@@ -34,8 +34,10 @@ describe("README Injector", () => {
 		assert.ok(section.startsWith(START_MARKER))
 		assert.ok(section.endsWith(END_MARKER))
 		assert.ok(section.includes("## BREAKME.md"))
-		assert.ok(section.includes('<div align="center">'))
-		assert.ok(section.includes('<table align="center" width="100%">'))
+		assert.ok(section.includes('<div align="center" style="width: 100%;">'))
+		assert.ok(
+			section.includes('<table align="center" width="100%" style="width: 100%; table-layout: fixed;">'),
+		)
 		assert.ok(section.includes("UNLOCKED: KEEP BREAKING."))
 		assert.ok(section.includes("<p>chunk#2 • tile#14 • streak 🔥 5 • broken: 042</p>"))
 		assert.ok(section.includes('src="./custom-board.svg"'))
