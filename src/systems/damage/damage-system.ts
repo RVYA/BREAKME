@@ -1,61 +1,52 @@
 import { signGameState } from "#state/integrity"
 import { evaluateActivityUpdate } from "#systems/damage/activity-tracker"
 import { calculateBaseDamage, calculateFinalDamage } from "#systems/damage/damage-calculator"
-import ChunkGenerator from "#systems/generation/chunk-generator"
+import GameSystem from "#systems/game-system"
+import type { ActionType } from "#types/action-event"
 import type GameState from "#types/game-state"
 import type Tile from "#types/tile/tile"
-import murmur3_32 from "#utils/murmur3-32"
 
-type DamageTurnResult = {
-	damageDealt: number
-	tilesBroken: number
-	chunksCompleted: number
-	brokenTiles: Tile[]
-	actionsProcessed: number
+export type TileBreakEvent = {
+	tile: Tile
+	chunkIndex: number
+	tileIndex: number
+	actionType: ActionType
 }
 
-export default class DamageSystem {
-	processTurn(state: GameState, secretKey?: string): DamageTurnResult {
-		const pendingActions = state.pendingActions
-		if (!pendingActions || pendingActions.length === 0) {
-			return {
-				damageDealt: 0,
-				tilesBroken: 0,
-				chunksCompleted: 0,
-				brokenTiles: [],
-				actionsProcessed: 0,
-			}
-		}
+export type ChunkClearedEvent = {
+	chunkIndex: number
+	overflowDamage: number
+}
 
-		const eventTimestamps = pendingActions.map((a) => a.timestamp)
-		state.player.activity = evaluateActivityUpdate(state.player.activity, eventTimestamps, 0)
+export type DamageEvent = TileBreakEvent | ChunkClearedEvent
 
+export type DamageContext = {
+	secretKey?: string
+	overflowDamage?: number
+	actionType?: ActionType
+}
+
+export default class DamageSystem extends GameSystem<DamageEvent, DamageContext> {
+	protected processState(state: GameState, context?: DamageContext): DamageEvent[] {
+		const events: DamageEvent[] = []
 		let totalDamage = 0
-		let tilesBroken = 0
-		let chunksCompleted = 0
-		const brokenTiles: Tile[] = []
-		const actionsProcessed = pendingActions.length
 
-		const numericSeed = murmur3_32(state.player.identity.baseSeed)
-		const chunkGenerator = new ChunkGenerator(numericSeed)
-
-		for (const action of pendingActions) {
-			const baseDamage = calculateBaseDamage(action.type)
-			let remainingDamage = calculateFinalDamage(baseDamage, state.player.activity.currentStreak)
-			totalDamage = Math.round((totalDamage + remainingDamage) * 100) / 100
+		if (context?.overflowDamage && context.overflowDamage > 0) {
+			let remainingDamage = context.overflowDamage
+			const actionType = context.actionType ?? "commit"
 
 			while (remainingDamage > 0) {
-				let currentTileIndex = state.player.progress.tileIndex
-				let currentChunk = state.currentChunk
+				const currentTileIndex = state.player.progress.tileIndex
+				const currentChunk = state.currentChunk
 
 				if (currentTileIndex >= currentChunk.tiles.length) {
 					currentChunk.isCleared = true
-					state.player.progress.chunkIndex += 1
-					state.player.progress.tileIndex = 0
-					currentTileIndex = 0
-					chunksCompleted += 1
-					state.currentChunk = chunkGenerator.generate(state.player.progress.chunkIndex)
-					currentChunk = state.currentChunk
+					events.push({
+						chunkIndex: state.player.progress.chunkIndex,
+						overflowDamage: remainingDamage,
+					})
+					signGameState(state, context?.secretKey ?? state.player.identity.baseSeed)
+					return events
 				}
 
 				const tile = currentChunk.tiles[currentTileIndex]
@@ -68,34 +59,100 @@ export default class DamageSystem {
 					tile.applyDamage(hpBefore)
 					remainingDamage = Math.round((remainingDamage - hpBefore) * 100) / 100
 					state.player.progress.totalTilesBroken += 1
-					tilesBroken += 1
-					brokenTiles.push(tile)
+
+					const breakEvent: TileBreakEvent = {
+						tile,
+						chunkIndex: state.player.progress.chunkIndex,
+						tileIndex: currentTileIndex,
+						actionType,
+					}
+					events.push(breakEvent)
 					state.player.progress.tileIndex += 1
 
 					if (state.player.progress.tileIndex >= currentChunk.tiles.length) {
 						currentChunk.isCleared = true
-						state.player.progress.chunkIndex += 1
-						state.player.progress.tileIndex = 0
-						chunksCompleted += 1
-						state.currentChunk = chunkGenerator.generate(state.player.progress.chunkIndex)
+						events.push({
+							chunkIndex: state.player.progress.chunkIndex,
+							overflowDamage: remainingDamage,
+						})
+						signGameState(state, context?.secretKey ?? state.player.identity.baseSeed)
+						return events
 					}
 				}
 			}
 		}
 
-		state.player.activity.mostDamage = Math.max(state.player.activity.mostDamage, totalDamage)
-		state.pendingActions = []
-
-		signGameState(state, secretKey ?? state.player.identity.baseSeed)
-
-		return {
-			damageDealt: totalDamage,
-			tilesBroken,
-			chunksCompleted,
-			brokenTiles,
-			actionsProcessed,
+		const pendingActions = state.pendingActions
+		if (!pendingActions || pendingActions.length === 0) {
+			signGameState(state, context?.secretKey ?? state.player.identity.baseSeed)
+			return events
 		}
+
+		const eventTimestamps = pendingActions.map((a) => a.timestamp)
+		state.player.activity = evaluateActivityUpdate(state.player.activity, eventTimestamps, 0)
+
+		while (state.pendingActions.length > 0) {
+			const action = state.pendingActions[0]
+			const baseDamage = calculateBaseDamage(action.type)
+			let remainingDamage = calculateFinalDamage(baseDamage, state.player.activity.currentStreak)
+			totalDamage = Math.round((totalDamage + remainingDamage) * 100) / 100
+
+			while (remainingDamage > 0) {
+				const currentTileIndex = state.player.progress.tileIndex
+				const currentChunk = state.currentChunk
+
+				if (currentTileIndex >= currentChunk.tiles.length) {
+					currentChunk.isCleared = true
+					state.pendingActions.shift()
+					events.push({
+						chunkIndex: state.player.progress.chunkIndex,
+						overflowDamage: remainingDamage,
+					})
+					state.player.activity.mostDamage = Math.max(state.player.activity.mostDamage, totalDamage)
+					signGameState(state, context?.secretKey ?? state.player.identity.baseSeed)
+					return events
+				}
+
+				const tile = currentChunk.tiles[currentTileIndex]
+				const hpBefore = tile.currentHp
+
+				if (remainingDamage < hpBefore) {
+					tile.applyDamage(remainingDamage)
+					remainingDamage = 0
+				} else {
+					tile.applyDamage(hpBefore)
+					remainingDamage = Math.round((remainingDamage - hpBefore) * 100) / 100
+					state.player.progress.totalTilesBroken += 1
+
+					const breakEvent: TileBreakEvent = {
+						tile,
+						chunkIndex: state.player.progress.chunkIndex,
+						tileIndex: currentTileIndex,
+						actionType: action.type,
+					}
+					events.push(breakEvent)
+					state.player.progress.tileIndex += 1
+
+					if (state.player.progress.tileIndex >= currentChunk.tiles.length) {
+						currentChunk.isCleared = true
+						state.pendingActions.shift()
+						events.push({
+							chunkIndex: state.player.progress.chunkIndex,
+							overflowDamage: remainingDamage,
+						})
+						state.player.activity.mostDamage = Math.max(state.player.activity.mostDamage, totalDamage)
+						signGameState(state, context?.secretKey ?? state.player.identity.baseSeed)
+						return events
+					}
+				}
+			}
+
+			state.pendingActions.shift()
+		}
+
+		state.player.activity.mostDamage = Math.max(state.player.activity.mostDamage, totalDamage)
+		signGameState(state, context?.secretKey ?? state.player.identity.baseSeed)
+
+		return events
 	}
 }
-
-export type { DamageTurnResult }
