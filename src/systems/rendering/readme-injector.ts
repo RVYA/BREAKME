@@ -27,25 +27,34 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
 	const tileIndex = state.player.progress.tileIndex
 	const currentStreak = state.player.activity.currentStreak
 	const totalBroken = String(state.player.progress.totalTilesBroken).padStart(3, "0")
+	const totalCollectibles = Object.keys(COLLECTIBLES).length
+	const collectedCount = state.player.inventory.collectibles.length
+	const collectedFormatted = String(collectedCount).padStart(3, "0")
+	const totalFormatted = String(totalCollectibles).padStart(3, "0")
 	const unlockablesHtml = renderUnlockablesHtml(state.player.inventory.collectibles)
 
 	return `${START_MARKER}
-<div align="center" style="width: 100%;">
+<div align="center">
 
 ## BREAKME.md
 
-<table align="center" width="100%" style="width: 100%; table-layout: fixed;">
+<table align="center" width="480">
   <tr>
-    <td width="50%" align="left" valign="middle">
-      UNLOCKED: ${unlockablesHtml}
+    <td align="center">
+      CHUNK#${chunkIndex} • TILE#${tileIndex} • 🔥STREAK#${currentStreak} • BROKEN#${totalBroken}
     </td>
-    <td width="50%" align="center" valign="middle">
+  </tr>
+  <tr>
+    <td align="center">
       <img src="${svgPath}" width="480" alt="BREAKME.md Board" />
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      COLLECTED (${collectedFormatted}/${totalFormatted}): ${unlockablesHtml}
+    </td>
+  </tr>
 </table>
-
-<p>CHUNK#${chunkIndex} • TILE#${tileIndex} • 🔥STREAK#${currentStreak} • BROKEN#${totalBroken}</p>
 
 </div>
 ${END_MARKER}`
