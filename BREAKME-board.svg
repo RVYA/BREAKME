@@ -55,27 +55,27 @@
 
 .effect-negative {
 	stroke: #000000;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-shiny {
 	stroke: #ffd700;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-hot {
 	stroke: #dc143c;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-cold {
 	stroke: #f0ffff;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-wet {
 	stroke: #00008b;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 @keyframes player-sway {
@@ -121,17 +121,17 @@
 		<use href="#tile-base" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(106, 4) scale(0.8)">
-		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="variant-dirt" />
 	</g>
 	<g class="grid-cell" transform="translate(126, 4) scale(0.8)">
-		<use href="#tile-base" class="variant-dirt" />
+		<use href="#tile-base" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(146, 4) scale(0.8)">
 		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="effect-negative" fill="none" />
 	</g>
 	<g class="grid-cell" transform="translate(166, 4) scale(0.8)">
 		<use href="#tile-base" class="fg" />
-		<use href="#tile-base" class="effect-negative" fill="none" />
 	</g>
 	<g class="grid-cell" transform="translate(186, 4) scale(0.8)">
 		<use href="#tile-base" class="fg" />
@@ -147,10 +147,10 @@
 	</g>
 	<g class="grid-cell" transform="translate(266, 4) scale(0.8)">
 		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="effect-wet" fill="none" />
 	</g>
 	<g class="grid-cell" transform="translate(286, 4) scale(0.8)">
-		<use href="#tile-base" class="fg" />
-		<use href="#tile-base" class="effect-wet" fill="none" />
+		<use href="#tile-hidden" class="accent" />
 	</g>
 	<g class="grid-cell" transform="translate(306, 4) scale(0.8)">
 		<use href="#tile-hidden" class="accent" />
