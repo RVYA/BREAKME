@@ -1,24 +1,24 @@
 .effect-negative {
 	stroke: #000000;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-shiny {
 	stroke: #ffd700;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-hot {
 	stroke: #dc143c;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-cold {
 	stroke: #f0ffff;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 
 .effect-wet {
 	stroke: #00008b;
-	stroke-width: 1;
+	stroke-width: 2;
 }
