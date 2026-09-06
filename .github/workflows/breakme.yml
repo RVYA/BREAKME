@@ -13,6 +13,10 @@ on:
       - ".agents/**"
       - "README.md"
 
+concurrency:
+  group: breakme-game
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -34,5 +38,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add state.json BREAKME-board.svg README.md
-          git diff --staged --quiet || git commit -m "chore(game): update BREAKME game board [skip ci]"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(game): update BREAKME game board [skip ci]"
+            git pull --rebase -X theirs origin main
+            git push
+          fi
