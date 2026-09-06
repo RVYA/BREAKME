@@ -23,9 +23,9 @@ export function renderUnlockablesHtml(collectibles: string[]): string {
 }
 
 export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-board.svg"): string {
-	const chunkIndex = state.player.progress.chunkIndex
-	const tileIndex = state.player.progress.tileIndex
-	const currentStreak = state.player.activity.currentStreak
+	const chunkIndex = String(state.player.progress.chunkIndex).padStart(3, "0")
+	const tileIndex = String(state.player.progress.tileIndex).padStart(3, "0")
+	const currentStreak = String(state.player.activity.currentStreak).padStart(3, "0")
 	const totalBroken = String(state.player.progress.totalTilesBroken).padStart(3, "0")
 	const totalCollectibles = Object.keys(COLLECTIBLES).length
 	const collectedCount = state.player.inventory.collectibles.length
@@ -38,19 +38,20 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
 
 ## BREAKME.md
 
-<table align="center" width="480">
+<table align="center" width="640">
   <tr>
-    <td align="center">
-      CHUNK#${chunkIndex} • TILE#${tileIndex} • 🔥STREAK#${currentStreak} • BROKEN#${totalBroken}
+    <td align="center" width="25%">CHUNK#${chunkIndex}</td>
+    <td align="center" width="25%">TILE#${tileIndex}</td>
+    <td align="center" width="25%">🔥STREAK#${currentStreak}</td>
+    <td align="center" width="25%">BROKEN#${totalBroken}</td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">
+      <img src="${svgPath}" width="640" alt="BREAKME.md Board" />
     </td>
   </tr>
   <tr>
-    <td align="center">
-      <img src="${svgPath}" width="480" alt="BREAKME.md Board" />
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
+    <td colspan="4" align="center">
       COLLECTED (${collectedFormatted}/${totalFormatted}): ${unlockablesHtml}
     </td>
   </tr>
