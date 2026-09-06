@@ -38,12 +38,12 @@ export function generateReadmeSection(state: GameState, svgPath = "./BREAKME-boa
 
 ## BREAKME.md
 
-<table align="center" width="640">
+<table align="center" width="640" style="width: 100%; max-width: 640px;">
   <tr>
-    <td align="center" width="25%">CHUNK#${chunkIndex}</td>
-    <td align="center" width="25%">TILE#${tileIndex}</td>
-    <td align="center" width="25%">🔥STREAK#${currentStreak}</td>
-    <td align="center" width="25%">BROKEN#${totalBroken}</td>
+    <td align="center" width="25%">⛰️<i>CHUNK</i><b>#${chunkIndex}</b></td>
+    <td align="center" width="25%">🪨<i>TILE</i><b>#${tileIndex}</b></td>
+    <td align="center" width="25%">🔥<i>STREAK</i><b>#${currentStreak}</b></td>
+    <td align="center" width="25%">⛏️<i>BROKEN</i><b>#${totalBroken}</b></td>
   </tr>
   <tr>
     <td colspan="4" align="center">

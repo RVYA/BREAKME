@@ -35,11 +35,13 @@ describe("README Injector", () => {
 		assert.ok(section.endsWith(END_MARKER))
 		assert.ok(section.includes("## BREAKME.md"))
 		assert.ok(section.includes('<div align="center">'))
-		assert.ok(section.includes('<table align="center" width="640">'))
-		assert.ok(section.includes('<td align="center" width="25%">CHUNK#002</td>'))
-		assert.ok(section.includes('<td align="center" width="25%">TILE#014</td>'))
-		assert.ok(section.includes('<td align="center" width="25%">🔥STREAK#005</td>'))
-		assert.ok(section.includes('<td align="center" width="25%">BROKEN#042</td>'))
+		assert.ok(
+			section.includes('<table align="center" width="640" style="width: 100%; max-width: 640px;">'),
+		)
+		assert.ok(section.includes('<td align="center" width="25%">⛰️<i>CHUNK</i><b>#002</b></td>'))
+		assert.ok(section.includes('<td align="center" width="25%">🪨<i>TILE</i><b>#014</b></td>'))
+		assert.ok(section.includes('<td align="center" width="25%">🔥<i>STREAK</i><b>#005</b></td>'))
+		assert.ok(section.includes('<td align="center" width="25%">⛏️<i>BROKEN</i><b>#042</b></td>'))
 		assert.ok(section.includes('src="./custom-board.svg" width="640"'))
 		assert.ok(section.includes("COLLECTED (000/003): KEEP BREAKING."))
 	})
@@ -69,7 +71,7 @@ ${END_MARKER}
 		assert.ok(result.includes("## About Me"))
 		assert.ok(!result.includes("old content"))
 		assert.ok(result.includes("COLLECTED (000/003): KEEP BREAKING."))
-		assert.ok(result.includes('<td align="center" width="25%">CHUNK#000</td>'))
+		assert.ok(result.includes('<td align="center" width="25%">⛰️<i>CHUNK</i><b>#000</b></td>'))
 	})
 
 	it("returns original content unchanged if markers are missing", () => {
