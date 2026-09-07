@@ -64,9 +64,9 @@ Add these comment tags where you want the board to appear:
 <table align="center" width="640" style="width: 100%; max-width: 640px;">
   <tr>
     <td align="center" width="25%">⛰️<i>CHUNK</i><b>#000</b></td>
-    <td align="center" width="25%">🪨<i>TILE</i><b>#060</b></td>
+    <td align="center" width="25%">🪨<i>TILE</i><b>#062</b></td>
     <td align="center" width="25%">🔥<i>STREAK</i><b>#005</b></td>
-    <td align="center" width="25%">⛏️<i>BROKEN</i><b>#060</b></td>
+    <td align="center" width="25%">⛏️<i>BROKEN</i><b>#062</b></td>
   </tr>
   <tr>
     <td colspan="4" align="center">
@@ -75,7 +75,7 @@ Add these comment tags where you want the board to appear:
   </tr>
   <tr>
     <td colspan="4" align="center">
-      COLLECTED (003/250): <span title="🦆 Rubber Duck with a PhD (Common)">🦆</span> <span title="🐱 Cat Sitting on Keyboard (Common)">🐱</span> <span title="☕ Stale Espresso Puck (Common)">☕</span>
+      COLLECTED (003/250): <span>Test Collectible #2</span> <span>Test Collectible #1</span> <span>Test Collectible #3</span>
     </td>
   </tr>
 </table>
