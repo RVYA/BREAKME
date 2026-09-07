@@ -179,4 +179,222 @@ describe("Board Renderer (System)", () => {
 		assert.ok(svg.includes('href="#tile-sun"'))
 		assert.ok(svg.includes('href="#tile-sapphire"'))
 	})
+
+	it("renders tiles with new variant gradient styles and includes gradient defs", async () => {
+		const tiles = [
+			new Tile(0, "Base", "Radiated"),
+			new Tile(1, "Base", "Sunburn"),
+			new Tile(2, "Base", "Zebra"),
+			new Tile(3, "Base", "Metal"),
+			new Tile(4, "Base", "Wood"),
+			new Tile(5, "Base", "Candy"),
+			new Tile(6, "Base", "BlackHole"),
+		]
+		const chunk = {
+			index: 0,
+			tiles,
+			createdAt: "2026-08-31T20:00:00.000Z",
+			isCleared: false,
+		}
+
+		const svg = await renderSvg(chunk)
+		assert.ok(svg.includes('id="gradient-radiated"'))
+		assert.ok(svg.includes('id="gradient-sunburn"'))
+		assert.ok(svg.includes('id="gradient-zebra"'))
+		assert.ok(svg.includes('id="gradient-metal"'))
+		assert.ok(svg.includes('id="gradient-wood"'))
+		assert.ok(svg.includes('id="gradient-candy"'))
+		assert.ok(svg.includes('id="gradient-blackhole"'))
+
+		assert.ok(svg.includes('class="variant-radiated"'))
+		assert.ok(svg.includes('class="variant-sunburn"'))
+		assert.ok(svg.includes('class="variant-zebra"'))
+		assert.ok(svg.includes('class="variant-metal"'))
+		assert.ok(svg.includes('class="variant-wood"'))
+		assert.ok(svg.includes('class="variant-candy"'))
+		assert.ok(svg.includes('class="variant-blackhole"'))
+	})
+
+	it("renders all 11 additional gradient variants with valid SVG defs and classes", async () => {
+		const tiles = [
+			new Tile(0, "Base", "Moss"),
+			new Tile(1, "Base", "Sandstone"),
+			new Tile(2, "Base", "Copper"),
+			new Tile(3, "Base", "Amethyst"),
+			new Tile(4, "Base", "Glacier"),
+			new Tile(5, "Base", "Obsidian"),
+			new Tile(6, "Base", "Magma"),
+			new Tile(7, "Base", "CyberNeon"),
+			new Tile(8, "Base", "Plasma"),
+			new Tile(9, "Base", "Holographic"),
+			new Tile(10, "Base", "Supernova"),
+		]
+		const chunk = {
+			index: 0,
+			tiles,
+			createdAt: "2026-08-31T20:00:00.000Z",
+			isCleared: false,
+		}
+
+		const svg = await renderSvg(chunk)
+		assert.ok(svg.includes('id="gradient-moss"'))
+		assert.ok(svg.includes('id="gradient-sandstone"'))
+		assert.ok(svg.includes('id="gradient-copper"'))
+		assert.ok(svg.includes('id="gradient-amethyst"'))
+		assert.ok(svg.includes('id="gradient-glacier"'))
+		assert.ok(svg.includes('id="gradient-obsidian"'))
+		assert.ok(svg.includes('id="gradient-magma"'))
+		assert.ok(svg.includes('id="gradient-cyberneon"'))
+		assert.ok(svg.includes('id="gradient-plasma"'))
+		assert.ok(svg.includes('id="gradient-holographic"'))
+		assert.ok(svg.includes('id="gradient-supernova"'))
+
+		assert.ok(svg.includes('class="variant-moss"'))
+		assert.ok(svg.includes('class="variant-sandstone"'))
+		assert.ok(svg.includes('class="variant-copper"'))
+		assert.ok(svg.includes('class="variant-amethyst"'))
+		assert.ok(svg.includes('class="variant-glacier"'))
+		assert.ok(svg.includes('class="variant-obsidian"'))
+		assert.ok(svg.includes('class="variant-magma"'))
+		assert.ok(svg.includes('class="variant-cyberneon"'))
+		assert.ok(svg.includes('class="variant-plasma"'))
+		assert.ok(svg.includes('class="variant-holographic"'))
+		assert.ok(svg.includes('class="variant-supernova"'))
+	})
+
+	it("renders all 20 computational, mineral, and cosmic variants with valid defs and classes", async () => {
+		const tiles = [
+			new Tile(0, "Base", "Blueprint"),
+			new Tile(1, "Base", "Coral"),
+			new Tile(2, "Base", "Terminal"),
+			new Tile(3, "Base", "Amber"),
+			new Tile(4, "Base", "RoseGold"),
+			new Tile(5, "Base", "Jade"),
+			new Tile(6, "Base", "Abyssal"),
+			new Tile(7, "Base", "Circuit"),
+			new Tile(8, "Base", "Quicksilver"),
+			new Tile(9, "Base", "Aurora"),
+			new Tile(10, "Base", "Ember"),
+			new Tile(11, "Base", "Damascus"),
+			new Tile(12, "Base", "Glitch"),
+			new Tile(13, "Base", "Bismuth"),
+			new Tile(14, "Base", "SolarFlare"),
+			new Tile(15, "Base", "Toxic"),
+			new Tile(16, "Base", "Vaporwave"),
+			new Tile(17, "Base", "Nebula"),
+			new Tile(18, "Base", "Mithril"),
+			new Tile(19, "Base", "DarkMatter"),
+		]
+		const chunk = {
+			index: 0,
+			tiles,
+			createdAt: "2026-08-31T20:00:00.000Z",
+			isCleared: false,
+		}
+
+		const svg = await renderSvg(chunk)
+		assert.ok(svg.includes('id="gradient-blueprint"'))
+		assert.ok(svg.includes('id="gradient-coral"'))
+		assert.ok(svg.includes('id="gradient-terminal"'))
+		assert.ok(svg.includes('id="gradient-amber"'))
+		assert.ok(svg.includes('id="gradient-rosegold"'))
+		assert.ok(svg.includes('id="gradient-jade"'))
+		assert.ok(svg.includes('id="gradient-abyssal"'))
+		assert.ok(svg.includes('id="gradient-circuit"'))
+		assert.ok(svg.includes('id="gradient-quicksilver"'))
+		assert.ok(svg.includes('id="gradient-aurora"'))
+		assert.ok(svg.includes('id="gradient-ember"'))
+		assert.ok(svg.includes('id="gradient-damascus"'))
+		assert.ok(svg.includes('id="gradient-glitch"'))
+		assert.ok(svg.includes('id="gradient-bismuth"'))
+		assert.ok(svg.includes('id="gradient-solarflare"'))
+		assert.ok(svg.includes('id="gradient-toxic"'))
+		assert.ok(svg.includes('id="gradient-vaporwave"'))
+		assert.ok(svg.includes('id="gradient-nebula"'))
+		assert.ok(svg.includes('id="gradient-mithril"'))
+		assert.ok(svg.includes('id="gradient-darkmatter"'))
+
+		assert.ok(svg.includes('class="variant-blueprint"'))
+		assert.ok(svg.includes('class="variant-coral"'))
+		assert.ok(svg.includes('class="variant-terminal"'))
+		assert.ok(svg.includes('class="variant-amber"'))
+		assert.ok(svg.includes('class="variant-rosegold"'))
+		assert.ok(svg.includes('class="variant-jade"'))
+		assert.ok(svg.includes('class="variant-abyssal"'))
+		assert.ok(svg.includes('class="variant-circuit"'))
+		assert.ok(svg.includes('class="variant-quicksilver"'))
+		assert.ok(svg.includes('class="variant-aurora"'))
+		assert.ok(svg.includes('class="variant-ember"'))
+		assert.ok(svg.includes('class="variant-damascus"'))
+		assert.ok(svg.includes('class="variant-glitch"'))
+		assert.ok(svg.includes('class="variant-bismuth"'))
+		assert.ok(svg.includes('class="variant-solarflare"'))
+		assert.ok(svg.includes('class="variant-toxic"'))
+		assert.ok(svg.includes('class="variant-vaporwave"'))
+		assert.ok(svg.includes('class="variant-nebula"'))
+		assert.ok(svg.includes('class="variant-mithril"'))
+		assert.ok(svg.includes('class="variant-darkmatter"'))
+	})
+
+	it("renders all 16 nature and cultural variants with valid defs and classes", async () => {
+		const tiles = [
+			new Tile(0, "Base", "Terracotta"),
+			new Tile(1, "Base", "Sakura"),
+			new Tile(2, "Base", "PolkaDot"),
+			new Tile(3, "Base", "Camo"),
+			new Tile(4, "Base", "Bandana"),
+			new Tile(5, "Base", "Seigaiha"),
+			new Tile(6, "Base", "Honeycomb"),
+			new Tile(7, "Base", "Shibori"),
+			new Tile(8, "Base", "Monstera"),
+			new Tile(9, "Base", "Marble"),
+			new Tile(10, "Base", "Tortoise"),
+			new Tile(11, "Base", "Tartan"),
+			new Tile(12, "Base", "Houndstooth"),
+			new Tile(13, "Base", "Leopard"),
+			new Tile(14, "Base", "Zellige"),
+			new Tile(15, "Base", "Kintsugi"),
+		]
+		const chunk = {
+			index: 0,
+			tiles,
+			createdAt: "2026-08-31T20:00:00.000Z",
+			isCleared: false,
+		}
+
+		const svg = await renderSvg(chunk)
+		assert.ok(svg.includes('id="gradient-terracotta"'))
+		assert.ok(svg.includes('id="gradient-sakura"'))
+		assert.ok(svg.includes('id="pattern-polkadot"'))
+		assert.ok(svg.includes('id="gradient-camo"'))
+		assert.ok(svg.includes('id="gradient-bandana"'))
+		assert.ok(svg.includes('id="gradient-seigaiha"'))
+		assert.ok(svg.includes('id="pattern-honeycomb"'))
+		assert.ok(svg.includes('id="gradient-shibori"'))
+		assert.ok(svg.includes('id="gradient-monstera"'))
+		assert.ok(svg.includes('id="gradient-marble"'))
+		assert.ok(svg.includes('id="gradient-tortoise"'))
+		assert.ok(svg.includes('id="pattern-tartan"'))
+		assert.ok(svg.includes('id="pattern-houndstooth"'))
+		assert.ok(svg.includes('id="pattern-leopard"'))
+		assert.ok(svg.includes('id="pattern-zellige"'))
+		assert.ok(svg.includes('id="gradient-kintsugi"'))
+
+		assert.ok(svg.includes('class="variant-terracotta"'))
+		assert.ok(svg.includes('class="variant-sakura"'))
+		assert.ok(svg.includes('class="variant-polkadot"'))
+		assert.ok(svg.includes('class="variant-camo"'))
+		assert.ok(svg.includes('class="variant-bandana"'))
+		assert.ok(svg.includes('class="variant-seigaiha"'))
+		assert.ok(svg.includes('class="variant-honeycomb"'))
+		assert.ok(svg.includes('class="variant-shibori"'))
+		assert.ok(svg.includes('class="variant-monstera"'))
+		assert.ok(svg.includes('class="variant-marble"'))
+		assert.ok(svg.includes('class="variant-tortoise"'))
+		assert.ok(svg.includes('class="variant-tartan"'))
+		assert.ok(svg.includes('class="variant-houndstooth"'))
+		assert.ok(svg.includes('class="variant-leopard"'))
+		assert.ok(svg.includes('class="variant-zellige"'))
+		assert.ok(svg.includes('class="variant-kintsugi"'))
+	})
 })
