@@ -41,7 +41,7 @@ function createMockGameState(overrides?: Partial<GameState>): GameState {
 			isCleared: false,
 		},
 		collectiblePool: {
-			common: ["Test Collectible #1"],
+			common: ["🦆 Rubber Duck with a PhD"],
 		},
 		pendingActions: [],
 		...overrides,

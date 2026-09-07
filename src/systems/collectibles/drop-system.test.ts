@@ -49,7 +49,7 @@ describe("DropSystem", () => {
 	it("completely deletes the rarity key from collectiblePool when depleted", () => {
 		const state = createInitialGameState({ username: "testuser" })
 		state.collectiblePool = {
-			common: ["Test Collectible #1"],
+			common: ["🦆 Rubber Duck with a PhD"],
 		}
 
 		const dropSystem = new DropSystem(1.0)
@@ -59,7 +59,7 @@ describe("DropSystem", () => {
 		const list = Array.isArray(result) ? result : [result]
 
 		assert.equal(list.length, 1)
-		assert.equal(list[0].collectible, "Test Collectible #1")
+		assert.equal(list[0].collectible, "🦆 Rubber Duck with a PhD")
 		assert.equal(state.player.inventory.collectibles.length, 1)
 		assert.equal("common" in state.collectiblePool, false)
 		assert.equal(state.collectiblePool.common, undefined)
@@ -68,7 +68,7 @@ describe("DropSystem", () => {
 	it("cascades to lower rarity when higher rarity tier is missing or depleted", () => {
 		const state = createInitialGameState({ username: "testuser" })
 		state.collectiblePool = {
-			common: ["Test Collectible #1"],
+			common: ["🦆 Rubber Duck with a PhD"],
 		}
 
 		const dropSystem = new DropSystem(1.0)
@@ -78,14 +78,14 @@ describe("DropSystem", () => {
 		const list = Array.isArray(result) ? result : [result]
 
 		assert.equal(list.length, 1)
-		assert.equal(list[0].collectible, "Test Collectible #1")
+		assert.equal(list[0].collectible, "🦆 Rubber Duck with a PhD")
 		assert.equal(list[0].rarity, "common")
 	})
 
 	it("enforces spawnCondition criteria like minTileIndex", () => {
 		const state = createInitialGameState({ username: "testuser" })
 		state.collectiblePool = {
-			uncommon: ["Test Collectible #3"],
+			uncommon: ["🫙 Detached HEAD in a Jar"],
 		}
 
 		const dropSystem = new DropSystem(1.0)
@@ -94,10 +94,10 @@ describe("DropSystem", () => {
 		const invalidList = Array.isArray(invalidResult) ? invalidResult : [invalidResult]
 		assert.equal(invalidList.length, 0)
 
-		const validResult = dropSystem.process(state, createMockBreakEvent({ tileIndex: 5 }))
+		const validResult = dropSystem.process(state, createMockBreakEvent({ tileIndex: 30 }))
 		const validList = Array.isArray(validResult) ? validResult : [validResult]
 		assert.equal(validList.length, 1)
-		assert.equal(validList[0].collectible, "Test Collectible #3")
+		assert.equal(validList[0].collectible, "🫙 Detached HEAD in a Jar")
 	})
 
 	it("returns empty array when entire pool is empty", () => {
@@ -114,7 +114,7 @@ describe("DropSystem", () => {
 	it("emits individual CollectibleDropEvent to registered handler", () => {
 		const state = createInitialGameState({ username: "testuser" })
 		state.collectiblePool = {
-			common: ["Test Collectible #1"],
+			common: ["🦆 Rubber Duck with a PhD"],
 		}
 
 		const emitted: CollectibleDropEvent[] = []
@@ -123,6 +123,6 @@ describe("DropSystem", () => {
 		dropSystem.process(state, [createMockBreakEvent()])
 
 		assert.equal(emitted.length, 1)
-		assert.equal(emitted[0].collectible, "Test Collectible #1")
+		assert.equal(emitted[0].collectible, "🦆 Rubber Duck with a PhD")
 	})
 })

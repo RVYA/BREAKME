@@ -24,15 +24,15 @@ describe("CollectibleGenerator", () => {
 
 	it("respects spawn conditions such as minTileIndex", () => {
 		const pool: CollectiblePool = {
-			uncommon: ["Test Collectible #3"],
+			uncommon: ["🫙 Detached HEAD in a Jar"],
 		}
 		const generator = new CollectibleGenerator(12345, "drop_test", pool, 1.0)
 
 		const invalidResult = generator.generate({ tileIndex: 0 })
 		assert.equal(invalidResult, undefined)
 
-		const validResult = generator.generate({ tileIndex: 5 })
-		assert.equal(validResult, "Test Collectible #3")
+		const validResult = generator.generate({ tileIndex: 30 })
+		assert.equal(validResult, "🫙 Detached HEAD in a Jar")
 	})
 
 	it("produces deterministic collectible rolls for identical seeds", () => {
