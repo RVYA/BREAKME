@@ -1,7 +1,7 @@
 import { COLLECTIBLES } from "#data/collectibles"
 import EntityGenerator from "#systems/entity-generator"
 import type { ActionType } from "#types/action-event"
-import type { CollectibleName, CollectiblePool, SpawnCondition } from "#types/collectible"
+import type { Collectible, CollectibleName, CollectiblePool, SpawnCondition } from "#types/collectible"
 import type RarityLabel from "#types/rarity"
 import type { TileEffectName } from "#types/tile/effect"
 import type { TileShapeName } from "#types/tile/shape"
@@ -31,7 +31,7 @@ export default class CollectibleGenerator extends EntityGenerator<CollectibleNam
 			pool as Record<RarityLabel, CollectibleName[]>,
 			generationChance,
 			(name, context) => {
-				const def = COLLECTIBLES[name]
+				const def: Collectible | undefined = COLLECTIBLES[name]
 				if (!def || !def.spawnCondition) return true
 				const cond: SpawnCondition = def.spawnCondition
 
