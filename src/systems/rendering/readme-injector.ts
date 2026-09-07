@@ -15,7 +15,7 @@ export function renderUnlockablesHtml(collectibles: string[]): string {
 			return `<span>${name}</span>`
 		}
 		const rarityLabel = def.rarity.charAt(0).toUpperCase() + def.rarity.slice(1)
-		const title = `${name} (${rarityLabel}) — ${def.description}`
+		const title = `${name} (${rarityLabel})`
 		return `<span title="${title}">${def.symbol}</span>`
 	})
 
