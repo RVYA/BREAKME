@@ -33,6 +33,90 @@ export const TILE_EFFECTS = [
 		rarity: "uncommon",
 		applicableTo: undefined,
 	},
+	{
+		name: "Armored",
+		hpMultiplier: 2.5,
+		rarity: "epic",
+		applicableTo: undefined,
+	},
+	{
+		name: "Brittle",
+		hpMultiplier: 0.5,
+		rarity: "uncommon",
+		applicableTo: undefined,
+	},
+	{
+		name: "Chained",
+		hpMultiplier: 1.75,
+		rarity: "rare",
+		applicableTo: undefined,
+	},
+	{
+		name: "Barbed",
+		hpMultiplier: 1.3,
+		rarity: "rare",
+		applicableTo: undefined,
+	},
+	{
+		name: "Encased",
+		hpMultiplier: 1.9,
+		rarity: "epic",
+		applicableTo: undefined,
+	},
+	{
+		name: "Levitating",
+		hpMultiplier: 1.1,
+		rarity: "rare",
+		applicableTo: undefined,
+	},
+	{
+		name: "Stasis",
+		hpMultiplier: 1.85,
+		rarity: "epic",
+		applicableTo: undefined,
+	},
+	{
+		name: "Echo",
+		hpMultiplier: 0.7,
+		rarity: "uncommon",
+		applicableTo: undefined,
+	},
+	{
+		name: "Overcharged",
+		hpMultiplier: 3.5,
+		rarity: "legendary",
+		applicableTo: undefined,
+	},
+	{
+		name: "Vampiric",
+		hpMultiplier: 1.45,
+		rarity: "rare",
+		applicableTo: undefined,
+	},
+	{
+		name: "Blessed",
+		hpMultiplier: 1.5,
+		rarity: "legendary",
+		applicableTo: undefined,
+	},
+	{
+		name: "Volatile",
+		hpMultiplier: 0.85,
+		rarity: "rare",
+		applicableTo: undefined,
+	},
+	{
+		name: "Phase",
+		hpMultiplier: 1.65,
+		rarity: "epic",
+		applicableTo: undefined,
+	},
+	{
+		name: "Cursed",
+		hpMultiplier: 1.35,
+		rarity: "rare",
+		applicableTo: undefined,
+	},
 ] as const satisfies TileEffect[]
 
 export const TILE_EFFECTS_BY_NAME = Object.fromEntries(TILE_EFFECTS.map((effect) => [effect.name, effect])) as Record<
