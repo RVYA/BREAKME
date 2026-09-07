@@ -154,4 +154,29 @@ describe("Board Renderer (System)", () => {
 		const cellMatches = svg.match(/<g class="grid-cell/g)
 		assert.equal(cellMatches?.length, 1 + VISIBLE_TILE_SLOTS)
 	})
+
+	it("includes all registered tile shapes in defs and renders distinct shapes", async () => {
+		const tiles = [
+			new Tile(0, "Bread"),
+			new Tile(1, "Donut"),
+			new Tile(2, "Sun"),
+			new Tile(3, "Sapphire"),
+		]
+		const chunk = {
+			index: 0,
+			tiles,
+			createdAt: "2026-08-31T20:00:00.000Z",
+			isCleared: false,
+		}
+
+		const svg = await renderSvg(chunk)
+		assert.ok(svg.includes('id="tile-bread"'))
+		assert.ok(svg.includes('id="tile-donut"'))
+		assert.ok(svg.includes('id="tile-sun"'))
+		assert.ok(svg.includes('id="tile-sapphire"'))
+		assert.ok(svg.includes('href="#tile-bread"'))
+		assert.ok(svg.includes('href="#tile-donut"'))
+		assert.ok(svg.includes('href="#tile-sun"'))
+		assert.ok(svg.includes('href="#tile-sapphire"'))
+	})
 })
