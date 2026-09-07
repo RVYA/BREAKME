@@ -11,7 +11,7 @@ describe("Main CLI Runner", () => {
 
 	beforeEach(async () => {
 		tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "breakme-main-test-"))
-		process.env = { ...originalEnv }
+		process.env = { ...originalEnv, README_PATH: path.join(tempDir, "README.md") }
 		process.exitCode = undefined
 	})
 
