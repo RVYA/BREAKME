@@ -7,7 +7,7 @@
 [![Marketplace](https://img.shields.io/badge/GitHub_Marketplace-BREAKME-purple?style=flat&logo=github)](https://github.com/marketplace/actions/breakme-md)
 [![Node 22](https://img.shields.io/badge/Node.js-22-339933?style=flat&logo=node.js)](https://nodejs.org/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-76%20Passing-brightgreen.svg)](./src)
+[![Tests](https://img.shields.io/badge/Tests-90%20Passing-brightgreen.svg)](./src)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%99%A5_RVYA-ea4aaa?style=flat&logo=github-sponsors)](https://github.com/sponsors/RVYA)
 
 ---
@@ -75,7 +75,7 @@ Add these comment tags where you want the board to appear:
   </tr>
   <tr>
     <td colspan="4" align="center">
-      COLLECTED (003/003): <span title="Test Collectible #2 (Common) — Let's see if everything *extra* works.">💎</span> <span title="Test Collectible #1 (Common) — Let's see if everything works.">📦</span> <span title="Test Collectible #3 (Uncommon) — Ya da ya da.">🏆</span>
+      COLLECTED (003/250): <span title="🦆 Rubber Duck with a PhD (Common)">🦆</span> <span title="🐱 Cat Sitting on Keyboard (Common)">🐱</span> <span title="☕ Stale Espresso Puck (Common)">☕</span>
     </td>
   </tr>
 </table>
