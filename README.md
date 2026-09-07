@@ -25,30 +25,6 @@ BREAKME embeds an interactive SVG mining board directly on your GitHub profile:
 
 ---
 
-## Action Map
-
-BREAKME listens to the GitHub Events API and converts activity into in-game damage:
-
-| GitHub Event       | Action                           | In-Game Effect                   |
-| :----------------- | :------------------------------- | :------------------------------- |
-| `PushEvent`        | Committing & pushing code        | Regular mining damage per commit |
-| `PullRequestEvent` | Opening or merging pull requests | Heavy mining strike              |
-| `ReleaseEvent`     | Publishing releases & tags       | Critical hit                     |
-| `IssuesEvent`      | Opening or closing issues        | Support strike                   |
-| `CreateEvent`      | Creating branches or tags        | Light strike                     |
-
----
-
-## About Privacy
-
-BREAKME is designed with a strict privacy-first architecture:
-
-- **What is processed**: Only the high-level event type (e.g. `PushEvent`, `PullRequestEvent`), timestamp (for calculating daily streaks), and event count.
-- **What is NEVER processed or stored**: No commit messages, repository names, branch names, file names, code diffs, issue titles, or PR descriptions.
-- **Zero Third-Party Servers**: No external tracking, analytics, or remote database. All execution happens entirely inside your GitHub Actions runner, and state is stored strictly inside your repository's `state.json`.
-
----
-
 ## Setup
 
 ### 1. Add markers to your profile `README.md`
@@ -56,32 +32,36 @@ BREAKME is designed with a strict privacy-first architecture:
 Add these comment tags where you want the board to appear:
 
 ```html
+...
+
 <!-- BREAKME:START -->
 <div align="center">
+	## BREAKME.md
 
-## BREAKME.md
-
-<table align="center" width="640" style="width: 100%; max-width: 640px;">
-  <tr>
-    <td align="center" width="25%">⛰️<i>CHUNK</i><b>#000</b></td>
-    <td align="center" width="25%">🪨<i>TILE</i><b>#062</b></td>
-    <td align="center" width="25%">🔥<i>STREAK</i><b>#005</b></td>
-    <td align="center" width="25%">⛏️<i>BROKEN</i><b>#062</b></td>
-  </tr>
-  <tr>
-    <td colspan="4" align="center">
-      <img src="./BREAKME-board.svg" width="640" alt="BREAKME.md Board" />
-    </td>
-  </tr>
-  <tr>
-    <td colspan="4" align="center">
-      COLLECTED (003/250): <span>Test Collectible #2</span> <span>Test Collectible #1</span> <span>Test Collectible #3</span>
-    </td>
-  </tr>
-</table>
-
+	<table align="center" width="640" style="width: 100%; max-width: 640px;">
+		<tr>
+			<td align="center" width="25%">⛰️<i>CHUNK</i><b>#000</b></td>
+			<td align="center" width="25%">🪨<i>TILE</i><b>#060</b></td>
+			<td align="center" width="25%">🔥<i>STREAK</i><b>#005</b></td>
+			<td align="center" width="25%">⛏️<i>BROKEN</i><b>#060</b></td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center">
+				<img src="./BREAKME-board.svg" width="640" alt="BREAKME.md Board" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center">
+				COLLECTED (003/250): <span title="🦆 Rubber Duck with a PhD (Common)">🦆</span>
+				<span title="🐱 Cat Sitting on Keyboard (Common)">🐱</span>
+				<span title="☕ Stale Espresso Puck (Common)">☕</span>
+			</td>
+		</tr>
+	</table>
 </div>
 <!-- BREAKME:END -->
+
+...
 ```
 
 ### 2. Add the GitHub Action
@@ -126,6 +106,30 @@ jobs:
             git push
           fi
 ```
+
+---
+
+## About Privacy
+
+BREAKME is designed with a strict privacy-first architecture:
+
+- **What is processed**: Only the high-level event type (e.g. `PushEvent`, `PullRequestEvent`), timestamp (for calculating daily streaks), and event count.
+- **What is NEVER processed or stored**: No commit messages, repository names, branch names, file names, code diffs, issue titles, or PR descriptions.
+- **Zero Third-Party Servers**: No external tracking, analytics, or remote database. All execution happens entirely inside your GitHub Actions runner, and state is stored strictly inside your repository's `state.json`.
+
+---
+
+## Action Map
+
+BREAKME listens to the GitHub Events API and converts activity into in-game damage:
+
+| GitHub Event       | Action                           | In-Game Effect                   |
+| :----------------- | :------------------------------- | :------------------------------- |
+| `PushEvent`        | Committing & pushing code        | Regular mining damage per commit |
+| `PullRequestEvent` | Opening or merging pull requests | Heavy mining strike              |
+| `ReleaseEvent`     | Publishing releases & tags       | Critical hit                     |
+| `IssuesEvent`      | Opening or closing issues        | Support strike                   |
+| `CreateEvent`      | Creating branches or tags        | Light strike                     |
 
 ---
 
