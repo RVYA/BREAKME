@@ -397,4 +397,79 @@ describe("Board Renderer (System)", () => {
 		assert.ok(svg.includes('class="variant-zellige"'))
 		assert.ok(svg.includes('class="variant-kintsugi"'))
 	})
+
+	it("renders all 19 tile effects with valid CSS classes and keyframes", async () => {
+		const tiles = [
+			new Tile(0, "Base", undefined, "Negative"),
+			new Tile(1, "Base", undefined, "Shiny"),
+			new Tile(2, "Base", undefined, "Hot"),
+			new Tile(3, "Base", undefined, "Cold"),
+			new Tile(4, "Base", undefined, "Wet"),
+			new Tile(5, "Base", undefined, "Armored"),
+			new Tile(6, "Base", undefined, "Brittle"),
+			new Tile(7, "Base", undefined, "Chained"),
+			new Tile(8, "Base", undefined, "Barbed"),
+			new Tile(9, "Base", undefined, "Encased"),
+			new Tile(10, "Base", undefined, "Levitating"),
+			new Tile(11, "Base", undefined, "Stasis"),
+			new Tile(12, "Base", undefined, "Echo"),
+			new Tile(13, "Base", undefined, "Overcharged"),
+			new Tile(14, "Base", undefined, "Vampiric"),
+			new Tile(15, "Base", undefined, "Blessed"),
+			new Tile(16, "Base", undefined, "Volatile"),
+			new Tile(17, "Base", undefined, "Phase"),
+			new Tile(18, "Base", undefined, "Cursed"),
+		]
+		const chunk = {
+			index: 0,
+			tiles,
+			createdAt: "2026-08-31T20:00:00.000Z",
+			isCleared: false,
+		}
+
+		const svg = await renderSvg(chunk)
+		assert.ok(svg.includes(".effect-negative"))
+		assert.ok(svg.includes(".effect-shiny"))
+		assert.ok(svg.includes(".effect-hot"))
+		assert.ok(svg.includes(".effect-cold"))
+		assert.ok(svg.includes(".effect-wet"))
+		assert.ok(svg.includes(".effect-armored"))
+		assert.ok(svg.includes(".effect-brittle"))
+		assert.ok(svg.includes(".effect-chained"))
+		assert.ok(svg.includes(".effect-barbed"))
+		assert.ok(svg.includes(".effect-encased"))
+		assert.ok(svg.includes(".effect-levitating"))
+		assert.ok(svg.includes(".effect-stasis"))
+		assert.ok(svg.includes(".effect-echo"))
+		assert.ok(svg.includes(".effect-overcharged"))
+		assert.ok(svg.includes(".effect-vampiric"))
+		assert.ok(svg.includes(".effect-blessed"))
+		assert.ok(svg.includes(".effect-volatile"))
+		assert.ok(svg.includes(".effect-phase"))
+		assert.ok(svg.includes(".effect-cursed"))
+
+		assert.ok(svg.includes("@keyframes effect-levitate"))
+		assert.ok(svg.includes("@keyframes effect-overcharged-pulse"))
+		assert.ok(svg.includes("@keyframes effect-phase-flow"))
+
+		assert.ok(svg.includes('class="effect-negative"'))
+		assert.ok(svg.includes('class="effect-shiny"'))
+		assert.ok(svg.includes('class="effect-hot"'))
+		assert.ok(svg.includes('class="effect-cold"'))
+		assert.ok(svg.includes('class="effect-wet"'))
+		assert.ok(svg.includes('class="effect-armored"'))
+		assert.ok(svg.includes('class="effect-brittle"'))
+		assert.ok(svg.includes('class="effect-chained"'))
+		assert.ok(svg.includes('class="effect-barbed"'))
+		assert.ok(svg.includes('class="effect-encased"'))
+		assert.ok(svg.includes('class="effect-levitating"'))
+		assert.ok(svg.includes('class="effect-stasis"'))
+		assert.ok(svg.includes('class="effect-echo"'))
+		assert.ok(svg.includes('class="effect-overcharged"'))
+		assert.ok(svg.includes('class="effect-vampiric"'))
+		assert.ok(svg.includes('class="effect-blessed"'))
+		assert.ok(svg.includes('class="effect-volatile"'))
+		assert.ok(svg.includes('class="effect-phase"'))
+		assert.ok(svg.includes('class="effect-cursed"'))
+	})
 })
