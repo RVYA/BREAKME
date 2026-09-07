@@ -750,6 +750,116 @@
 	stroke-width: 2;
 }
 
+.effect-armored {
+	stroke: #94a3b8;
+	stroke-width: 3.5;
+	stroke-dasharray: 12 4;
+}
+
+.effect-brittle {
+	stroke: #e2e8f0;
+	stroke-width: 1.2;
+	stroke-dasharray: 2 3;
+}
+
+.effect-chained {
+	stroke: #334155;
+	stroke-width: 2.8;
+	stroke-dasharray: 5 3 2 3;
+}
+
+.effect-barbed {
+	stroke: #cbd5e1;
+	stroke-width: 3;
+	stroke-dasharray: 1 4;
+}
+
+.effect-encased {
+	stroke: #f59e0b;
+	stroke-width: 3;
+	stroke-opacity: 0.85;
+}
+
+.effect-levitating {
+	stroke: #38bdf8;
+	stroke-width: 2;
+	animation: effect-levitate 3s ease-in-out infinite;
+}
+
+.effect-stasis {
+	stroke: #38bdf8;
+	stroke-width: 3;
+	stroke-dasharray: 1 5;
+}
+
+.effect-echo {
+	stroke: #a5b4fc;
+	stroke-width: 2;
+	stroke-opacity: 0.5;
+	stroke-dasharray: 4 2;
+}
+
+.effect-overcharged {
+	stroke: #c084fc;
+	stroke-width: 3;
+	animation: effect-overcharged-pulse 1.5s ease-in-out infinite alternate;
+}
+
+.effect-vampiric {
+	stroke: #881337;
+	stroke-width: 2.5;
+}
+
+.effect-blessed {
+	stroke: #fde047;
+	stroke-width: 2.5;
+}
+
+.effect-volatile {
+	stroke: #f97316;
+	stroke-width: 2.5;
+	stroke-dasharray: 3 2;
+}
+
+.effect-phase {
+	stroke: #818cf8;
+	stroke-width: 2.2;
+	stroke-dasharray: 4 4;
+	animation: effect-phase-flow 2s linear infinite;
+}
+
+.effect-cursed {
+	stroke: #7e22ce;
+	stroke-width: 2.5;
+}
+
+@keyframes effect-levitate {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-2px);
+	}
+}
+
+@keyframes effect-overcharged-pulse {
+	0% {
+		stroke-width: 2;
+		stroke: #c084fc;
+	}
+	100% {
+		stroke-width: 3.5;
+		stroke: #ffffff;
+	}
+}
+
+@keyframes effect-phase-flow {
+	to {
+		stroke-dashoffset: -16;
+	}
+}
+
 @keyframes player-sway {
 	0%, 100% {
 		transform: rotate(-15deg);
@@ -794,10 +904,10 @@
 	</g>
 	<g class="grid-cell" transform="translate(106, 4) scale(0.8)">
 		<use href="#tile-base" class="fg" />
+		<use href="#tile-base" class="effect-wet" fill="none" />
 	</g>
 	<g class="grid-cell" transform="translate(126, 4) scale(0.8)">
-		<use href="#tile-base" class="fg" />
-		<use href="#tile-base" class="effect-wet" fill="none" />
+		<use href="#tile-hidden" class="accent" />
 	</g>
 	<g class="grid-cell" transform="translate(146, 4) scale(0.8)">
 		<use href="#tile-hidden" class="accent" />
