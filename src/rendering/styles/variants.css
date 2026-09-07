@@ -1,11 +1,233 @@
 .variant-dirt {
-	/*fill: #5e3023;*/
 	fill: url("#gradient-dirt");
 }
 
+.variant-wood {
+	fill: url("#gradient-wood");
+}
+
+.variant-candy {
+	fill: url("#gradient-candy");
+}
+
+.variant-zebra {
+	fill: url("#gradient-zebra");
+}
+
 .variant-gold {
-	/*fill: #020024;*/
 	fill: url("#gradient-gold");
+}
+
+.variant-metal {
+	fill: url("#gradient-metal");
+}
+
+.variant-sunburn {
+	fill: url("#gradient-sunburn");
+}
+
+.variant-radiated {
+	fill: url("#gradient-radiated");
+}
+
+.variant-blackhole,
+.variant-black-hole {
+	fill: url("#gradient-blackhole");
+}
+
+.variant-moss {
+	fill: url("#gradient-moss");
+}
+
+.variant-sandstone {
+	fill: url("#gradient-sandstone");
+}
+
+.variant-copper {
+	fill: url("#gradient-copper");
+}
+
+.variant-amethyst {
+	fill: url("#gradient-amethyst");
+}
+
+.variant-glacier {
+	fill: url("#gradient-glacier");
+}
+
+.variant-obsidian {
+	fill: url("#gradient-obsidian");
+}
+
+.variant-magma {
+	fill: url("#gradient-magma");
+}
+
+.variant-cyberneon,
+.variant-cyber-neon,
+.variant-neon {
+	fill: url("#gradient-cyberneon");
+}
+
+.variant-plasma {
+	fill: url("#gradient-plasma");
+}
+
+.variant-holographic {
+	fill: url("#gradient-holographic");
+}
+
+.variant-supernova {
+	fill: url("#gradient-supernova");
+}
+
+.variant-blueprint {
+	fill: url("#gradient-blueprint");
+}
+
+.variant-coral {
+	fill: url("#gradient-coral");
+}
+
+.variant-terminal {
+	fill: url("#gradient-terminal");
+}
+
+.variant-amber {
+	fill: url("#gradient-amber");
+}
+
+.variant-rosegold,
+.variant-rose-gold {
+	fill: url("#gradient-rosegold");
+}
+
+.variant-jade {
+	fill: url("#gradient-jade");
+}
+
+.variant-abyssal {
+	fill: url("#gradient-abyssal");
+}
+
+.variant-circuit {
+	fill: url("#gradient-circuit");
+}
+
+.variant-quicksilver {
+	fill: url("#gradient-quicksilver");
+}
+
+.variant-aurora {
+	fill: url("#gradient-aurora");
+}
+
+.variant-ember {
+	fill: url("#gradient-ember");
+}
+
+.variant-damascus {
+	fill: url("#gradient-damascus");
+}
+
+.variant-glitch {
+	fill: url("#gradient-glitch");
+}
+
+.variant-bismuth {
+	fill: url("#gradient-bismuth");
+}
+
+.variant-solarflare,
+.variant-solar-flare {
+	fill: url("#gradient-solarflare");
+}
+
+.variant-toxic {
+	fill: url("#gradient-toxic");
+}
+
+.variant-vaporwave {
+	fill: url("#gradient-vaporwave");
+}
+
+.variant-nebula {
+	fill: url("#gradient-nebula");
+}
+
+.variant-mithril {
+	fill: url("#gradient-mithril");
+}
+
+.variant-darkmatter,
+.variant-dark-matter {
+	fill: url("#gradient-darkmatter");
+}
+
+.variant-terracotta {
+	fill: url("#gradient-terracotta");
+}
+
+.variant-sakura {
+	fill: url("#gradient-sakura");
+}
+
+.variant-polkadot,
+.variant-polka-dot {
+	fill: url("#pattern-polkadot");
+}
+
+.variant-camo {
+	fill: url("#gradient-camo");
+}
+
+.variant-bandana {
+	fill: url("#gradient-bandana");
+}
+
+.variant-seigaiha {
+	fill: url("#gradient-seigaiha");
+}
+
+.variant-honeycomb,
+.variant-honey-comb {
+	fill: url("#pattern-honeycomb");
+}
+
+.variant-shibori {
+	fill: url("#gradient-shibori");
+}
+
+.variant-monstera {
+	fill: url("#gradient-monstera");
+}
+
+.variant-marble {
+	fill: url("#gradient-marble");
+}
+
+.variant-tortoise {
+	fill: url("#gradient-tortoise");
+}
+
+.variant-tartan {
+	fill: url("#pattern-tartan");
+}
+
+.variant-houndstooth {
+	fill: url("#pattern-houndstooth");
+}
+
+.variant-leopard {
+	fill: url("#pattern-leopard");
+}
+
+.variant-zellige {
+	fill: url("#pattern-zellige");
+}
+
+.variant-kintsugi {
+	fill: url("#gradient-kintsugi");
 }
 
 .variant-broken {
