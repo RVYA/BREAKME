@@ -4,11 +4,13 @@ import ShapeGenerator from "#systems/generation/shape-generator"
 import VariantGenerator from "#systems/generation/variant-generator"
 
 export default class TileGenerator {
+	#chunkIndex: number
 	#shapeGenerator: ShapeGenerator
 	#variantGenerator: VariantGenerator
 	#effectGenerator: EffectGenerator
 
 	constructor(seed: number, chunkIndex: number) {
+		this.#chunkIndex = chunkIndex
 		const key = `chunk_${chunkIndex}`
 		this.#shapeGenerator = new ShapeGenerator(seed, `${key}_shape`)
 		this.#variantGenerator = new VariantGenerator(seed, `${key}_variant`)
@@ -16,7 +18,7 @@ export default class TileGenerator {
 	}
 
 	generate(index: number): Tile {
-		const shape = this.#shapeGenerator.generate() ?? "Base"
+		const shape = this.#shapeGenerator.generate({ chunkIndex: this.#chunkIndex, tileIndex: index }) ?? "Base"
 		const variant = this.#variantGenerator.generate(shape)
 		const effect = this.#effectGenerator.generate(shape)
 
