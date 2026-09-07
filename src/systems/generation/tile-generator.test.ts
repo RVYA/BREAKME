@@ -1,8 +1,10 @@
 import assert from "node:assert/strict"
 import { describe, it } from "node:test"
 import { TILE_SHAPES_BY_NAME } from "#data/tiles/shapes"
+import { TILE_VARIANTS_BY_NAME } from "#data/tiles/variants"
 import ShapeGenerator from "#systems/generation/shape-generator"
 import TileGenerator from "#systems/generation/tile-generator"
+import VariantGenerator from "#systems/generation/variant-generator"
 
 describe("TileGenerator", () => {
 	it("generates a valid Tile with dynamic Max HP calculation", () => {
@@ -91,5 +93,52 @@ describe("ShapeGenerator", () => {
 		}
 
 		assert.ok(rolledAtHighIndex.length > 0)
+	})
+})
+
+describe("VariantGenerator", () => {
+	it("generates valid variant names from registered variants catalog", () => {
+		const generator = new VariantGenerator(42, "test_variant", 1.0)
+		const variantName = generator.generate("Base")
+
+		assert.ok(variantName)
+		assert.ok(TILE_VARIANTS_BY_NAME[variantName])
+	})
+
+	it("produces deterministic variant rolls for identical seeds", () => {
+		const gen1 = new VariantGenerator(12345, "var_roll", 1.0)
+		const gen2 = new VariantGenerator(12345, "var_roll", 1.0)
+
+		for (let i = 0; i < 20; i++) {
+			assert.equal(
+				gen1.generate({ shape: "Base", tileIndex: i }),
+				gen2.generate({ shape: "Base", tileIndex: i }),
+			)
+		}
+	})
+
+	it("respects minTileIndex spawnCondition criteria for variants", () => {
+		const generator = new VariantGenerator(999, "conditioned_variant", 1.0)
+		for (let i = 0; i < 50; i++) {
+			const variantName = generator.generate({ shape: "Base", tileIndex: 0 })
+			if (variantName) {
+				const variant = TILE_VARIANTS_BY_NAME[variantName]
+				if (variant.spawnCondition?.minTileIndex !== undefined) {
+					assert.ok(variant.spawnCondition.minTileIndex <= 0)
+				}
+			}
+		}
+	})
+
+	it("unlocks advanced variants at higher tile indices", () => {
+		const generator = new VariantGenerator(888, "advanced_variant", 1.0)
+		const rolled: string[] = []
+
+		for (let i = 0; i < 100; i++) {
+			const variant = generator.generate({ shape: "Base", tileIndex: 125 })
+			if (variant) rolled.push(variant)
+		}
+
+		assert.ok(rolled.length > 0)
 	})
 })

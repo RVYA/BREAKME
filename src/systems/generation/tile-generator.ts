@@ -19,7 +19,7 @@ export default class TileGenerator {
 
 	generate(index: number): Tile {
 		const shape = this.#shapeGenerator.generate({ chunkIndex: this.#chunkIndex, tileIndex: index }) ?? "Base"
-		const variant = this.#variantGenerator.generate(shape)
+		const variant = this.#variantGenerator.generate({ shape, chunkIndex: this.#chunkIndex, tileIndex: index })
 		const effect = this.#effectGenerator.generate(shape)
 
 		return new Tile(index, shape, variant, effect)
