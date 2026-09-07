@@ -20,7 +20,6 @@ type SpawnCondition = {
 
 type Collectible = {
 	symbol: string
-	description: string
 	rarity: RarityLabel
 	spawnCondition?: SpawnCondition
 }
