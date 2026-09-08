@@ -1,5 +1,5 @@
 {
-  "hash": "ef11dd4f2011d696b3f70e85a2f4e632358140e977ba5f6aa644f60a1dbf4ccd",
+  "hash": "1afe40259f9ec73b0305ca8b097e75287e09113a45613aa11401a59650cd9f7b",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 1,
-      "tileIndex": 12,
-      "totalTilesBroken": 76
+      "tileIndex": 17,
+      "totalTilesBroken": 81
     },
     "activity": {
       "currentStreak": 5,
@@ -110,27 +110,27 @@
       {
         "index": 12,
         "shape": "Blob",
-        "currentHp": 4.2,
+        "currentHp": 0,
         "maxHp": 5
       },
       {
         "index": 13,
         "shape": "Half",
         "variant": "Broken",
-        "currentHp": 2,
+        "currentHp": 0,
         "maxHp": 2
       },
       {
         "index": 14,
         "shape": "Half",
-        "currentHp": 2,
+        "currentHp": 0,
         "maxHp": 2
       },
       {
         "index": 15,
         "shape": "Half",
         "effect": "Vampiric",
-        "currentHp": 3,
+        "currentHp": 0,
         "maxHp": 3
       },
       {
@@ -138,13 +138,13 @@
         "shape": "Base",
         "variant": "Terracotta",
         "effect": "Negative",
-        "currentHp": 5,
+        "currentHp": 0,
         "maxHp": 5
       },
       {
         "index": 17,
         "shape": "Bread",
-        "currentHp": 6,
+        "currentHp": 5.4,
         "maxHp": 6
       },
       {
