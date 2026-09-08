@@ -1,5 +1,5 @@
 {
-  "hash": "a61bf001094d964161254ef3cd4de806e05640416001a598b580f4e4d41a4906",
+  "hash": "7932e18561d9fc94efb4ee8c2d16eed09dc76813e65cad0fd8517980e120fd72",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 1,
-      "tileIndex": 5,
-      "totalTilesBroken": 69
+      "tileIndex": 8,
+      "totalTilesBroken": 72
     },
     "activity": {
       "currentStreak": 5,
@@ -66,26 +66,26 @@
         "index": 5,
         "shape": "Base",
         "effect": "Blessed",
-        "currentHp": 5.8,
+        "currentHp": 0,
         "maxHp": 6
       },
       {
         "index": 6,
         "shape": "Chipped",
         "effect": "Vampiric",
-        "currentHp": 5,
+        "currentHp": 0,
         "maxHp": 5
       },
       {
         "index": 7,
         "shape": "Biscuit",
-        "currentHp": 4,
+        "currentHp": 0,
         "maxHp": 4
       },
       {
         "index": 8,
         "shape": "Blob",
-        "currentHp": 5,
+        "currentHp": 3,
         "maxHp": 5
       },
       {
