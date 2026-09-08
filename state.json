@@ -1,5 +1,5 @@
 {
-  "hash": "b1f8865018811c9bd084f1f728bf4af0a4d8bc91c8b33ea6db749aefdd1401dd",
+  "hash": "81714836986418523f3f17935aec3d5581c2e9432b8a7e43464a3707e10a624f",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 1,
-      "tileIndex": 20,
-      "totalTilesBroken": 84
+      "tileIndex": 24,
+      "totalTilesBroken": 88
     },
     "activity": {
       "currentStreak": 5,
@@ -164,25 +164,25 @@
         "index": 20,
         "shape": "Blob",
         "variant": "Terracotta",
-        "currentHp": 5,
+        "currentHp": 0,
         "maxHp": 6
       },
       {
         "index": 21,
         "shape": "Chipped",
-        "currentHp": 3,
+        "currentHp": 0,
         "maxHp": 3
       },
       {
         "index": 22,
         "shape": "Half",
-        "currentHp": 2,
+        "currentHp": 0,
         "maxHp": 2
       },
       {
         "index": 23,
         "shape": "Biscuit",
-        "currentHp": 4,
+        "currentHp": 0,
         "maxHp": 4
       },
       {
@@ -190,7 +190,7 @@
         "shape": "Bread",
         "variant": "Broken",
         "effect": "Overcharged",
-        "currentHp": 16,
+        "currentHp": 14.6,
         "maxHp": 16
       },
       {
