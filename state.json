@@ -1,5 +1,5 @@
 {
-  "hash": "3783dd847909a9616556b9cb0c7ac9a7648c1a6275cad28aa766594c4aa4ae65",
+  "hash": "3ecbecf581b2d60d5a3fdb32a93fc37c53da1ee746ece90d86c10cf441a7aca1",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -190,7 +190,7 @@
         "shape": "Bread",
         "variant": "Broken",
         "effect": "Overcharged",
-        "currentHp": 11.6,
+        "currentHp": 5.6,
         "maxHp": 16
       },
       {
