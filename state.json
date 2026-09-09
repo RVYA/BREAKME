@@ -1,5 +1,5 @@
 {
-  "hash": "2bc484e2900d251dc94f578b4683ca849738825f94509304dad1a0bd94453c85",
+  "hash": "c9e0c141ea1ec3bf3e3f365b68da526daed7c854b06fb43dac75bfe17b455ce8",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,13 +8,13 @@
     },
     "progress": {
       "chunkIndex": 1,
-      "tileIndex": 26,
-      "totalTilesBroken": 90
+      "tileIndex": 27,
+      "totalTilesBroken": 91
     },
     "activity": {
-      "currentStreak": 6,
-      "highestStreak": 6,
-      "lastActiveDate": "2026-09-08",
+      "currentStreak": 7,
+      "highestStreak": 7,
+      "lastActiveDate": "2026-09-09",
       "mostDamage": 28.8
     },
     "inventory": {
@@ -204,13 +204,13 @@
         "index": 26,
         "shape": "Donut",
         "variant": "Moss",
-        "currentHp": 5.6,
+        "currentHp": 0,
         "maxHp": 6
       },
       {
         "index": 27,
         "shape": "Biscuit",
-        "currentHp": 4,
+        "currentHp": 1.6,
         "maxHp": 4
       },
       {
