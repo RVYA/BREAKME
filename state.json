@@ -1,5 +1,5 @@
 {
-  "hash": "b8a8e042bbbaaeb872d1b66a3b42e2def715f79ca046d2fcb89aebcb9a727b0c",
+  "hash": "6c28a620034c42b408aab1c3007f3e2c0fb826c9a552c18b9f52d9ba26f5307c",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -322,7 +322,7 @@
         "shape": "Bread",
         "variant": "Moss",
         "effect": "Overcharged",
-        "currentHp": 20.599999999999998,
+        "currentHp": 10.999999999999996,
         "maxHp": 25
       },
       {
