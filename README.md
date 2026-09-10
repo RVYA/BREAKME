@@ -42,9 +42,9 @@ Add these comment tags where you want the board to appear:
 <table align="center" width="640" style="width: 100%; max-width: 640px;">
   <tr>
     <td align="center" width="25%">⛰️<i>CHUNK</i><b>#001</b></td>
-    <td align="center" width="25%">🪨<i>TILE</i><b>#046</b></td>
+    <td align="center" width="25%">🪨<i>TILE</i><b>#048</b></td>
     <td align="center" width="25%">🔥<i>STREAK</i><b>#007</b></td>
-    <td align="center" width="25%">⛏️<i>BROKEN</i><b>#110</b></td>
+    <td align="center" width="25%">⛏️<i>BROKEN</i><b>#112</b></td>
   </tr>
   <tr>
     <td colspan="4" align="center">

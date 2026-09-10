@@ -894,264 +894,264 @@
 		<use href="#char-base" class="player fg" />
 	</g>
 	<g class="grid-cell" transform="translate(46, 4) scale(0.8)">
-		<use href="#tile-water" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(66, 4) scale(0.8)">
-		<use href="#tile-half" class="variant-sakura" />
-	</g>
-	<g class="grid-cell" transform="translate(86, 4) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(106, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(66, 4) scale(0.8)">
 		<use href="#tile-water" class="fg" />
 		<use href="#tile-water" class="effect-hot" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(126, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(86, 4) scale(0.8)">
 		<use href="#tile-biscuit" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(146, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(106, 4) scale(0.8)">
 		<use href="#tile-tulip" class="variant-coral" />
 		<use href="#tile-tulip" class="effect-echo" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(166, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(126, 4) scale(0.8)">
 		<use href="#tile-tree" class="variant-wood" />
 	</g>
-	<g class="grid-cell" transform="translate(186, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(146, 4) scale(0.8)">
 		<use href="#tile-half" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(206, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(166, 4) scale(0.8)">
 		<use href="#tile-water" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(226, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(186, 4) scale(0.8)">
 		<use href="#tile-chipped" class="variant-moss" />
 	</g>
-	<g class="grid-cell" transform="translate(246, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(206, 4) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(266, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(226, 4) scale(0.8)">
 		<use href="#tile-tulip" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(286, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(246, 4) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(306, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(266, 4) scale(0.8)">
 		<use href="#tile-half" class="variant-candy" />
 	</g>
-	<g class="grid-cell" transform="translate(46, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(286, 4) scale(0.8)">
 		<use href="#tile-base" class="variant-camo" />
 	</g>
-	<g class="grid-cell" transform="translate(66, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(306, 4) scale(0.8)">
 		<use href="#tile-tree" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(86, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(46, 24) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(106, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(66, 24) scale(0.8)">
 		<use href="#tile-shield" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(126, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(86, 24) scale(0.8)">
 		<use href="#tile-biscuit" class="variant-dirt" />
 		<use href="#tile-biscuit" class="effect-volatile" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(146, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(106, 24) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(166, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(126, 24) scale(0.8)">
 		<use href="#tile-half" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(186, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(146, 24) scale(0.8)">
 		<use href="#tile-tulip" class="variant-moss" />
 	</g>
-	<g class="grid-cell" transform="translate(206, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(166, 24) scale(0.8)">
 		<use href="#tile-bread" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(226, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(186, 24) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(246, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(206, 24) scale(0.8)">
 		<use href="#tile-chipped" class="variant-terracotta" />
 	</g>
-	<g class="grid-cell" transform="translate(266, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(226, 24) scale(0.8)">
 		<use href="#tile-donut" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(286, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(246, 24) scale(0.8)">
 		<use href="#tile-blob" class="variant-dirt" />
 	</g>
-	<g class="grid-cell" transform="translate(306, 24) scale(0.8)">
+	<g class="grid-cell" transform="translate(266, 24) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(6, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(286, 24) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(26, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(306, 24) scale(0.8)">
 		<use href="#tile-half" class="variant-camo" />
 	</g>
-	<g class="grid-cell" transform="translate(46, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(6, 44) scale(0.8)">
 		<use href="#tile-tulip" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(66, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(26, 44) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(86, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(46, 44) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(106, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(66, 44) scale(0.8)">
 		<use href="#tile-tulip" class="variant-dirt" />
 	</g>
+	<g class="grid-cell" transform="translate(86, 44) scale(0.8)">
+		<use href="#tile-biscuit" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(106, 44) scale(0.8)">
+		<use href="#tile-biscuit" class="fg" />
+	</g>
 	<g class="grid-cell" transform="translate(126, 44) scale(0.8)">
-		<use href="#tile-biscuit" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(146, 44) scale(0.8)">
-		<use href="#tile-biscuit" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(166, 44) scale(0.8)">
 		<use href="#tile-floral" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(186, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(146, 44) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(206, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(166, 44) scale(0.8)">
 		<use href="#tile-donut" class="fg" />
 		<use href="#tile-donut" class="effect-cold" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(226, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(186, 44) scale(0.8)">
 		<use href="#tile-mountain" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(246, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(206, 44) scale(0.8)">
 		<use href="#tile-mountain" class="fg" />
 		<use href="#tile-mountain" class="effect-negative" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(266, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(226, 44) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(286, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(246, 44) scale(0.8)">
 		<use href="#tile-base" class="variant-dirt" />
 	</g>
-	<g class="grid-cell" transform="translate(306, 44) scale(0.8)">
+	<g class="grid-cell" transform="translate(266, 44) scale(0.8)">
 		<use href="#tile-tree" class="fg" />
 		<use href="#tile-tree" class="effect-blessed" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(6, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(286, 44) scale(0.8)">
 		<use href="#tile-mountain" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(26, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(306, 44) scale(0.8)">
 		<use href="#tile-base" class="variant-bismuth" />
 	</g>
-	<g class="grid-cell" transform="translate(46, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(6, 64) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(66, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(26, 64) scale(0.8)">
 		<use href="#tile-donut" class="variant-dirt" />
 		<use href="#tile-donut" class="effect-stasis" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(86, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(46, 64) scale(0.8)">
 		<use href="#tile-chipped" class="variant-dirt" />
 		<use href="#tile-chipped" class="effect-negative" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(106, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(66, 64) scale(0.8)">
 		<use href="#tile-bread" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(126, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(86, 64) scale(0.8)">
 		<use href="#tile-umbrella" class="variant-wood" />
 		<use href="#tile-umbrella" class="effect-negative" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(146, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(106, 64) scale(0.8)">
 		<use href="#tile-umbrella" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(166, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(126, 64) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(186, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(146, 64) scale(0.8)">
 		<use href="#tile-half" class="variant-dirt" />
 		<use href="#tile-half" class="effect-levitating" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(206, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(166, 64) scale(0.8)">
 		<use href="#tile-water" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(226, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(186, 64) scale(0.8)">
 		<use href="#tile-tree" class="variant-terminal" />
 	</g>
-	<g class="grid-cell" transform="translate(246, 64) scale(0.8)">
+	<g class="grid-cell" transform="translate(206, 64) scale(0.8)">
 		<use href="#tile-bread" class="fg" />
 	</g>
+	<g class="grid-cell" transform="translate(226, 64) scale(0.8)">
+		<use href="#tile-donut" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(246, 64) scale(0.8)">
+		<use href="#tile-donut" class="fg" />
+	</g>
 	<g class="grid-cell" transform="translate(266, 64) scale(0.8)">
-		<use href="#tile-donut" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(286, 64) scale(0.8)">
-		<use href="#tile-donut" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(306, 64) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(6, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(286, 64) scale(0.8)">
 		<use href="#tile-tulip" class="variant-marble" />
 		<use href="#tile-tulip" class="effect-overcharged" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(26, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(306, 64) scale(0.8)">
 		<use href="#tile-tree" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(46, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(6, 84) scale(0.8)">
 		<use href="#tile-biscuit" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(26, 84) scale(0.8)">
+		<use href="#tile-half" class="fg" />
+	</g>
+	<g class="grid-cell" transform="translate(46, 84) scale(0.8)">
+		<use href="#tile-donut" class="variant-moss" />
 	</g>
 	<g class="grid-cell" transform="translate(66, 84) scale(0.8)">
 		<use href="#tile-half" class="fg" />
 	</g>
 	<g class="grid-cell" transform="translate(86, 84) scale(0.8)">
-		<use href="#tile-donut" class="variant-moss" />
-	</g>
-	<g class="grid-cell" transform="translate(106, 84) scale(0.8)">
-		<use href="#tile-half" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(126, 84) scale(0.8)">
 		<use href="#tile-shield" class="variant-jade" />
 	</g>
-	<g class="grid-cell" transform="translate(146, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(106, 84) scale(0.8)">
 		<use href="#tile-chipped" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(166, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(126, 84) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(186, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(146, 84) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(206, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(166, 84) scale(0.8)">
 		<use href="#tile-blob" class="variant-wood" />
 	</g>
-	<g class="grid-cell" transform="translate(226, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(186, 84) scale(0.8)">
 		<use href="#tile-tulip" class="fg" />
 		<use href="#tile-tulip" class="effect-wet" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(246, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(206, 84) scale(0.8)">
 		<use href="#tile-chipped" class="variant-candy" />
 	</g>
-	<g class="grid-cell" transform="translate(266, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(226, 84) scale(0.8)">
 		<use href="#tile-tulip" class="variant-glacier" />
 	</g>
-	<g class="grid-cell" transform="translate(286, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(246, 84) scale(0.8)">
 		<use href="#tile-donut" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(306, 84) scale(0.8)">
+	<g class="grid-cell" transform="translate(266, 84) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 		<use href="#tile-base" class="effect-overcharged" fill="none" />
 	</g>
-	<g class="grid-cell" transform="translate(6, 104) scale(0.8)">
+	<g class="grid-cell" transform="translate(286, 84) scale(0.8)">
 		<use href="#tile-blob" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(26, 104) scale(0.8)">
+	<g class="grid-cell" transform="translate(306, 84) scale(0.8)">
 		<use href="#tile-biscuit" class="variant-dirt" />
 	</g>
-	<g class="grid-cell" transform="translate(46, 104) scale(0.8)">
+	<g class="grid-cell" transform="translate(6, 104) scale(0.8)">
 		<use href="#tile-chipped" class="variant-dirt" />
 	</g>
-	<g class="grid-cell" transform="translate(66, 104) scale(0.8)">
+	<g class="grid-cell" transform="translate(26, 104) scale(0.8)">
 		<use href="#tile-base" class="variant-moss" />
 	</g>
-	<g class="grid-cell" transform="translate(86, 104) scale(0.8)">
+	<g class="grid-cell" transform="translate(46, 104) scale(0.8)">
 		<use href="#tile-half" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(106, 104) scale(0.8)">
+	<g class="grid-cell" transform="translate(66, 104) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 		<use href="#tile-base" class="effect-blessed" fill="none" />
+	</g>
+	<g class="grid-cell" transform="translate(86, 104) scale(0.8)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(106, 104) scale(0.8)">
+		<use href="#tile-hidden" class="accent" />
 	</g>
 	<g class="grid-cell" transform="translate(126, 104) scale(0.8)">
 		<use href="#tile-hidden" class="accent" />
