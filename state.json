@@ -1,5 +1,5 @@
 {
-  "hash": "7fd79ef37170c1e118b3dc4fa32e949b72d76f13f32978af1a7be210f0a9a581",
+  "hash": "51b72d96183b0f3bb572d4d3f97944e07c40b1256a896c1d6ea639804b6fc524",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -725,7 +725,7 @@
         "shape": "Tulip",
         "variant": "Marble",
         "effect": "Overcharged",
-        "currentHp": 33.4,
+        "currentHp": 23.79999999999999,
         "maxHp": 36
       },
       {
