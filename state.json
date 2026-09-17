@@ -1,5 +1,5 @@
 {
-  "hash": "d2a7e6497a1f757804698ceeaf6801d8e6651410c147d65c1bb80873b621402b",
+  "hash": "34d7cdb0d0adf576ceab62d5080ef3a3a859b2ab4598cdbb5b0229676bdb538c",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 1,
-      "tileIndex": 106,
-      "totalTilesBroken": 170
+      "tileIndex": 107,
+      "totalTilesBroken": 171
     },
     "activity": {
       "currentStreak": 7,
@@ -725,13 +725,13 @@
         "shape": "Tulip",
         "variant": "Marble",
         "effect": "Overcharged",
-        "currentHp": 4.599999999999987,
+        "currentHp": 0,
         "maxHp": 36
       },
       {
         "index": 107,
         "shape": "Tree",
-        "currentHp": 8,
+        "currentHp": 2.9999999999999996,
         "maxHp": 8
       },
       {
