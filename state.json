@@ -1,5 +1,5 @@
 {
-  "hash": "73ba6b75f0eafa0fb63dc6d3c592e062fb3afcf53a9e221687c363bd0adbde4c",
+  "hash": "7fe48b5b885a89556fc2dd0b0c672a1500d9f0e31ab2745f89ef073abf9d792d",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -763,7 +763,7 @@
         "index": 112,
         "shape": "Shield",
         "variant": "Jade",
-        "currentHp": 16.799999999999997,
+        "currentHp": 7.199999999999999,
         "maxHp": 19
       },
       {
