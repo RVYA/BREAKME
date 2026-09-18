@@ -1,5 +1,5 @@
 {
-  "hash": "7fe48b5b885a89556fc2dd0b0c672a1500d9f0e31ab2745f89ef073abf9d792d",
+  "hash": "035c7ea5c90c815a82bb631aad6dec576837c66cf768e2314db7b4311abc82d9",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 1,
-      "tileIndex": 112,
-      "totalTilesBroken": 176
+      "tileIndex": 113,
+      "totalTilesBroken": 177
     },
     "activity": {
       "currentStreak": 7,
@@ -763,13 +763,13 @@
         "index": 112,
         "shape": "Shield",
         "variant": "Jade",
-        "currentHp": 7.199999999999999,
+        "currentHp": 0,
         "maxHp": 19
       },
       {
         "index": 113,
         "shape": "Chipped",
-        "currentHp": 3,
+        "currentHp": 0.6000000000000001,
         "maxHp": 3
       },
       {
