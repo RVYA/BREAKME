@@ -894,23 +894,23 @@
 		<use href="#char-base" class="player fg" />
 	</g>
 	<g class="grid-cell" transform="translate(46, 4) scale(0.8)">
-		<use href="#tile-blob" class="fg" />
-	</g>
-	<g class="grid-cell" transform="translate(66, 4) scale(0.8)">
-		<use href="#tile-biscuit" class="variant-dirt" />
-	</g>
-	<g class="grid-cell" transform="translate(86, 4) scale(0.8)">
 		<use href="#tile-chipped" class="variant-dirt" />
 	</g>
-	<g class="grid-cell" transform="translate(106, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(66, 4) scale(0.8)">
 		<use href="#tile-base" class="variant-moss" />
 	</g>
-	<g class="grid-cell" transform="translate(126, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(86, 4) scale(0.8)">
 		<use href="#tile-half" class="fg" />
 	</g>
-	<g class="grid-cell" transform="translate(146, 4) scale(0.8)">
+	<g class="grid-cell" transform="translate(106, 4) scale(0.8)">
 		<use href="#tile-base" class="fg" />
 		<use href="#tile-base" class="effect-blessed" fill="none" />
+	</g>
+	<g class="grid-cell" transform="translate(126, 4) scale(0.8)">
+		<use href="#tile-hidden" class="accent" />
+	</g>
+	<g class="grid-cell" transform="translate(146, 4) scale(0.8)">
+		<use href="#tile-hidden" class="accent" />
 	</g>
 	<g class="grid-cell" transform="translate(166, 4) scale(0.8)">
 		<use href="#tile-hidden" class="accent" />
