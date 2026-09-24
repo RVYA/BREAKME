@@ -1,5 +1,5 @@
 {
-  "hash": "a18e03edd181faf0edc8dc407f3416272bb8e153878923915c60f4c470b53071",
+  "hash": "32faa8cfc131545e67ec2be1095cef8046ad79756f6860475a2fbe51c5fceebd",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 2,
-      "tileIndex": 49,
-      "totalTilesBroken": 241
+      "tileIndex": 51,
+      "totalTilesBroken": 243
     },
     "activity": {
       "currentStreak": 7,
@@ -348,20 +348,20 @@
         "index": 49,
         "shape": "Water",
         "variant": "Camo",
-        "currentHp": 5.000000000000002,
+        "currentHp": 0,
         "maxHp": 10
       },
       {
         "index": 50,
         "shape": "Chipped",
-        "currentHp": 3,
+        "currentHp": 0,
         "maxHp": 3
       },
       {
         "index": 51,
         "shape": "Bread",
         "effect": "Blessed",
-        "currentHp": 9,
+        "currentHp": 7.4,
         "maxHp": 9
       },
       {
