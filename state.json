@@ -1,5 +1,5 @@
 {
-  "hash": "efa1f2d04b527ee0bc2c76a6ad514481b8050cddc6cc7f3d0c31823bcd632fca",
+  "hash": "724fd460c6c978e3e74a05e17a03809b333e4674e2eea0e00d5b1db623b36078",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 2,
-      "tileIndex": 71,
-      "totalTilesBroken": 263
+      "tileIndex": 73,
+      "totalTilesBroken": 265
     },
     "activity": {
       "currentStreak": 7,
@@ -491,20 +491,20 @@
       {
         "index": 71,
         "shape": "Bread",
-        "currentHp": 5,
+        "currentHp": 0,
         "maxHp": 6
       },
       {
         "index": 72,
         "shape": "Chipped",
-        "currentHp": 3,
+        "currentHp": 0,
         "maxHp": 3
       },
       {
         "index": 73,
         "shape": "Bread",
         "variant": "Shibori",
-        "currentHp": 10,
+        "currentHp": 8.4,
         "maxHp": 10
       },
       {
