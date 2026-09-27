@@ -1,5 +1,5 @@
 {
-  "hash": "86e1d5bb874898e46edf07dc49af76b9ae522e86c33825d412ee48f8d50f8e42",
+  "hash": "34f8a8ec3c9e7b5cc1939e8a955f4838793ed5038e747c326fc94f1189cb4537",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 2,
-      "tileIndex": 75,
-      "totalTilesBroken": 267
+      "tileIndex": 76,
+      "totalTilesBroken": 268
     },
     "activity": {
       "currentStreak": 7,
@@ -517,14 +517,14 @@
         "index": 75,
         "shape": "Mountain",
         "effect": "Blessed",
-        "currentHp": 6.599999999999998,
+        "currentHp": 0,
         "maxHp": 21
       },
       {
         "index": 76,
         "shape": "Bread",
         "variant": "Sandstone",
-        "currentHp": 6,
+        "currentHp": 2.9999999999999996,
         "maxHp": 6
       },
       {
