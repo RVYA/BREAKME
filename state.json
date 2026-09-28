@@ -1,5 +1,5 @@
 {
-  "hash": "202fc34811704c15bee7e577cef0819aff6a3712809e69e76d8152f3ec43ce43",
+  "hash": "d34febb729f41d1b51def2cf7752a89ba31058e375dffdc85665d25ecf3783d8",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 2,
-      "tileIndex": 83,
-      "totalTilesBroken": 275
+      "tileIndex": 85,
+      "totalTilesBroken": 277
     },
     "activity": {
       "currentStreak": 7,
@@ -569,19 +569,19 @@
         "index": 83,
         "shape": "Biscuit",
         "variant": "Seigaiha",
-        "currentHp": 2.599999999999999,
+        "currentHp": 0,
         "maxHp": 6
       },
       {
         "index": 84,
         "shape": "Bread",
-        "currentHp": 6,
+        "currentHp": 0,
         "maxHp": 6
       },
       {
         "index": 85,
         "shape": "Biscuit",
-        "currentHp": 4,
+        "currentHp": 3,
         "maxHp": 4
       },
       {
