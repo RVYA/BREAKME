@@ -1,5 +1,5 @@
 {
-  "hash": "b53de331b32171c8b53f76e5f56e990588a29facdf30eb70db224c9d24951fca",
+  "hash": "afc26832792a1eb5147b7c6eef689cea5558602c981389c7101a5b8b2a5c353c",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 2,
-      "tileIndex": 97,
-      "totalTilesBroken": 289
+      "tileIndex": 100,
+      "totalTilesBroken": 292
     },
     "activity": {
       "currentStreak": 7,
@@ -654,25 +654,25 @@
         "index": 97,
         "shape": "Floral",
         "effect": "Wet",
-        "currentHp": 1.200000000000002,
+        "currentHp": 0,
         "maxHp": 11
       },
       {
         "index": 98,
         "shape": "Half",
-        "currentHp": 2,
+        "currentHp": 0,
         "maxHp": 2
       },
       {
         "index": 99,
         "shape": "Half",
-        "currentHp": 2,
+        "currentHp": 0,
         "maxHp": 2
       },
       {
         "index": 100,
         "shape": "Water",
-        "currentHp": 7,
+        "currentHp": 2.599999999999999,
         "maxHp": 7
       },
       {
