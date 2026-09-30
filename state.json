@@ -1,5 +1,5 @@
 {
-  "hash": "4c67600fd718d8caa7043c4485f8a7e41d57c75fd90d770c07be4284591c1280",
+  "hash": "b53de331b32171c8b53f76e5f56e990588a29facdf30eb70db224c9d24951fca",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -654,7 +654,7 @@
         "index": 97,
         "shape": "Floral",
         "effect": "Wet",
-        "currentHp": 10.8,
+        "currentHp": 1.200000000000002,
         "maxHp": 11
       },
       {
