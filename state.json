@@ -1,5 +1,5 @@
 {
-  "hash": "2197a893f651b64ad63a2db6e7db5dc05a8e3a255910de1183e85950af16b538",
+  "hash": "08ef97e77630dd47ea171f124f518d084b3dc091a204adb8bdd66698a28682fd",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -841,7 +841,7 @@
         "shape": "Base",
         "variant": "Dirt",
         "effect": "Overcharged",
-        "currentHp": 2.0000000000000018,
+        "currentHp": 1.0000000000000018,
         "maxHp": 16
       },
       {
