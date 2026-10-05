@@ -1,5 +1,5 @@
 {
-  "hash": "10e4200b0f5189fb1b718dc0e598a6401538ec46593da37e9b864518c8146795",
+  "hash": "4cda6d187504c06943d54061ad04d0229cce2d56c49d70c1041d029a78ceae82",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 3,
-      "tileIndex": 0,
-      "totalTilesBroken": 320
+      "tileIndex": 1,
+      "totalTilesBroken": 321
     },
     "activity": {
       "currentStreak": 1,
@@ -33,14 +33,14 @@
         "shape": "Biscuit",
         "variant": "Wood",
         "effect": "Hot",
-        "currentHp": 3,
+        "currentHp": 0,
         "maxHp": 5
       },
       {
         "index": 1,
         "shape": "Biscuit",
         "effect": "Overcharged",
-        "currentHp": 14,
+        "currentHp": 13,
         "maxHp": 14
       },
       {
