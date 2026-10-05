@@ -1,5 +1,5 @@
 {
-  "hash": "4cda6d187504c06943d54061ad04d0229cce2d56c49d70c1041d029a78ceae82",
+  "hash": "87df320b83301ad58aa4b75b390328a579c95538da8e4d1b9e8cb83dda0a9660",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -12,9 +12,9 @@
       "totalTilesBroken": 321
     },
     "activity": {
-      "currentStreak": 1,
+      "currentStreak": 2,
       "highestStreak": 7,
-      "lastActiveDate": "2026-10-04",
+      "lastActiveDate": "2026-10-05",
       "mostDamage": 28.8
     },
     "inventory": {
@@ -40,7 +40,7 @@
         "index": 1,
         "shape": "Biscuit",
         "effect": "Overcharged",
-        "currentHp": 13,
+        "currentHp": 6.400000000000002,
         "maxHp": 14
       },
       {
