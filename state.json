@@ -1,5 +1,5 @@
 {
-  "hash": "d95e6e793b51c7a3a376873b2dd69efdf3a85d3d42c1cc863ed2b0b02ca384cc",
+  "hash": "10e4200b0f5189fb1b718dc0e598a6401538ec46593da37e9b864518c8146795",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -7,9 +7,9 @@
       "createdAt": "2026-09-05T17:21:58.038Z"
     },
     "progress": {
-      "chunkIndex": 2,
-      "tileIndex": 127,
-      "totalTilesBroken": 319
+      "chunkIndex": 3,
+      "tileIndex": 0,
+      "totalTilesBroken": 320
     },
     "activity": {
       "currentStreak": 1,
@@ -26,832 +26,843 @@
     }
   },
   "currentChunk": {
-    "index": 2,
+    "index": 3,
     "tiles": [
       {
         "index": 0,
-        "shape": "Base",
-        "currentHp": 0,
-        "maxHp": 4
+        "shape": "Biscuit",
+        "variant": "Wood",
+        "effect": "Hot",
+        "currentHp": 3,
+        "maxHp": 5
       },
       {
         "index": 1,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
+        "shape": "Biscuit",
+        "effect": "Overcharged",
+        "currentHp": 14,
+        "maxHp": 14
       },
       {
         "index": 2,
         "shape": "Chipped",
-        "variant": "Wood",
-        "currentHp": 0,
-        "maxHp": 4
+        "effect": "Cold",
+        "currentHp": 3,
+        "maxHp": 3
       },
       {
         "index": 3,
         "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "variant": "Wood",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 4,
-        "shape": "Base",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 5,
-        "shape": "Chipped",
-        "currentHp": 0,
+        "shape": "Half",
+        "variant": "Wood",
+        "currentHp": 3,
         "maxHp": 3
       },
       {
+        "index": 5,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
         "index": 6,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Chipped",
+        "currentHp": 3,
+        "maxHp": 3
       },
       {
         "index": 7,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Half",
+        "effect": "Blessed",
+        "currentHp": 3,
+        "maxHp": 3
       },
       {
         "index": 8,
-        "shape": "Base",
-        "variant": "Dirt",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
         "index": 9,
         "shape": "Biscuit",
-        "variant": "Moss",
-        "currentHp": 0,
-        "maxHp": 5
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 10,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Biscuit",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 11,
-        "shape": "Half",
-        "effect": "Overcharged",
-        "currentHp": 0,
-        "maxHp": 7
+        "shape": "Biscuit",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 12,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Base",
+        "variant": "Sandstone",
+        "effect": "Overcharged",
+        "currentHp": 14,
+        "maxHp": 14
       },
       {
         "index": 13,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 14,
-        "shape": "Biscuit",
-        "variant": "Sandstone",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 15,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 16,
         "shape": "Chipped",
-        "variant": "Wood",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 17,
-        "shape": "Half",
-        "effect": "Blessed",
-        "currentHp": 0,
+        "currentHp": 3,
         "maxHp": 3
       },
       {
+        "index": 14,
+        "shape": "Chipped",
+        "currentHp": 3,
+        "maxHp": 3
+      },
+      {
+        "index": 15,
+        "shape": "Base",
+        "effect": "Blessed",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 16,
+        "shape": "Bread",
+        "variant": "Wood",
+        "effect": "Blessed",
+        "currentHp": 11,
+        "maxHp": 11
+      },
+      {
+        "index": 17,
+        "shape": "Bread",
+        "variant": "Broken",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
         "index": 18,
-        "shape": "Biscuit",
-        "variant": "Sandstone",
-        "currentHp": 0,
-        "maxHp": 4
+        "shape": "Bread",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 19,
         "shape": "Blob",
-        "effect": "Echo",
-        "currentHp": 0,
-        "maxHp": 4
+        "variant": "Wood",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 20,
-        "shape": "Base",
-        "currentHp": 0,
-        "maxHp": 4
+        "shape": "Bread",
+        "variant": "Broken",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 21,
-        "shape": "Half",
-        "variant": "Wood",
-        "effect": "Barbed",
-        "currentHp": 0,
-        "maxHp": 4
+        "shape": "Bread",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 22,
-        "shape": "Half",
-        "variant": "Candy",
-        "currentHp": 0,
-        "maxHp": 2
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 23,
-        "shape": "Blob",
-        "variant": "Sandstone",
-        "effect": "Brittle",
-        "currentHp": 0,
+        "shape": "Chipped",
+        "currentHp": 3,
         "maxHp": 3
       },
       {
         "index": 24,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 25,
-        "shape": "Donut",
-        "effect": "Negative",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 26,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 27,
-        "shape": "Chipped",
-        "variant": "Blueprint",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 28,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 29,
-        "shape": "Donut",
-        "variant": "Sandstone",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 30,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 31,
-        "shape": "Bread",
-        "variant": "Dirt",
-        "currentHp": 0,
+        "shape": "Base",
+        "effect": "Chained",
+        "currentHp": 7,
         "maxHp": 7
       },
       {
-        "index": 32,
+        "index": 25,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 26,
+        "shape": "Donut",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 27,
+        "shape": "Biscuit",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 28,
+        "shape": "Donut",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 29,
         "shape": "Half",
-        "currentHp": 0,
+        "currentHp": 2,
         "maxHp": 2
       },
       {
-        "index": 33,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
+        "index": 30,
+        "shape": "Blob",
+        "effect": "Negative",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
-        "index": 34,
-        "shape": "Donut",
-        "variant": "Dirt",
-        "currentHp": 0,
+        "index": 31,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 32,
+        "shape": "Blob",
+        "variant": "Moss",
+        "currentHp": 6,
         "maxHp": 6
       },
       {
-        "index": 35,
+        "index": 33,
+        "shape": "Donut",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 34,
         "shape": "Biscuit",
-        "currentHp": 0,
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 35,
+        "shape": "Chipped",
+        "variant": "Terminal",
+        "currentHp": 4,
         "maxHp": 4
       },
       {
         "index": 36,
-        "shape": "Tulip",
-        "effect": "Wet",
-        "currentHp": 0,
-        "maxHp": 6
+        "shape": "Biscuit",
+        "variant": "Dirt",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 37,
-        "shape": "Biscuit",
-        "currentHp": 0,
+        "shape": "Bread",
+        "variant": "Terracotta",
+        "effect": "Brittle",
+        "currentHp": 4,
         "maxHp": 4
       },
       {
         "index": 38,
-        "shape": "Donut",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
         "index": 39,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
+        "shape": "Tulip",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 40,
         "shape": "Blob",
-        "currentHp": 0,
+        "effect": "Negative",
+        "currentHp": 5,
         "maxHp": 5
       },
       {
         "index": 41,
-        "shape": "Bread",
-        "variant": "Terracotta",
-        "currentHp": 0,
-        "maxHp": 7
+        "shape": "Chipped",
+        "variant": "Moss",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 42,
         "shape": "Chipped",
-        "currentHp": 0,
+        "currentHp": 3,
         "maxHp": 3
       },
       {
         "index": 43,
-        "shape": "Water",
-        "currentHp": 0,
-        "maxHp": 7
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
         "index": 44,
         "shape": "Blob",
-        "currentHp": 0,
+        "effect": "Cold",
+        "currentHp": 5,
         "maxHp": 5
       },
       {
         "index": 45,
-        "shape": "Biscuit",
-        "currentHp": 0,
+        "shape": "Chipped",
+        "variant": "Moss",
+        "currentHp": 4,
         "maxHp": 4
       },
       {
         "index": 46,
-        "shape": "Water",
-        "variant": "Terracotta",
-        "currentHp": 0,
-        "maxHp": 9
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 47,
         "shape": "Base",
-        "currentHp": 0,
-        "maxHp": 4
+        "variant": "Terminal",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 48,
-        "shape": "Donut",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 49,
-        "shape": "Water",
-        "variant": "Camo",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 50,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
-      },
-      {
-        "index": 51,
-        "shape": "Bread",
-        "effect": "Blessed",
-        "currentHp": 0,
-        "maxHp": 9
-      },
-      {
-        "index": 52,
-        "shape": "Tree",
-        "variant": "PolkaDot",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 53,
         "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 54,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 55,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 56,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 57,
-        "shape": "Tree",
-        "variant": "Moss",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 58,
-        "shape": "Chipped",
-        "effect": "Brittle",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 59,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
-      },
-      {
-        "index": 60,
-        "shape": "Shield",
-        "variant": "Jade",
-        "effect": "Brittle",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 61,
-        "shape": "Donut",
-        "variant": "Moss",
-        "currentHp": 0,
+        "variant": "Gold",
+        "currentHp": 6,
         "maxHp": 6
       },
       {
-        "index": 62,
+        "index": 49,
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
+      },
+      {
+        "index": 50,
         "shape": "Blob",
-        "variant": "Candy",
-        "currentHp": 0,
+        "variant": "Moss",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 51,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 52,
+        "shape": "Tulip",
+        "variant": "Terracotta",
+        "currentHp": 7,
+        "maxHp": 7
+      },
+      {
+        "index": 53,
+        "shape": "Tulip",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 54,
+        "shape": "Tree",
+        "effect": "Negative",
+        "currentHp": 8,
+        "maxHp": 8
+      },
+      {
+        "index": 55,
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
+      },
+      {
+        "index": 56,
+        "shape": "Shield",
+        "variant": "Dirt",
+        "effect": "Negative",
+        "currentHp": 14,
+        "maxHp": 14
+      },
+      {
+        "index": 57,
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
+      },
+      {
+        "index": 58,
+        "shape": "Shield",
+        "currentHp": 12,
+        "maxHp": 12
+      },
+      {
+        "index": 59,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 60,
+        "shape": "Blob",
+        "effect": "Cold",
+        "currentHp": 5,
         "maxHp": 5
+      },
+      {
+        "index": 61,
+        "shape": "Tree",
+        "effect": "Negative",
+        "currentHp": 8,
+        "maxHp": 8
+      },
+      {
+        "index": 62,
+        "shape": "Biscuit",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 63,
         "shape": "Chipped",
-        "variant": "Dirt",
-        "currentHp": 0,
+        "variant": "Blueprint",
+        "currentHp": 4,
         "maxHp": 4
       },
       {
         "index": 64,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 65,
-        "shape": "Mountain",
-        "currentHp": 0,
-        "maxHp": 14
-      },
-      {
-        "index": 66,
         "shape": "Shield",
-        "effect": "Negative",
-        "currentHp": 0,
+        "currentHp": 12,
         "maxHp": 12
       },
       {
-        "index": 67,
+        "index": 65,
+        "shape": "Shield",
+        "currentHp": 12,
+        "maxHp": 12
+      },
+      {
+        "index": 66,
         "shape": "Mountain",
-        "currentHp": 0,
-        "maxHp": 14
+        "variant": "Terminal",
+        "currentHp": 17,
+        "maxHp": 17
+      },
+      {
+        "index": 67,
+        "shape": "Tree",
+        "variant": "Moss",
+        "currentHp": 10,
+        "maxHp": 10
       },
       {
         "index": 68,
         "shape": "Half",
-        "currentHp": 0,
+        "currentHp": 2,
         "maxHp": 2
       },
       {
         "index": 69,
-        "shape": "Bread",
-        "currentHp": 0,
-        "maxHp": 6
+        "shape": "Tree",
+        "currentHp": 8,
+        "maxHp": 8
       },
       {
         "index": 70,
-        "shape": "Blob",
-        "variant": "Wood",
-        "currentHp": 0,
-        "maxHp": 6
+        "shape": "Shield",
+        "currentHp": 12,
+        "maxHp": 12
       },
       {
         "index": 71,
-        "shape": "Bread",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 72,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
-      },
-      {
-        "index": 73,
-        "shape": "Bread",
-        "variant": "Shibori",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 74,
-        "shape": "Bread",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 75,
-        "shape": "Mountain",
-        "effect": "Blessed",
-        "currentHp": 0,
-        "maxHp": 21
-      },
-      {
-        "index": 76,
-        "shape": "Bread",
-        "variant": "Sandstone",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 77,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 78,
-        "shape": "Donut",
-        "effect": "Negative",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 79,
-        "shape": "Bread",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 80,
-        "shape": "Jagged",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 81,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 82,
-        "shape": "Half",
-        "variant": "Broken",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 83,
-        "shape": "Biscuit",
-        "variant": "Seigaiha",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 84,
-        "shape": "Bread",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 85,
-        "shape": "Biscuit",
-        "currentHp": 0,
-        "maxHp": 4
-      },
-      {
-        "index": 86,
-        "shape": "Bread",
-        "currentHp": 0,
-        "maxHp": 6
-      },
-      {
-        "index": 87,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
-      },
-      {
-        "index": 88,
-        "shape": "Water",
-        "currentHp": 0,
+        "shape": "Tulip",
+        "variant": "Moss",
+        "currentHp": 7,
         "maxHp": 7
       },
       {
-        "index": 89,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 90,
-        "shape": "Tree",
-        "currentHp": 0,
-        "maxHp": 8
-      },
-      {
-        "index": 91,
-        "shape": "Jagged",
-        "currentHp": 0,
-        "maxHp": 10
-      },
-      {
-        "index": 92,
-        "shape": "Floral",
-        "currentHp": 0,
-        "maxHp": 11
-      },
-      {
-        "index": 93,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
-      },
-      {
-        "index": 94,
-        "shape": "Base",
-        "currentHp": 0,
+        "index": 72,
+        "shape": "Biscuit",
+        "currentHp": 4,
         "maxHp": 4
       },
       {
-        "index": 95,
+        "index": 73,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 74,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 75,
+        "shape": "Donut",
+        "variant": "Dirt",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 76,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 77,
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
+        "index": 78,
         "shape": "Chipped",
-        "currentHp": 0,
+        "currentHp": 3,
         "maxHp": 3
       },
       {
-        "index": 96,
-        "shape": "Tree",
-        "currentHp": 0,
+        "index": 79,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 80,
+        "shape": "Biscuit",
+        "variant": "Zebra",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 81,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 82,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 83,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 84,
+        "shape": "Half",
+        "variant": "Dirt",
+        "effect": "Overcharged",
+        "currentHp": 8,
         "maxHp": 8
       },
       {
+        "index": 85,
+        "shape": "Water",
+        "currentHp": 7,
+        "maxHp": 7
+      },
+      {
+        "index": 86,
+        "shape": "Tree",
+        "currentHp": 8,
+        "maxHp": 8
+      },
+      {
+        "index": 87,
+        "shape": "Water",
+        "currentHp": 7,
+        "maxHp": 7
+      },
+      {
+        "index": 88,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 89,
+        "shape": "Water",
+        "variant": "Blueprint",
+        "currentHp": 8,
+        "maxHp": 8
+      },
+      {
+        "index": 90,
+        "shape": "Bread",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 91,
+        "shape": "Blob",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 92,
+        "shape": "Tulip",
+        "currentHp": 6,
+        "maxHp": 6
+      },
+      {
+        "index": 93,
+        "shape": "Biscuit",
+        "variant": "Wood",
+        "currentHp": 5,
+        "maxHp": 5
+      },
+      {
+        "index": 94,
+        "shape": "Bread",
+        "variant": "Wood",
+        "currentHp": 8,
+        "maxHp": 8
+      },
+      {
+        "index": 95,
+        "shape": "Bread",
+        "variant": "Wood",
+        "effect": "Negative",
+        "currentHp": 8,
+        "maxHp": 8
+      },
+      {
+        "index": 96,
+        "shape": "Biscuit",
+        "currentHp": 4,
+        "maxHp": 4
+      },
+      {
         "index": 97,
-        "shape": "Floral",
-        "effect": "Wet",
-        "currentHp": 0,
-        "maxHp": 11
+        "shape": "Biscuit",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 98,
-        "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
+        "shape": "Base",
+        "effect": "Blessed",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 99,
         "shape": "Half",
-        "currentHp": 0,
-        "maxHp": 2
+        "variant": "Moss",
+        "currentHp": 3,
+        "maxHp": 3
       },
       {
         "index": 100,
         "shape": "Water",
-        "currentHp": 0,
+        "currentHp": 7,
         "maxHp": 7
       },
       {
         "index": 101,
         "shape": "Blob",
-        "variant": "Broken",
-        "currentHp": 0,
-        "maxHp": 4
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 102,
-        "shape": "Chipped",
-        "currentHp": 0,
-        "maxHp": 3
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 103,
-        "shape": "Tulip",
-        "currentHp": 0,
-        "maxHp": 6
+        "shape": "Biscuit",
+        "variant": "Terminal",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 104,
-        "shape": "Base",
-        "variant": "Terracotta",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Chipped",
+        "currentHp": 3,
+        "maxHp": 3
       },
       {
         "index": 105,
-        "shape": "Biscuit",
-        "variant": "Wood",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Water",
+        "variant": "Amber",
+        "currentHp": 9,
+        "maxHp": 9
       },
       {
         "index": 106,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Shield",
+        "currentHp": 12,
+        "maxHp": 12
       },
       {
         "index": 107,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Tulip",
+        "effect": "Brittle",
+        "currentHp": 3,
+        "maxHp": 3
       },
       {
         "index": 108,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Floral",
+        "currentHp": 11,
+        "maxHp": 11
       },
       {
         "index": 109,
         "shape": "Chipped",
         "variant": "Moss",
-        "currentHp": 0,
-        "maxHp": 4
+        "effect": "Blessed",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 110,
-        "shape": "Water",
-        "variant": "Terracotta",
-        "currentHp": 0,
-        "maxHp": 9
+        "shape": "Half",
+        "effect": "Echo",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
         "index": 111,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Base",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 112,
         "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "variant": "Wood",
+        "currentHp": 6,
+        "maxHp": 6
       },
       {
         "index": 113,
-        "shape": "Blob",
-        "currentHp": 0,
-        "maxHp": 5
+        "shape": "Half",
+        "effect": "Negative",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
         "index": 114,
-        "shape": "Donut",
-        "effect": "Blessed",
-        "currentHp": 0,
-        "maxHp": 8
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
         "index": 115,
-        "shape": "Base",
-        "currentHp": 0,
-        "maxHp": 4
+        "shape": "Tulip",
+        "variant": "Moss",
+        "currentHp": 7,
+        "maxHp": 7
       },
       {
         "index": 116,
-        "shape": "Butterfly",
-        "currentHp": 0,
-        "maxHp": 9
+        "shape": "Base",
+        "variant": "Terracotta",
+        "currentHp": 5,
+        "maxHp": 5
       },
       {
         "index": 117,
-        "shape": "Donut",
-        "currentHp": 0,
+        "shape": "Blob",
+        "currentHp": 5,
         "maxHp": 5
       },
       {
         "index": 118,
-        "shape": "Tulip",
-        "variant": "Moss",
-        "currentHp": 0,
-        "maxHp": 7
+        "shape": "Gem",
+        "currentHp": 20,
+        "maxHp": 20
       },
       {
         "index": 119,
-        "shape": "Water",
-        "variant": "Terracotta",
-        "currentHp": 0,
-        "maxHp": 9
-      },
-      {
-        "index": 120,
-        "shape": "Water",
-        "variant": "Terracotta",
-        "currentHp": 0,
-        "maxHp": 9
-      },
-      {
-        "index": 121,
-        "shape": "Base",
-        "variant": "Moss",
-        "currentHp": 0,
-        "maxHp": 5
-      },
-      {
-        "index": 122,
         "shape": "Half",
-        "currentHp": 0,
+        "currentHp": 2,
         "maxHp": 2
       },
       {
-        "index": 123,
-        "shape": "Tree",
-        "variant": "Wood",
-        "currentHp": 0,
-        "maxHp": 10
+        "index": 120,
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
       },
       {
-        "index": 124,
+        "index": 121,
         "shape": "Chipped",
-        "currentHp": 0,
+        "currentHp": 3,
         "maxHp": 3
       },
       {
+        "index": 122,
+        "shape": "Base",
+        "variant": "Broken",
+        "currentHp": 3,
+        "maxHp": 3
+      },
+      {
+        "index": 123,
+        "shape": "Half",
+        "currentHp": 2,
+        "maxHp": 2
+      },
+      {
+        "index": 124,
+        "shape": "Donut",
+        "variant": "Moss",
+        "effect": "Blessed",
+        "currentHp": 9,
+        "maxHp": 9
+      },
+      {
         "index": 125,
-        "shape": "Tulip",
-        "currentHp": 0,
+        "shape": "Donut",
+        "variant": "Dirt",
+        "currentHp": 6,
         "maxHp": 6
       },
       {
         "index": 126,
-        "shape": "Base",
-        "variant": "Dirt",
-        "effect": "Overcharged",
-        "currentHp": 0,
-        "maxHp": 16
+        "shape": "Biscuit",
+        "currentHp": 4,
+        "maxHp": 4
       },
       {
         "index": 127,
-        "shape": "Base",
-        "currentHp": 2,
-        "maxHp": 4
+        "shape": "Tree",
+        "currentHp": 8,
+        "maxHp": 8
       }
     ],
-    "createdAt": "2026-09-20T00:47:13.862Z",
+    "createdAt": "2026-10-05T01:43:08.161Z",
     "isCleared": false
   },
   "collectiblePool": {},
