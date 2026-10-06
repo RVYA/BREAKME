@@ -1,5 +1,5 @@
 {
-  "hash": "87df320b83301ad58aa4b75b390328a579c95538da8e4d1b9e8cb83dda0a9660",
+  "hash": "e26eaec6828296f2661abd9af375ebd1cb4566e728754585608b8417e9de85be",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 3,
-      "tileIndex": 1,
-      "totalTilesBroken": 321
+      "tileIndex": 2,
+      "totalTilesBroken": 322
     },
     "activity": {
       "currentStreak": 2,
@@ -40,14 +40,14 @@
         "index": 1,
         "shape": "Biscuit",
         "effect": "Overcharged",
-        "currentHp": 6.400000000000002,
+        "currentHp": 0,
         "maxHp": 14
       },
       {
         "index": 2,
         "shape": "Chipped",
         "effect": "Cold",
-        "currentHp": 3,
+        "currentHp": 2.8,
         "maxHp": 3
       },
       {
