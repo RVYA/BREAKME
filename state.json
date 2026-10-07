@@ -1,5 +1,5 @@
 {
-  "hash": "1f7128066aaf4fd40ec26c59fc630f19df7f321d74fc8353f1114c76ae6161bf",
+  "hash": "09a4e7455fa0dee222fcf9e47b8f490d99bb9aea27ecb71cc360c439f6899019",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -112,7 +112,7 @@
         "shape": "Base",
         "variant": "Sandstone",
         "effect": "Overcharged",
-        "currentHp": 10.200000000000001,
+        "currentHp": 3.6000000000000028,
         "maxHp": 14
       },
       {
