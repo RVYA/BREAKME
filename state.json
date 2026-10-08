@@ -1,5 +1,5 @@
 {
-  "hash": "09a4e7455fa0dee222fcf9e47b8f490d99bb9aea27ecb71cc360c439f6899019",
+  "hash": "d2e01d4f2f04bdd9a5f04c167cec25cc3183aa83b166bd23176826b4eb5dae41",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 3,
-      "tileIndex": 12,
-      "totalTilesBroken": 332
+      "tileIndex": 14,
+      "totalTilesBroken": 334
     },
     "activity": {
       "currentStreak": 2,
@@ -112,13 +112,13 @@
         "shape": "Base",
         "variant": "Sandstone",
         "effect": "Overcharged",
-        "currentHp": 3.6000000000000028,
+        "currentHp": 0,
         "maxHp": 14
       },
       {
         "index": 13,
         "shape": "Chipped",
-        "currentHp": 3,
+        "currentHp": 0,
         "maxHp": 3
       },
       {
