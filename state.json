@@ -1,5 +1,5 @@
 {
-  "hash": "cf5734bee5574c1178d8e9e66f3d21824a95b42b116313ae6c0665c371224020",
+  "hash": "1371b028e421808617e123ea02fe11b22c1d850eacd6a40e002a7f5fe74a8386",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -465,7 +465,7 @@
         "index": 66,
         "shape": "Mountain",
         "variant": "Terminal",
-        "currentHp": 13.200000000000001,
+        "currentHp": 6.600000000000003,
         "maxHp": 17
       },
       {
