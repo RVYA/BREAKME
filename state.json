@@ -1,5 +1,5 @@
 {
-  "hash": "c26b9c5aab6be05c4b05cd2d42dfb382d4dfd38ffe456afde2d9ac68ab8b8b7e",
+  "hash": "773d2caf24f4d1808698118984c087e3905df0c93698deb42b0234da4e8da69e",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 3,
-      "tileIndex": 83,
-      "totalTilesBroken": 403
+      "tileIndex": 84,
+      "totalTilesBroken": 404
     },
     "activity": {
       "currentStreak": 2,
@@ -571,7 +571,7 @@
       {
         "index": 83,
         "shape": "Blob",
-        "currentHp": 1.6,
+        "currentHp": 0,
         "maxHp": 5
       },
       {
@@ -579,7 +579,7 @@
         "shape": "Half",
         "variant": "Dirt",
         "effect": "Overcharged",
-        "currentHp": 8,
+        "currentHp": 3.0000000000000013,
         "maxHp": 8
       },
       {
