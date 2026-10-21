@@ -1,5 +1,5 @@
 {
-  "hash": "fb5450b92adf5c70cf056dec5a76e85fe92372a6533bb930c7ba2341d1c8eebe",
+  "hash": "f013a0de8f676aeb85c378e87e96d6cbf7d2c171e441e08073950c414325663d",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 3,
-      "tileIndex": 89,
-      "totalTilesBroken": 409
+      "tileIndex": 90,
+      "totalTilesBroken": 410
     },
     "activity": {
       "currentStreak": 2,
@@ -610,13 +610,13 @@
         "index": 89,
         "shape": "Water",
         "variant": "Blueprint",
-        "currentHp": 5,
+        "currentHp": 0,
         "maxHp": 8
       },
       {
         "index": 90,
         "shape": "Bread",
-        "currentHp": 6,
+        "currentHp": 4.4,
         "maxHp": 6
       },
       {
