@@ -1,5 +1,5 @@
 {
-  "hash": "6b492a0ac4eb99d64513b08eb6250ca4dd62c33ccedccf91e4583d2506731617",
+  "hash": "458855b8390395f7b01524fdb43112c5e51a45bf182b49b1cdb294ff5ac23722",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -714,7 +714,7 @@
         "index": 105,
         "shape": "Water",
         "variant": "Amber",
-        "currentHp": 7.200000000000001,
+        "currentHp": 0.6000000000000014,
         "maxHp": 9
       },
       {
