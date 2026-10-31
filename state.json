@@ -1,5 +1,5 @@
 {
-  "hash": "b196fc645681e4388343934a3701d9ce41d7edd0b0ba69dc05f2d61c698312e4",
+  "hash": "b7ebe70554c18bf5e8d5e01f906965e8b34badde2a63c35bed8a2aec3dd805d3",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -182,7 +182,7 @@
         "shape": "Bread",
         "variant": "Sakura",
         "effect": "Armored",
-        "currentHp": 10.6,
+        "currentHp": 4.000000000000002,
         "maxHp": 18
       },
       {
