@@ -1,5 +1,5 @@
 {
-  "hash": "b7ebe70554c18bf5e8d5e01f906965e8b34badde2a63c35bed8a2aec3dd805d3",
+  "hash": "884fa8f2a09bf2db98f1f30a4c8d81fb31a82902f968fe7bbeaafa8692a6fde8",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 4,
-      "tileIndex": 23,
-      "totalTilesBroken": 471
+      "tileIndex": 24,
+      "totalTilesBroken": 472
     },
     "activity": {
       "currentStreak": 2,
@@ -182,13 +182,13 @@
         "shape": "Bread",
         "variant": "Sakura",
         "effect": "Armored",
-        "currentHp": 4.000000000000002,
+        "currentHp": 0,
         "maxHp": 18
       },
       {
         "index": 24,
         "shape": "Blob",
-        "currentHp": 5,
+        "currentHp": 2.3999999999999995,
         "maxHp": 5
       },
       {
