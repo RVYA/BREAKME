@@ -1,5 +1,5 @@
 {
-  "hash": "84dd6548bc07bc03b0afd62203574dc4080c5251a172c823cb7cb061699962b0",
+  "hash": "f0d038172bc3c879c3e79d0f775b12992aeec195507e2111a15f1ca12dca77d5",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -309,7 +309,7 @@
         "shape": "Tulip",
         "variant": "Moss",
         "effect": "Cold",
-        "currentHp": 7,
+        "currentHp": 0.40000000000000036,
         "maxHp": 7
       },
       {
