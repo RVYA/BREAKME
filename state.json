@@ -1,5 +1,5 @@
 {
-  "hash": "ca09a6182093d336260db983b2000ce30a00d34ff840e7ddb03f37fc8fae3182",
+  "hash": "8bf15a84d111a8f5ee3519d3716c596132fd45fc43d27e992c3cf8ba1e7d0dc8",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -12,9 +12,9 @@
       "totalTilesBroken": 493
     },
     "activity": {
-      "currentStreak": 2,
+      "currentStreak": 1,
       "highestStreak": 7,
-      "lastActiveDate": "2026-10-05",
+      "lastActiveDate": "2026-11-18",
       "mostDamage": 28.8
     },
     "inventory": {
@@ -329,7 +329,7 @@
         "shape": "Biscuit",
         "variant": "Moss",
         "effect": "Blessed",
-        "currentHp": 2.9999999999999996,
+        "currentHp": 0.9999999999999996,
         "maxHp": 7
       },
       {
