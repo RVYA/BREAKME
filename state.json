@@ -1,5 +1,5 @@
 {
-  "hash": "83e80a84302ded41cb20debe4958dfe43b011d5d2ec431a129e8e9ab6ed6125b",
+  "hash": "50c3cc91b96a2dac683f76e316aafab1fa1ef0153df6d2358435059f128171f1",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -348,7 +348,7 @@
         "index": 48,
         "shape": "Bread",
         "effect": "Negative",
-        "currentHp": 3,
+        "currentHp": 1,
         "maxHp": 6
       },
       {
