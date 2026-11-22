@@ -1,5 +1,5 @@
 {
-  "hash": "046805b2318f7fb5db1d516bfe593b52a2cf1b0dcb6c6e93a5cdda1ed273de38",
+  "hash": "772d125750e27e98d2c2e81ba9243c41fc23a765eb0e47312a8af8117db28103",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -355,7 +355,7 @@
         "index": 49,
         "shape": "Tree",
         "effect": "Brittle",
-        "currentHp": 3,
+        "currentHp": 1,
         "maxHp": 4
       },
       {
