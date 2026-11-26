@@ -1,5 +1,5 @@
 {
-  "hash": "bba6a1bb4b8e91c79ab520b7e8b1cea798ec52b81f70868a7f961410ccd705d5",
+  "hash": "02731655493c66d1a5563242d6bfd6e31f6ecfa0ab2c192394fce4f7d9a95b92",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -383,7 +383,7 @@
         "index": 53,
         "shape": "Tulip",
         "variant": "Amethyst",
-        "currentHp": 4,
+        "currentHp": 2,
         "maxHp": 10
       },
       {
