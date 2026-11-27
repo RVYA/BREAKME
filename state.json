@@ -1,5 +1,5 @@
 {
-  "hash": "02731655493c66d1a5563242d6bfd6e31f6ecfa0ab2c192394fce4f7d9a95b92",
+  "hash": "56da2187e61e15cc7df20225fcf6be5fadabb8195e8c2fab57c1eeffea0776ff",
   "player": {
     "identity": {
       "username": "RVYA",
@@ -8,8 +8,8 @@
     },
     "progress": {
       "chunkIndex": 4,
-      "tileIndex": 53,
-      "totalTilesBroken": 501
+      "tileIndex": 54,
+      "totalTilesBroken": 502
     },
     "activity": {
       "currentStreak": 1,
@@ -383,7 +383,7 @@
         "index": 53,
         "shape": "Tulip",
         "variant": "Amethyst",
-        "currentHp": 2,
+        "currentHp": 0,
         "maxHp": 10
       },
       {
